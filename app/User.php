@@ -41,5 +41,25 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Rating', 'to_user_id', 'id');
     }
-
+    /**
+     * Get all the trips.
+     */
+    public function trips()
+    {
+        return $this->hasMany('App\Trip', 'carrier_id', 'id');
+    }
+    /**
+     * Get all the trips.
+     */
+    public function luggages()
+    {
+        return $this->hasMany('App\Luggage', 'owner_id', 'id');
+    }
+    /**
+     * Get all the trips.
+     */
+    public function offers()
+    {
+        return $this->hasMany('App\Offer', 'req_user_id', 'id');
+    }
 }

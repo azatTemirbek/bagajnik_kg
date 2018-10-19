@@ -15,8 +15,8 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('req_user')->nullable()->unsigned();
-            $table->foreign('req_user')->references('id')->on('users');
+            $table->integer('req_user_id')->nullable()->unsigned();
+            $table->foreign('req_user_id')->references('id')->on('users');
 
             $table->integer('luggage_id')->nullable()->unsigned();
             $table->foreign('luggage_id')->references('id')->on('luggage');
