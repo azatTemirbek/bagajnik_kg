@@ -21,10 +21,12 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/jakub-onderka/php-console-highlighter" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/laravel/tinker" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/lcobucci/jwt" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/league/flysystem" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/namshi/jose" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/nunomaduro/collision" />
@@ -68,13 +70,16 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/http-kernel" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/polyfill-ctype" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/polyfill-php56" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/polyfill-util" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/process" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/routing" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/tijsverkoyen/css-to-inline-styles" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/tymon/jwt-auth" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/webmozart/assert" />
     </content>
