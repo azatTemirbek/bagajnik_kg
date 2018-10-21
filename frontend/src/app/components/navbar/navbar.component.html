@@ -1,7 +1,8 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand">Navbar</a>
   <div>
-      <a class="navbar-brand" [routerLink]="[ '/login' ]" routerLinkActive="active">Login</a>
-      <a class="navbar-brand" [routerLink]="[ '/profile' ]" routerLinkActive="active">Profile</a>
+      <a *ngIf='!Auth.loggedIn.getValue()' class="navbar-brand" [routerLink]="[ '/login' ]" routerLinkActive="active">Login</a>
+      <a *ngIf='Auth.loggedIn.getValue()' class="navbar-brand" (click)='logout()' routerLinkActive="active">Logout</a>
+      <a *ngIf='Auth.loggedIn.getValue()' class="navbar-brand" [routerLink]="[ '/profile' ]" routerLinkActive="active">Profile</a>
   </div>
 </nav>

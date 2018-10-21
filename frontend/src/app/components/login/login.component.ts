@@ -1,4 +1,7 @@
 import { AuthService } from './../../service/auth.service';
+import { Router } from '@angular/router';
+import { TokenService } from './../../service/token.service';
+import { JarvisService } from './../../service/jarvis.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,12 +14,33 @@ export class LoginComponent implements OnInit {
     email: null,
     password: null
   };
+  public error = null;
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: JarvisService,
+    private Token: TokenService,
+    private Auth: AuthService,
+    private router: Router,
+    ) { }
+  /**
+   * data => this.auth.user.next(data),
+   */
   onSubmit() {
-    return this.auth.login(this.form);
+    this.auth.login(this.form).subscribe(
+      data => this.handleResponse(data),
+      error => this.handleError(error)
+    );
   }
 
+  handleResponse(data) {
+    this.Token.handle(data.access_token);
+    this.Auth.loggedIn.next(true);
+    this.router.navigateByUrl('/profile');
+  }
+
+  handleError(error) {
+    this.error = error.error.error;
+  }
   ngOnInit() {
   }
 

@@ -1,4 +1,5 @@
-import { AuthService } from './service/auth.service';
+import { TokenService } from './service/token.service';
+import { JarvisService } from './service/jarvis.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    AuthService
+    JarvisService,
+    TokenService
   ],
   bootstrap: [AppComponent]
 })

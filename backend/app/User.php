@@ -11,6 +11,26 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'surname',
+        'name',
+        'phone',
+        'email',
+        'password',
+    ];
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+    /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
      * @return mixed
@@ -30,23 +50,6 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
     /**
      * Get the comments from the user.
      */
@@ -81,5 +84,12 @@ class User extends Authenticatable implements JWTSubject
     public function offers()
     {
         return $this->hasMany('App\Offer', 'req_user_id', 'id');
+    }
+    /**
+     * Crypto the password.
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 }
