@@ -13,6 +13,9 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponceResetComponent } from './components/password/responce-reset/responce-reset.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+
 
 @NgModule({
   declarations: [
@@ -22,17 +25,21 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     ProfileComponent,
     RequestResetComponent,
-    ResponceResetComponent
+    ResponceResetComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SnotifyModule
   ],
   providers: [
     JarvisService,
-    TokenService
+    TokenService,
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService
   ],
   bootstrap: [AppComponent]
 })
