@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
   handleError(error) {
     this.error = error.error.error;
   }
+
   ngOnInit() {
   }
 

@@ -11,7 +11,7 @@ export class RequestResetComponent implements OnInit {
 
   public form = {
     email: null
-  }
+  };
 
   constructor(
     private jarvis: JarvisService,
