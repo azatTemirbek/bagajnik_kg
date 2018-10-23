@@ -24,7 +24,7 @@ class Offer extends Model
         return $this->belongsTo('App\Trip', 'trip_id');
     }
     /**
-     * Get the Trip that owns the offer.
+     * Get the User that owns the offer.
      */
     public function user()
     {

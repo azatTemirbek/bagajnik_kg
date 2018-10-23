@@ -54,7 +54,7 @@ $factory->define(App\Luggage::class, function (Faker $faker) {
         'takerPhone1' => $faker->phoneNumber,
         'takerPhone2' => $faker->phoneNumber,
         'mass' => $faker->numberBetween($min = 1, $max = 50),
-        'comertial' => $faker->numberBetween($min = 1, $max = 100),
+        'comertial' => $faker->boolean($chanceOfGettingTrue = 50),
         'value' => $faker->word,
         'price' => $faker->word,
         'from' => $faker->address,

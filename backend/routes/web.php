@@ -32,11 +32,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 //    return "This is trip ".$id;
 //});
 
-Route::get('/offers', 'OffersController@index');
 
-Route::get('/luggages', 'LuggagesController@index');
-
-Route::get('/ratings', 'OffersController@index');
-
-Route::get('/trips', 'LuggagesController@index');
 
