@@ -2,6 +2,7 @@ import { JarvisService } from './../../service/jarvis.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/service/token.service';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-register',
@@ -28,7 +29,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private Jarwis: JarvisService,
     private Token: TokenService,
-    private router: Router
+    private router: Router,
+    private notify: SnotifyService
   ) { }
 
   onSubmit() {
@@ -42,7 +44,7 @@ export class RegisterComponent implements OnInit {
     this.router.navigateByUrl('/profile');
   }
   handleError(error) {
-    // todo: give error  to ui
+    this.notify.error(error.error.error);
     this.error = error.error.errors;
   }
 

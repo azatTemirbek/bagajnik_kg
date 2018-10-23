@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TokenService } from './../../service/token.service';
 import { JarvisService } from './../../service/jarvis.service';
 import { Component, OnInit } from '@angular/core';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     private Token: TokenService,
     private Auth: AuthService,
     private router: Router,
+    private notify: SnotifyService
     ) { }
   /**
    * data => this.auth.user.next(data),
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleError(error) {
+    this.notify.error(error.error.error);
     this.error = error.error.error;
   }
 
