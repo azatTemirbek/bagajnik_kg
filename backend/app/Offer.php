@@ -2,16 +2,19 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Offer extends Model
 {
+
     /**
      * Get the Luggage that owns the offer.
      */
     public function luggage()
     {
         return $this->belongsTo('App\Luggage', 'luggage_id');
+
     }
     /**
      * Get the Trip that owns the offer.
@@ -28,3 +31,4 @@ class Offer extends Model
         return $this->belongsTo('App\User', 'req_user_id');
     }
 }
+

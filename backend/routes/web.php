@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +20,23 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::get('/trips', function () {
+//    $trips = \App\Trip::all();
+//    return view('trips',[
+//        'trips' => $trips
+//    ]);
+//});
+//
+//Route::get('/trips/{id}', function ($id) {
+//    return "This is trip ".$id;
+//});
+
+Route::get('/offers', 'OffersController@index');
+
+Route::get('/luggages', 'LuggagesController@index');
+
+Route::get('/ratings', 'OffersController@index');
+
+Route::get('/trips', 'LuggagesController@index');
+
