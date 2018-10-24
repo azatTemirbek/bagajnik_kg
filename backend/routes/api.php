@@ -10,7 +10,11 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+//todo: JSONresource ,
+//todo: Colleaction+paginate,
+//todo: foldering,
+//todo: comment,
+//todo: create read update delete(owner controll)=>inside controller.
 Route::group([
     'middleware' => 'api',
 ], function () {
@@ -35,4 +39,3 @@ Route::get('/ratings', 'RatingsController@index');
 Route::get('/rating/{id}', 'RatingsController@show');
 
 Route::resource('/trips', 'TripController');
-Route::get('/trip{id}', 'TripController@show');
