@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 class RatingsController extends Controller
 {
     public function index(){
-        return "Index";
+        $ratingList  = App\Rating::all();
+        return $ratingList;
+    }
+    public function show($id){
+;
+
+        return App\Rating::find($id)-> with(['user'])->get();
     }
 }

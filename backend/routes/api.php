@@ -29,5 +29,10 @@ Route::get('/offers', 'OffersController@index');
 Route::get('/offer/{id}', 'OffersController@show');
 
 Route::get('/luggages', 'LuggagesController@index');
-Route::get('/ratings', 'OffersController@index');
-Route::get('/trips', 'LuggagesController@index');
+Route::get('/luggage/{id}', 'LuggagesController@show');
+
+Route::get('/ratings', 'RatingsController@index');
+Route::get('/rating/{id}', 'RatingsController@show');
+
+Route::resource('/trips', 'TripController');
+Route::get('/trip{id}', 'TripController@show');
