@@ -11,7 +11,10 @@
           <div class="col-sm-9">
             <input [(ngModel)]="form.email" type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email"
               required>
-          </div>
+              <span [hidden]='!error.email' class="text-danger">
+                {{error.email}}
+              </span>
+            </div>
         </div>
 
         <div class="form-group row">
@@ -19,7 +22,10 @@
           <div class="col-sm-9">
             <input type="password" [(ngModel)]="form.password" name="password" class="form-control" id="inputPassword3"
               placeholder="Password" required>
-          </div>
+              <span [hidden]='!error.password' class="text-danger">
+                {{error.password}}
+              </span>
+            </div>
         </div>
 
         <div class="form-group row">
@@ -27,7 +33,10 @@
           <div class="col-sm-9">
             <input type="password" [(ngModel)]="form.password_confirmation" name="password_confirmation" class="form-control" id="inputPassword4"
               placeholder="Password Confirmation" required>
-          </div>
+              <span [hidden]='!error.password_confirmation' class="text-danger">
+                {{error.password_confirmation}}
+              </span>
+            </div>
         </div>
 
         <div class="form-group row">

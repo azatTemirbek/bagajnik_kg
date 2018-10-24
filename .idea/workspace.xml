@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65dc5c88-c5a1-4a1f-8b51-44a98961f1e2" name="Default Changelist" comment="frot initial component setup">
-      <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/ChangePasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/ChangePasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/resources/views/Email/passworReset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/resources/views/Email/passworReset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/password/responce-reset/responce-reset.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/password/responce-reset/responce-reset.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,14 +58,15 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="json" value="3" />
-          <entry key="php" value="344" />
+          <entry key="php" value="563" />
           <entry key="txt" value="69" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="Blade" value="51" />
           <entry key="JSON" value="3" />
-          <entry key="PHP" value="344" />
+          <entry key="PHP" value="512" />
           <entry key="PLAIN_TEXT" value="69" />
         </counts>
       </usages-collector>
@@ -71,13 +74,14 @@
         <counts>
           <entry key="env" value="1" />
           <entry key="json" value="1" />
-          <entry key="php" value="17" />
+          <entry key="php" value="18" />
           <entry key="sql" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="1" />
+          <entry key="Blade" value="1" />
           <entry key="JSON" value="1" />
           <entry key="PHP" value="17" />
           <entry key="Scratch" value="1" />
@@ -132,11 +136,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/routes/api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="69" lean-forward="true" selection-start-line="16" selection-start-column="69" selection-end-line="16" selection-end-column="69" />
+            <state>
+              <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
               <folding>
                 <element signature="e#7#389#0#PHP" expanded="true" />
               </folding>
@@ -145,37 +149,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/RatingResource.php">
+        <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/ChangePasswordController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+            <state relative-caret-position="240">
+              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/UserResource.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/TripResource.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/Offer.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/ChangePasswordController.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/resources/views/Email/passworReset.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-              <folding>
-                <element signature="e#40#84#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -207,6 +196,8 @@
         <option value="$PROJECT_DIR$/backend/app/Http/Controllers/TripController.php" />
         <option value="$PROJECT_DIR$/backend/app/Http/Controllers/OffersController.php" />
         <option value="$PROJECT_DIR$/backend/routes/api.php" />
+        <option value="$PROJECT_DIR$/backend/app/Http/Controllers/ChangePasswordController.php" />
+        <option value="$PROJECT_DIR$/backend/resources/views/Email/passworReset.blade.php" />
       </list>
     </option>
   </component>
@@ -455,6 +446,27 @@
               <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="seeds" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="your-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="your-project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="your-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="your-project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="your-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="your-project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="Email" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -463,7 +475,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="SearchEverywhereHistoryKey" value="offerCon&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/Http/Controllers/OffersController.php&#10;TripController&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/Http/Controllers/TripController.php&#10;api&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/routes/api.php&#10;cors&#9;null&#9;null&#10;AuthController&#9;null&#9;null&#10;apiphp&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/routes/api.php&#10;authphp&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/config/auth.php&#10;user&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/User.php&#10;compos&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/composer.json" />
+    <property name="SearchEverywhereHistoryKey" value="mail&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/resources/views/Email&#10;offerCon&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/Http/Controllers/OffersController.php&#10;TripController&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/Http/Controllers/TripController.php&#10;api&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/routes/api.php&#10;cors&#9;null&#9;null&#10;AuthController&#9;null&#9;null&#10;apiphp&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/routes/api.php&#10;authphp&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/config/auth.php&#10;user&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/User.php&#10;compos&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/composer.json" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
@@ -530,12 +542,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46427000" />
+    <option name="totallyTimeSpent" value="48239000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4965197" visible="true" weight="0.24958494" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4965197" visible="true" weight="0.24958494" />
       <window_info id="Structure" order="1" sideWeight="0.50348026" side_tool="true" weight="0.14671814" />
       <window_info id="npm" order="2" sideWeight="0.50348026" side_tool="true" weight="0.14671814" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -548,7 +561,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32952693" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4997233" weight="0.9081081" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4997233" weight="0.75027025" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5002767" side_tool="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
@@ -788,16 +801,6 @@
         <state relative-caret-position="-130" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/ChangePasswordController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding>
-            <element signature="e#40#84#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/TripController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-557">
@@ -850,11 +853,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/routes/api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="69" lean-forward="true" selection-start-line="16" selection-start-column="69" selection-end-line="16" selection-end-column="69" />
+        <state>
+          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
           <folding>
             <element signature="e#7#389#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/ChangePasswordController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/resources/views/Email/passworReset.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
         </state>
       </provider>
     </entry>

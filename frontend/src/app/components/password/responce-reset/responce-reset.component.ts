@@ -1,7 +1,7 @@
 import { JarvisService } from './../../../service/jarvis.service';
 import { SnotifyService } from 'ng-snotify';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-responce-reset',
@@ -20,7 +20,8 @@ export class ResponceResetComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private notify: SnotifyService,
-    private jarvis: JarvisService
+    private jarvis: JarvisService,
+    private router: Router
   ) {
     this.route.queryParams.subscribe(
       params => this.form.restToken = params['token']
@@ -34,16 +35,28 @@ export class ResponceResetComponent implements OnInit {
       this.notify.error('Token not found');
     }
     this.jarvis.changePassword(this.form).subscribe(
-      data => this.handleResponce(data),
+      data => this.handleResponse(data),
       error => this.handleError(error),
     );
   }
 
-  handleResponce(data) {
+  handleResponse(data) {
 
+    const _router = this.router;
+    this.notify.confirm('Done!, Now login with new Password', {
+      buttons: [
+        {
+          text: 'Yes!',
+          action: toster => {
+            _router.navigateByUrl('/login'),
+              this.notify.remove(toster.id);
+          }
+        },
+      ]
+    });
   }
   handleError(error) {
-
+    this.error = error.error.errors;
   }
 
 }

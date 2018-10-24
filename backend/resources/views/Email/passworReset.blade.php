@@ -2,8 +2,8 @@
 # Change password Request
 
 Click on the button below to change password
-{{--todo--}}
-@component('mail::button', ['url' => App::environment('APP_URL').':'.App::environment('APP_PORT').'/response-password-reset?token='.$token])
+{{--todo have to change the url--}}
+@component('mail::button', ['url' => URL::to('/').':4200/response-password-reset?token='.$token])
     Reset Password
 @endcomponent
 
