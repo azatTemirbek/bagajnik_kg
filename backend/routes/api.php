@@ -38,7 +38,8 @@ Route::group([
 //Route::get('/ratings', 'RatingsController');
 //Route::get('/rating/{id}', 'RatingsController');
 
-Route::resource('/trips', 'TripController');
+Route::apiresource('/trips', 'TripsController');
+Route::post('Trips/{trip}/offer', 'OfferController@store');
 
 //Route::group(['prefix'=>'trips'], function (){
 //    Route::apiResource('/{trip}/offers', 'OfferController');
@@ -47,5 +48,6 @@ Route::resource('/trips', 'TripController');
 Route::resource('/offers', 'OfferController');
 
 Route::resource('/luggages', 'LuggageController');
+Route::post('luggages/{luggage}/offer', 'OfferController@store');
 
 Route::resource('/ratings', 'RatingController');
