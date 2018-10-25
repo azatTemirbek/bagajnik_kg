@@ -14,28 +14,29 @@ class OfferController extends Controller
      */
     public function index()
     {
-        //Get Offers
-        $offers = Offer::paginate(15);
-        //Return collection of Offers as a resourse
-        return new OfferResourceCollection($offers);
+        return new OfferResourceCollection(Offer::paginate(15));
     }
 
     /**
      * Show the form for creating a new resource.
+     * NORMALLY IT SENDS CREATION HTML FORM
+     *
      */
     public function create()
     {
-        //
+        //Do not implement since we dont need it in api
     }
 
     /**
      * Store a newly created resource in storage.
+     *
      * @param Request $request
      * @return OfferResource
      */
     public function store(Request $request)
     {
-        $offer = $request->isMethod('put') ? Offer::findOrFail($request->offer_id) : new Offer($request->all());
+//      todo:manual validate or Request validate
+        $offer = new Offer($request->all());
         if ($offer->save()) {
             return New OfferResource($offer);
         }
@@ -48,20 +49,19 @@ class OfferController extends Controller
      */
     public function show(Offer $offer)
     {
-        //if added in App\Providers\AppServiceProvider::boot(), it will apply globally
         OfferResource::withoutWrapping();
         return new OfferResource($offer);
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * NORMALLY IT SEND EDITING HTML FORM
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        //Do not implement since we dont need it in api
     }
 
     /**
@@ -71,7 +71,8 @@ class OfferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //    todo:validate
+//       Todo: Update implemantation
     }
 
     /**
