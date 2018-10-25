@@ -29,13 +29,23 @@ Route::group([
 //    routes
 
 });
-Route::get('/offers', 'OffersController@index');
-Route::get('/offer/{id}', 'OffersController@show');
+//Route::get('/offers', 'OffersController');
+//Route::get('/offer/{id}', 'OffersController');
 
-Route::get('/luggages', 'LuggagesController@index');
-Route::get('/luggage/{id}', 'LuggagesController@show');
-
-Route::get('/ratings', 'RatingsController@index');
-Route::get('/rating/{id}', 'RatingsController@show');
+//Route::get('/luggages', 'LuggagesController');
+//Route::get('/luggage/{id}', 'LuggagesController');
+//
+//Route::get('/ratings', 'RatingsController');
+//Route::get('/rating/{id}', 'RatingsController');
 
 Route::resource('/trips', 'TripController');
+
+//Route::group(['prefix'=>'trips'], function (){
+//    Route::apiResource('/{trip}/offers', 'OfferController');
+//});
+
+Route::resource('/offers', 'OfferController');
+
+Route::resource('/luggages', 'LuggageController');
+
+Route::resource('/ratings', 'RatingController');

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\LuggageResources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class RatingResource extends ResourceCollection
+class LuggageResource extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
