@@ -4,7 +4,7 @@ namespace App\Http\Resources\TripResources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Trip extends JsonResource
+class TripsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
