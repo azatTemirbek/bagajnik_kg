@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\OfferResources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class LuggageResource extends ResourceCollection
+class OfferResource extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.

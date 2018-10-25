@@ -9,6 +9,7 @@ class Trip extends Model
     /**
      * Get user who is bag carrier
      */
+
     public function carrier() {
         return $this->belongsTo('App\User','carrier_id');
     }
