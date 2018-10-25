@@ -4,7 +4,7 @@ namespace App\Http\Resources\OfferResources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class OfferResource extends ResourceCollection
+class OfferResourceCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -12,8 +12,18 @@ class OfferResource extends ResourceCollection
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
-    {
-        return parent::toArray($request);
+    public function toArray($request) {
+        return [
+            'data' => $this->collection,
+            'links' => [
+                'self' => 'link-value',
+            ],
+        ];
+    }
+    public function with($request) {
+        return [
+            'version' => '1.0',
+            'url' => url('http://example.com'),
+        ];
     }
 }

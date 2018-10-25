@@ -9,15 +9,15 @@ class Offer extends Model
 {
 
     /**
-     * Get the Luggage that owns the offer.
+     * Get the LuggageResource that owns the offer.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function luggage()
     {
         return $this->belongsTo('App\Luggage', 'luggage_id');
-
     }
     /**
-     * Get the Trip that owns the offer.
+     * Get the TripsResource that owns the offer.
      */
     public function trip()
     {

@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65dc5c88-c5a1-4a1f-8b51-44a98961f1e2" name="Default Changelist" comment="frot initial component setup">
-      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/ChangePasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/ChangePasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/resources/views/Email/passworReset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/resources/views/Email/passworReset.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/password/responce-reset/responce-reset.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/password/responce-reset/responce-reset.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/Http/Resources/LuggageResources/LuggageResourceCollection.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/Http/Resources/OfferResources/OfferResourceCollection.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/Http/Resources/UserResources/UserResourceCollection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/OfferController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/OfferController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/TripController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/TripController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Resources/LuggageResources/Luggage.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Resources/LuggageResources/LuggageResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Resources/OfferResources/Offer.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Resources/OfferResources/OfferResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Resources/TripResources/Trip.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Resources/TripResources/TripsResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Resources/TripResources/TripResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Resources/TripResources/TripsResourceCollection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Resources/UserResources/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Resources/UserResources/UserResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Offer.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Offer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,14 +62,16 @@
         <counts>
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="dummy" value="12" />
           <entry key="json" value="3" />
-          <entry key="php" value="563" />
+          <entry key="php" value="1084" />
           <entry key="txt" value="69" />
         </counts>
       </usages-collector>
@@ -66,15 +79,16 @@
         <counts>
           <entry key="Blade" value="51" />
           <entry key="JSON" value="3" />
-          <entry key="PHP" value="512" />
-          <entry key="PLAIN_TEXT" value="69" />
+          <entry key="PHP" value="1033" />
+          <entry key="PLAIN_TEXT" value="81" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="SCHEMA:app" value="1" />
           <entry key="env" value="1" />
           <entry key="json" value="1" />
-          <entry key="php" value="18" />
+          <entry key="php" value="42" />
           <entry key="sql" value="1" />
         </counts>
       </usages-collector>
@@ -83,8 +97,9 @@
           <entry key=".env file" value="1" />
           <entry key="Blade" value="1" />
           <entry key="JSON" value="1" />
-          <entry key="PHP" value="17" />
+          <entry key="PHP" value="41" />
           <entry key="Scratch" value="1" />
+          <entry key="UML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -135,36 +150,141 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/routes/api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+            <state relative-caret-position="420">
+              <caret line="37" column="3" lean-forward="true" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/OfferController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="28" selection-end-column="5" />
               <folding>
-                <element signature="e#7#389#0#PHP" expanded="true" />
+                <element signature="e#40#92#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/ChangePasswordController.php">
+        <entry file="file://$PROJECT_DIR$/backend/app/Offer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/OfferResources/OfferResourceCollection.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/OfferResources/OfferResource.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="103">
+              <caret line="9" column="40" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="40" />
               <folding>
-                <element signature="e#40#68#0#PHP" expanded="true" />
+                <element signature="e#53#109#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/resources/views/Email/passworReset.blade.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/TripResources/TripsResource.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+            <state relative-caret-position="90">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="uml://DATABASE/4290bf03-ec34-4c89-af1a-60ca0058981a.SCHEMA:app">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>DATABASE</ID>
+              <OriginalElement>4290bf03-ec34-4c89-af1a-60ca0058981a.SCHEMA:app</OriginalElement>
+              <nodes>
+                <node x="510.0" y="440.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.ratings</node>
+                <node x="256.0" y="332.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.luggage</node>
+                <node x="253.81944444444446" y="798.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.offers</node>
+                <node x="352.5694444444444" y="0.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.users</node>
+                <node x="0.0" y="1067.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.password_resets</node>
+                <node x="864.5" y="0.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.migrations</node>
+                <node x="0.0" y="428.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.trips</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.ratings" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.users">
+                  <point x="-65.50000000000006" y="-100.0" />
+                  <point x="575.5" y="312.0" />
+                  <point x="508.3194444444444" y="312.0" />
+                  <point x="22.25" y="136.0" />
+                </edge>
+                <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.luggage" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.users">
+                  <point x="-58.5" y="-208.0" />
+                  <point x="314.5" y="312.0" />
+                  <point x="419.3194444444444" y="312.0" />
+                  <point x="-66.75" y="136.0" />
+                </edge>
+                <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.offers" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.users">
+                  <point x="82.33333333333337" y="-112.0" />
+                  <point x="459.6527777777778" y="773.0" />
+                  <point x="782.5" y="773.0" />
+                  <point x="782.5" y="292.0" />
+                  <point x="597.3194444444445" y="292.0" />
+                  <point x="111.25000000000006" y="136.0" />
+                </edge>
+                <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.offers" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.luggage">
+                  <point x="0.0" y="-112.0" />
+                  <point x="377.31944444444446" y="773.0" />
+                  <point x="373.0" y="773.0" />
+                  <point x="0.0" y="208.0" />
+                </edge>
+                <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.trips" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.users">
+                  <point x="0.0" y="-112.0" />
+                  <point x="118.0" y="302.0" />
+                  <point x="374.8194444444444" y="302.0" />
+                  <point x="-111.25" y="136.0" />
+                </edge>
+                <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.offers" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.trips">
+                  <point x="-82.33333333333326" y="-112.0" />
+                  <point x="294.9861111111112" y="773.0" />
+                  <point x="118.0" y="773.0" />
+                  <point x="0.0" y="112.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="1.048739495798319" x="118.89519058218582" y="460.8461538461539" />
+              <SelectedNodes />
+              <Categories>
+                <Category>Key columns</Category>
+                <Category>Columns</Category>
+              </Categories>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/app/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+              <folding>
+                <element signature="e#23#63#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -188,16 +308,22 @@
         <option value="$PROJECT_DIR$/backend/app/Http/Controllers/AuthController.php" />
         <option value="$PROJECT_DIR$/backend/.env" />
         <option value="$PROJECT_DIR$/backend/resources/views/welcome.blade.php" />
-        <option value="$PROJECT_DIR$/backend/app/Offer.php" />
         <option value="$PROJECT_DIR$/backend/routes/web.php" />
         <option value="$PROJECT_DIR$/backend/app/Http/Controllers/TripsController.php" />
         <option value="$PROJECT_DIR$/backend/app/Http/Controllers/RatingsController.php" />
         <option value="$PROJECT_DIR$/backend/app/Http/Controllers/LuggagesController.php" />
         <option value="$PROJECT_DIR$/backend/app/Http/Controllers/TripController.php" />
         <option value="$PROJECT_DIR$/backend/app/Http/Controllers/OffersController.php" />
-        <option value="$PROJECT_DIR$/backend/routes/api.php" />
         <option value="$PROJECT_DIR$/backend/app/Http/Controllers/ChangePasswordController.php" />
         <option value="$PROJECT_DIR$/backend/resources/views/Email/passworReset.blade.php" />
+        <option value="$PROJECT_DIR$/backend/app/Http/Resources/OfferResources/Offer.php" />
+        <option value="$PROJECT_DIR$/backend/app/Http/Controllers/OfferController.php" />
+        <option value="$PROJECT_DIR$/backend/app/Http/Resources/TripResources/Trip.php" />
+        <option value="$PROJECT_DIR$/backend/app/Http/Resources/UserResources/User.php" />
+        <option value="$PROJECT_DIR$/backend/app/Http/Resources/OfferResources/OfferResource.php" />
+        <option value="$PROJECT_DIR$/backend/app/Http/Resources/OfferResources/OfferResourceCollection.php" />
+        <option value="$PROJECT_DIR$/backend/app/Offer.php" />
+        <option value="$PROJECT_DIR$/backend/routes/api.php" />
       </list>
     </option>
   </component>
@@ -385,7 +511,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -417,7 +542,51 @@
               <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="your-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="your-project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="your-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="your-project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="LuggageResources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="your-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="your-project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="OfferResources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="your-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="your-project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="TripResources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="your-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="your-project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="UserResources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="your-project" type="b2602c69:ProjectViewProjectNode" />
@@ -471,11 +640,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="SearchEverywhereHistoryKey" value="mail&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/resources/views/Email&#10;offerCon&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/Http/Controllers/OffersController.php&#10;TripController&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/Http/Controllers/TripController.php&#10;api&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/routes/api.php&#10;cors&#9;null&#9;null&#10;AuthController&#9;null&#9;null&#10;apiphp&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/routes/api.php&#10;authphp&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/config/auth.php&#10;user&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/User.php&#10;compos&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/composer.json" />
+    <property name="SearchEverywhereHistoryKey" value="api&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/routes/api.php&#10;user&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/User.php&#10;RatingController&#9;null&#9;null&#10;LuggageController&#9;null&#9;null&#10;OfferController&#9;null&#9;null&#10;TripController&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/Http/Controllers/TripController.php&#10;mail&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/resources/views/Email&#10;offerCon&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/app/Http/Controllers/OffersController.php&#10;cors&#9;null&#9;null&#10;AuthController&#9;null&#9;null&#10;apiphp&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/routes/api.php&#10;authphp&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/config/auth.php&#10;compos&#9;FILE&#9;file:///home/john/Desktop/your-project/backend/composer.json" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
@@ -516,6 +686,7 @@
       <workItem from="1540307360179" duration="10043000" />
       <workItem from="1540358794913" duration="10822000" />
       <workItem from="1540405039186" duration="821000" />
+      <workItem from="1540491697170" duration="4837000" />
     </task>
     <task id="LOCAL-00001" summary="front initial">
       <created>1540032715138</created>
@@ -542,18 +713,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48239000" />
+    <option name="totallyTimeSpent" value="53076000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4965197" visible="true" weight="0.24958494" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4965197" visible="true" weight="0.25235197" />
       <window_info id="Structure" order="1" sideWeight="0.50348026" side_tool="true" weight="0.14671814" />
       <window_info id="npm" order="2" sideWeight="0.50348026" side_tool="true" weight="0.14671814" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32972974" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -561,14 +732,14 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32952693" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4997233" weight="0.75027025" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4997233" weight="0.40324324" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5002767" side_tool="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.32973558" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32927504" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4965197" visible="true" weight="0.14061272" />
@@ -610,76 +781,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="frot initial component setup" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4290bf03-ec34-4c89-af1a-60ca0058981a/console.sql" />
-    <entry file="file://$PROJECT_DIR$/backend/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/config/jwt.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-630" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/config/auth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/app/Http/Middleware/CORS.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="86" selection-start-line="18" selection-start-column="86" selection-end-line="18" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/app/Http/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="18" lean-forward="true" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/routes/channels.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/routes/console.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180">
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/resources/views/luggages.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/resources/views/ratings.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/resources/views/trips.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -772,13 +873,6 @@
         <state relative-caret-position="-45" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/app/Offer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-205">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/app/Luggage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -786,26 +880,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
-          <folding>
-            <element signature="e#23#63#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/app/Trip.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-130" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/TripController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-557">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="24" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/UserResource.php">
@@ -845,19 +922,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="25" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="25" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/routes/api.php">
+    <entry file="file://$PROJECT_DIR$/backend/resources/views/Email/passworReset.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
-          <folding>
-            <element signature="e#7#389#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="165">
+          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -871,10 +942,178 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/resources/views/Email/passworReset.blade.php">
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/TripController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-427">
+          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/LuggageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-82">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/RatingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/RatingResources/Rating.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/RatingResources/RatingResource.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/UserResources/UserResourceCollection.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/LuggageResources/LuggageResourceCollection.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/LuggageResources/LuggageResource.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/TripResources/TripsResourceCollection.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/TripResources/TripsResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/routes/channels.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/UserResources/UserResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/OfferResources/OfferResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="40" />
+          <folding>
+            <element signature="e#53#109#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Resources/OfferResources/OfferResourceCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Http/Controllers/OfferController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="28" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#92#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/4290bf03-ec34-4c89-af1a-60ca0058981a.SCHEMA:app">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>4290bf03-ec34-4c89-af1a-60ca0058981a.SCHEMA:app</OriginalElement>
+          <nodes>
+            <node x="510.0" y="440.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.ratings</node>
+            <node x="256.0" y="332.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.luggage</node>
+            <node x="253.81944444444446" y="798.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.offers</node>
+            <node x="352.5694444444444" y="0.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.users</node>
+            <node x="0.0" y="1067.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.password_resets</node>
+            <node x="864.5" y="0.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.migrations</node>
+            <node x="0.0" y="428.0">4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.trips</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.ratings" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.users">
+              <point x="-65.50000000000006" y="-100.0" />
+              <point x="575.5" y="312.0" />
+              <point x="508.3194444444444" y="312.0" />
+              <point x="22.25" y="136.0" />
+            </edge>
+            <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.luggage" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.users">
+              <point x="-58.5" y="-208.0" />
+              <point x="314.5" y="312.0" />
+              <point x="419.3194444444444" y="312.0" />
+              <point x="-66.75" y="136.0" />
+            </edge>
+            <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.offers" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.users">
+              <point x="82.33333333333337" y="-112.0" />
+              <point x="459.6527777777778" y="773.0" />
+              <point x="782.5" y="773.0" />
+              <point x="782.5" y="292.0" />
+              <point x="597.3194444444445" y="292.0" />
+              <point x="111.25000000000006" y="136.0" />
+            </edge>
+            <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.offers" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.luggage">
+              <point x="0.0" y="-112.0" />
+              <point x="377.31944444444446" y="773.0" />
+              <point x="373.0" y="773.0" />
+              <point x="0.0" y="208.0" />
+            </edge>
+            <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.trips" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.users">
+              <point x="0.0" y="-112.0" />
+              <point x="118.0" y="302.0" />
+              <point x="374.8194444444444" y="302.0" />
+              <point x="-111.25" y="136.0" />
+            </edge>
+            <edge source="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.offers" target="4290bf03-ec34-4c89-af1a-60ca0058981a.TABLE:app.trips">
+              <point x="-82.33333333333326" y="-112.0" />
+              <point x="294.9861111111112" y="773.0" />
+              <point x="118.0" y="773.0" />
+              <point x="0.0" y="112.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.048739495798319" x="118.89519058218582" y="460.8461538461539" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding>
+            <element signature="e#23#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app/Offer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="37" column="3" lean-forward="true" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
         </state>
       </provider>
     </entry>

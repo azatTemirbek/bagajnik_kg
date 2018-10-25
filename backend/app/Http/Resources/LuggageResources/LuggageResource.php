@@ -4,7 +4,7 @@ namespace App\Http\Resources\LuggageResources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Luggage extends JsonResource
+class LuggageResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

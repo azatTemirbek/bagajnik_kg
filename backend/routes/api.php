@@ -10,11 +10,18 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//todo: JSONresource ,
-//todo: Colleaction+paginate,
-//todo: foldering,
+//todo: JSONresource , rename
+//todo: Colleaction+paginate, +controller
 //todo: comment,
 //todo: create read update delete(owner controll)=>inside controller.
+// put-manual
+// patch update field by
+// get-list show
+// Post-new
+// delete-remove
+//todo:prrotected fillable
+//TODO:Resource(single) without data ResourceCollection(plural) to array ex=>offers relation type id data
+//TODO: Controller middlewarw api:
 Route::group([
     'middleware' => 'api',
 ], function () {

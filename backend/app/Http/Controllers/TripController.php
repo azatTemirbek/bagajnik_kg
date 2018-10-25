@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\TripResource;
+use App\Http\Resources\TripsResourceCollection;
 use App\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

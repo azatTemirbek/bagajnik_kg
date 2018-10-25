@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::get('/trips', function () {
-//    $trips = \App\Trip::all();
+//    $trips = \App\TripsResource::all();
 //    return view('trips',[
 //        'trips' => $trips
 //    ]);

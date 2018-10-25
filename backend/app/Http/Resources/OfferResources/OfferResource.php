@@ -2,6 +2,9 @@
 
 namespace App\Http\Resources\OfferResources;
 
+use App\Http\Resources\LuggageResources\LuggageResource;
+use App\Http\Resources\TripResources\TripsResource;
+use App\Http\Resources\UserResources\UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OfferResource extends JsonResource
@@ -14,6 +17,18 @@ class OfferResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'type' => 'offers',
+            'id' => (string) $this->id,
+            'attributes' => [
+                'agree' => $this->agree,
+                'status' => $this->status,
+            ],
+            'relationships' => [
+                'trip' => new TripsResource($this->trip),
+                'luggage' => new LuggageResource($this->luggage),
+                'user' => new UserResource($this->user)
+            ],
+        ];
     }
 }
