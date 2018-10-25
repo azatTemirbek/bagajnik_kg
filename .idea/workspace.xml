@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65dc5c88-c5a1-4a1f-8b51-44a98961f1e2" name="Default Changelist" comment="frot initial component setup">
-<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/backend/app/Http/Resources/LuggageResources/LuggageResourceCollection.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/app/Http/Resources/OfferResources/OfferResourceCollection.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/app/Http/Resources/UserResources/UserResourceCollection.php" afterDir="false" />
@@ -17,12 +16,10 @@
       <change beforePath="$PROJECT_DIR$/backend/app/Offer.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Offer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/web.php" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/TripController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/TripsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/Http/Resources/TripResources/Trip.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Resources/TripResources/Trip.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
->>>>>>> 9c716156962552c1579d0b83d09e8a4e5384aa3f
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
