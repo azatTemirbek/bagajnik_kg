@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\TripsResourceCollection;
+use App\Http\Resources\TripResource;
 use App\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TripController extends Controller
+class TripsController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -14,6 +14,13 @@ class TripsResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'carrier_id' => $this->carrier_id,
+            'start_dt' => (string) $this->start_dt,
+            'end_dt' => (string) $this->end_dt,
+            'from' => $this->from,
+            'to' => $this->to,
+        ];
     }
 }
