@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
     ProfileComponent,
     RequestResetComponent,
     ResponceResetComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

@@ -8,10 +8,12 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponceResetComponent } from './components/password/responce-reset/responce-reset.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent, canActivate: [BeforeLoginService] },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomePageComponent, canActivate: [BeforeLoginService] },
   { path: 'login', component: LoginComponent, canActivate: [BeforeLoginService] },
   { path: 'register', component: RegisterComponent, canActivate: [BeforeLoginService] },
   { path: 'profile', component: ProfileComponent, canActivate: [AfterLoginService] },

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
 
@@ -8,10 +8,24 @@ import { TokenService } from './token.service';
 })
 export class AfterLoginService implements CanActivate {
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean  | any {
-    return this.Token.loggedIn();
-  }
   constructor(
     private Token: TokenService,
+    private router: Router,
+
   ) { }
+  /**
+   * will return false if does not have token on the front end
+   * @param route ActivatedRouteSnapshot
+   * @param state RouterStateSnapshot
+   */
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean | any {
+    if (this.Token.loggedIn()) {
+      return true;
+    }
+    this.router.navigateByUrl('/profile');
+    return false;
+  }
 }
