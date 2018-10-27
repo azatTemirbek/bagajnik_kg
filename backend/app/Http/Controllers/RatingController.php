@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RatingResources\RatingsResource;
+use App\Http\Resources\RatingResources\RatingsResourceCollection;
 use App\Rating;
 use Illuminate\Http\Request;
+
 
 class RatingController extends Controller
 {
@@ -25,18 +28,17 @@ class RatingController extends Controller
      */
     public function index()
     {
-        $ratings = Rating::paginate(10);
-        return $ratings;
+        return new RatingsResourceCollection(Rating::paginate(15));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return RatingsResourceCollection
      */
     public function create()
     {
-        //
+       //
     }
 
     /**
@@ -47,18 +49,22 @@ class RatingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rating = new Rating($request->all());
+        if ($rating->save()) {
+            return New RatingsResource($rating);
+        }
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return RatingsResource
      */
-    public function show($id)
+    public function show(Rating $rating)
     {
-        //
+        RatingsResource::withoutWrapping();
+        return new RatingsResource($rating);
     }
 
     /**
@@ -90,8 +96,10 @@ class RatingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Rating $rating)
     {
-        //
+        if ($rating->delete()) {
+            return new RatingsResource($rating);
+        }
     }
 }

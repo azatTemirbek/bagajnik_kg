@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Resources\LuggageResources\LuggageResource;
+use App\Http\Resources\LuggageResources\LuggageResourceCollection;
 use App\Luggage;
 use Illuminate\Http\Request;
 
@@ -12,24 +14,14 @@ class LuggageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return LuggageResourceCollection
      *
-     * "first_page_url": "http://127.0.0.1:8000/api/luggages?page=1",
-    "from": 1,
-    "last_page": 5,
-    "last_page_url": "http://127.0.0.1:8000/api/luggages?page=5",
-    "next_page_url": "http://127.0.0.1:8000/api/luggages?page=2",
-    "path": "http://127.0.0.1:8000/api/luggages",
-    "per_page": 10,
-    "prev_page_url": null,
-    "to": 10,
-    "total": 50
+     *
      */
 
     public function index()
     {
-        $luggages = Luggage::paginate(10);    //
-        return $luggages;
+        return new LuggageResourceCollection(Luggage::paginate(15));
     }
     /**
      * Show the form for creating a new resource.
@@ -45,22 +37,26 @@ class LuggageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return LuggageResource
      */
     public function store(Request $request)
     {
-        //
+        $luggage = new Luggage($request->all());
+        if ($luggage->save()) {
+            return New LuggageResource($luggage);
+        }
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return LuggageResource
      */
-    public function show($id)
+    public function show(Luggage $luggage)
     {
-        //
+        LuggageResource::withoutWrapping();
+        return new LuggageResource($luggage);
     }
 
     /**
@@ -90,10 +86,12 @@ class LuggageController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return LuggageResource
      */
-    public function destroy($id)
+    public function destroy(Luggage $luggage)
     {
-        //
+        if ($luggage->delete()) {
+            return new LuggageResource($luggage);
+        }
     }
 }

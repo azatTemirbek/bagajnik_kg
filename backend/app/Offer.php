@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offer extends Model
 {
+    protected $fillable = [
+        'agree',
+        'status',
+    ];
 
     /**
      * Get the LuggageResource that owns the offer.

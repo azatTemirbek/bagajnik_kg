@@ -11,7 +11,7 @@
 |
 */
 //todo: JSONresource , rename
-//todo: Colleaction+paginate, +controller
+//todo: Colleaction+paginate, +controller ->done
 //todo: comment,
 //todo: create read update delete(owner controll)=>inside controller.
 // put-manual
@@ -19,7 +19,7 @@
 // get-list show
 // Post-new
 // delete-remove
-//todo:prrotected fillable
+//todo:prrotected fillable->done
 //TODO:Resource(single) without data ResourceCollection(plural) to array ex=>offers relation type id data
 //TODO: Controller middlewarw api:
 Route::group([
@@ -39,4 +39,6 @@ Route::group([
 Route::apiresource('/trips', 'TripsController');
 Route::resource('/offers', 'OfferController');
 Route::resource('/luggages', 'LuggageController');
+Route::delete('luggages/{luggage}', 'LuggageController@destroy');
+
 Route::resource('/ratings', 'RatingController');

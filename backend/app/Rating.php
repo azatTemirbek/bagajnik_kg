@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
+    protected $fillable = [
+        'rate_value',
+        'comment',
+    ];
     /**
      * Get the User that owns the comment.
      */

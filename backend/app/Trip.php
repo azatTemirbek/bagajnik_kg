@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model
 {
+    protected $fillable = [
+        'start_dt',
+        'end_dt',
+        'from',
+        'to',
+    ];
     /**
      * Get user who is bag carrier
      */

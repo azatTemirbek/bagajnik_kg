@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\OfferResources\OfferResource;
 use App\Http\Resources\OfferResources\OfferResourceCollection;
 use App\Offer;
+use App\User;
 use Illuminate\Http\Request;
 
 class OfferController extends Controller
@@ -69,10 +70,14 @@ class OfferController extends Controller
      * @param Request $request
      * @param $id
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Offer $offer, User $user)
     {
         //    todo:validate
 //       Todo: Update implemantation
+        if($offer->update()){
+            return new OfferResource($offer);
+        }
+
     }
 
     /**

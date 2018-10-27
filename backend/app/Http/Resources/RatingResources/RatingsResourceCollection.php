@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\TripResources;
+namespace App\Http\Resources\RatingResources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class TripsResourceCollection extends ResourceCollection
+class RatingsResourceCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.

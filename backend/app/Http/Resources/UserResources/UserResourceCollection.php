@@ -14,6 +14,19 @@ class UserResourceCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'data' => $this->collection,
+            'links' => [
+                'self' => 'link-value',
+            ],
+        ];
+
     }
+    public function with($request) {
+        return [
+            'version' => '1.0',
+            'url' => url('http://example.com'),
+        ];
+    }
+
 }
