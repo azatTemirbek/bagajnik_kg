@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Luggage extends Model
 {
     protected $fillable = [
-        'takerName',
         'takerPhone1',
         'takerPhone2',
-        'mass',
+        'takerName',
         'comertial',
+        'start_dt',
+        'end_dt',
         'value',
         'price',
         'from',
+        'mass',
         'to',
-        'start_dt',
-        'end_dt',
     ];
     /**
      * Get owner of the luggage

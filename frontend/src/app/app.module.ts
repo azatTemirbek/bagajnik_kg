@@ -1,3 +1,5 @@
+import { LuggageService } from './service/luggage.service';
+import { TripService } from './service/trip.service';
 import { TokenService } from './service/token.service';
 import { JarvisService } from './service/jarvis.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { OfferService } from './service/offer.service';
+
 
 
 @NgModule({
@@ -28,7 +32,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     RequestResetComponent,
     ResponceResetComponent,
     PageNotFoundComponent,
-    HomePageComponent
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,10 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     JarvisService,
     TokenService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService
+    SnotifyService,
+    OfferService,
+    TripService,
+    LuggageService
   ],
   bootstrap: [AppComponent]
 })

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Offer extends Model
 {
     protected $fillable = [
+        'req_user_id',
+        'luggage_id',
+        'trip_id',
         'agree',
         'status',
     ];

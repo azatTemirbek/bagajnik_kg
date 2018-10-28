@@ -68,7 +68,9 @@ class OfferController extends Controller
     /**
      * Update the specified resource in storage.
      * @param Request $request
-     * @param $id
+     * @param Offer $offer
+     * @param User $user
+     * @return OfferResource
      */
     public function update(Request $request, Offer $offer, User $user)
     {

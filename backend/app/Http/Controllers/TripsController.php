@@ -56,9 +56,8 @@ class TripsController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Trip $trip
+     * @return TripsResource
      */
     public function show(Trip $trip)
     {
@@ -66,11 +65,10 @@ class TripsController extends Controller
         return new TripsResource($trip);
     }
 
+
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
      */
     public function edit($id)
     {
@@ -90,10 +88,10 @@ class TripsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *  Remove the specified resource from storage.
+     * @param Trip $trip
+     * @return TripsResource
+     * @throws \Exception
      */
     public function destroy(Trip $trip)
     {

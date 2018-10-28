@@ -93,8 +93,9 @@ class RatingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Rating $rating
+     * @return RatingsResource
+     * @throws \Exception
      */
     public function destroy(Rating $rating)
     {
