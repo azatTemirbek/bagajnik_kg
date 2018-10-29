@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TripRequest;
 use App\Http\Resources\TripResources\TripsResource;
 use App\Http\Resources\TripResources\TripsResourceCollection;
 use App\Trip;
@@ -19,6 +20,7 @@ class TripsController extends Controller
     {
         $query = Trip::query();
         $request->has ('name') && $query->where('carrier_id', '>=', 45);
+        error_log($request->name);
         $trip = $query->paginate(15);
         return new TripsResourceCollection($trip);
     }
@@ -38,8 +40,9 @@ class TripsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TripRequest $request)
     {
+        $validator = Validator::make($request->all(), $request->rules(), $request->messages());
 //        $this -> validate($request, [
 //            'carrier_id' => 'required',
 //            'offer_id' => 'required'

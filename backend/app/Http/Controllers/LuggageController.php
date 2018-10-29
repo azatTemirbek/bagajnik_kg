@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\LuggageRequest;
 use App\Http\Resources\LuggageResources\LuggageResource;
 use App\Http\Resources\LuggageResources\LuggageResourceCollection;
 use App\Luggage;
+use Validator;
 use Illuminate\Http\Request;
 
 
@@ -108,10 +110,11 @@ class LuggageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Luggage $luggage)
+    public function update(LuggageRequest $request, Luggage $luggage)
     {
-
-        if($luggage->update($request->only([
+        if(
+            Validator::make($request->all(), $request->rules(), $request->messages()) &&
+            $luggage->update($request->only([
             'takerPhone1',
             'takerPhone2',
             'takerName',
