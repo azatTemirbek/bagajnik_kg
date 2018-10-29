@@ -108,24 +108,39 @@ class LuggageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Luggage $luggage)
+    public function update(Request $request, $id)
     {
-
-        if($luggage->update($request->only([
-            'takerPhone1',
-            'takerPhone2',
-            'takerName',
-            'comertial',
-            'start_dt',
-            'end_dt',
-            'value',
-            'price',
-            'from',
-            'mass',
-            'to',
-        ]))){
-            return new LuggageResource($luggage);
+        $errors = array(
+            "errors" => array(),
+            "hasErrors" => false
+        );
+        $agree = $request->get('agree');
+        $status = $request->get('status');
+        if(!($agree == 0 || $agree == 1)){
+            array_push($errors["errors"],"agree: might be 0 or 1");
+            $errors["hasErrors"] = true;
         }
+        if(!($status == "received" ||
+            $status == "progress" ||
+            $status == "delivered")){
+            array_push($errors["errors"],"status: invalid value");
+            $errors["hasErrors"] = true;
+        }
+        if($errors["hasErrors"]){
+            return $errors;
+        }
+        $updated = Offer::where('id', $id)->update($request->all());
+
+        $response = array(
+            "result" => ""
+        );
+        if($updated == 1){
+            $response["result"] = "Successfully updated";
+        } else {
+            $response["result"] = "Failed to update. Something went wrong";
+        }
+
+        return $response.toJSON();
     }
 
     /**

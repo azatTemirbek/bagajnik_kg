@@ -18,6 +18,7 @@ class TripsController extends Controller
     public function index()
     {
         return new TripsResourceCollection(Trip::paginate(15));
+
     }
     /**
      * Show the form for creating a new resource.
@@ -55,8 +56,9 @@ class TripsController extends Controller
 
     /**
      * Display the specified resource.
-     * @param Trip $trip
-     * @return TripsResource
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function show(Trip $trip)
     {
@@ -64,10 +66,11 @@ class TripsController extends Controller
         return new TripsResource($trip);
     }
 
-
     /**
      * Show the form for editing the specified resource.
-     * @param $id
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
@@ -81,25 +84,46 @@ class TripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trip $trip)
+    public function update(Request $request, $id)
     {
-//        $updated = Trip::findOrFail($trip->id)->update($request->all());
-//        return New TripsResource($updated);
-        if($trip->update($request->only([
-            'start_dt',
-            'end_dt',
-            'from',
-            'to',
-        ]))){
-            return new TripsResource($trip);
+        $errors = array(
+            "errors" => array(),
+            "hasErrors" => false
+        );
+        $agree = $request->get('agree');
+        $status = $request->get('status');
+        if(!($agree == 0 || $agree == 1)){
+            array_push($errors["errors"],"agree: might be 0 or 1");
+            $errors["hasErrors"] = true;
         }
+        if(!($status == "received" ||
+            $status == "progress" ||
+            $status == "delivered")){
+            array_push($errors["errors"],"status: invalid value");
+            $errors["hasErrors"] = true;
+        }
+        if($errors["hasErrors"]){
+            return $errors;
+        }
+        $updated = Offer::where('id', $id)->update($request->all());
+
+        $response = array(
+            "result" => ""
+        );
+        if($updated == 1){
+            $response["result"] = "Successfully updated";
+        } else {
+            $response["result"] = "Failed to update. Something went wrong";
+        }
+
+        return $response.toJSON();
     }
 
     /**
-     *  Remove the specified resource from storage.
-     * @param Trip $trip
-     * @return TripsResource
-     * @throws \Exception
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy(Trip $trip)
     {

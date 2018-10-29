@@ -85,22 +85,44 @@ class RatingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rating $rating)
+    public function update(Request $request, $id)
     {
-        if($rating->update($request->only([
-            'rate_value',
-            'comment',
-        ]))){
-            return new RatingResource($rating);
+        $errors = array(
+            "errors" => array(),
+            "hasErrors" => false
+        );
+        $rate = $request->get('rate_value');
+        $comment = $request->get('comment');
+        if(!($rate >= 5)){
+            array_push($errors["errors"],"rate: might be max 5");
+            $errors["hasErrors"] = true;
         }
+        if(!(strlen($comment) <= 200 )){
+            array_push($errors["errors"],"comment: max length 250");
+            $errors["hasErrors"] = true;
+        }
+        if($errors["hasErrors"]){
+            return $errors;
+        }
+        $updated = Rating::where('id', $id)->update($request->all());
+
+        $response = array(
+            "result" => ""
+        );
+        if($updated == 1){
+            $response["result"] = "Successfully updated";
+        } else {
+            $response["result"] = "Failed to update. Something went wrong";
+        }
+
+        return $response.toJSON();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Rating $rating
-     * @return RatingsResource
-     * @throws \Exception
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy(Rating $rating)
     {
