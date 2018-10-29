@@ -39,8 +39,39 @@ class LuggageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return LuggageResource
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
+//        $errors = array(
+//            "errors" => array(),
+//            "hasErrors" => false
+//        );
+//        $agree = $request->get('agree');
+//        $status = $request->get('status');
+//        if(!($agree == 0 || $agree == 1)){
+//            array_push($errors["errors"],"agree: might be 0 or 1");
+//            $errors["hasErrors"] = true;
+//        }
+//        if(!($status == "received" ||
+//            $status == "progress" ||
+//            $status == "delivered")){
+//            array_push($errors["errors"],"status: invalid value");
+//            $errors["hasErrors"] = true;
+//        }
+//        if($errors["hasErrors"]){
+//            return $errors;
+//        }
+//        $store = Offer::where('id', $id)->store($request->all());
+//
+//        $response = array(
+//            "result" => ""
+//        );
+//        if($store == 1){
+//            $response["result"] = "Successfully stored";
+//        } else {
+//            $response["result"] = "Failed to store. Something went wrong";
+//        }
+//
+//        return $response.toJSON();
         $luggage = new Luggage($request->all());
         if ($luggage->save()) {
             return New LuggageResource($luggage);
