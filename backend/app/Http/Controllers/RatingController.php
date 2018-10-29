@@ -85,9 +85,14 @@ class RatingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Rating $rating)
     {
-        //
+        if($rating->update($request->only([
+            'rate_value',
+            'comment',
+        ]))){
+            return new RatingResource($rating);
+        }
     }
 
     /**

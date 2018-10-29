@@ -18,7 +18,6 @@ class TripsController extends Controller
     public function index()
     {
         return new TripsResourceCollection(Trip::paginate(15));
-
     }
     /**
      * Show the form for creating a new resource.
@@ -82,9 +81,18 @@ class TripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Trip $trip)
     {
-        //
+//        $updated = Trip::findOrFail($trip->id)->update($request->all());
+//        return New TripsResource($updated);
+        if($trip->update($request->only([
+            'start_dt',
+            'end_dt',
+            'from',
+            'to',
+        ]))){
+            return new TripsResource($trip);
+        }
     }
 
     /**

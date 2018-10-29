@@ -72,14 +72,11 @@ class OfferController extends Controller
      * @param User $user
      * @return OfferResource
      */
-    public function update(Request $request, Offer $offer, User $user)
+    public function update(Request $request, Offer $offer)
     {
-        //    todo:validate
-//       Todo: Update implemantation
-        if($offer->update()){
+        if($offer->update($request->only(['agree', 'status']))){
             return new OfferResource($offer);
         }
-
     }
 
     /**

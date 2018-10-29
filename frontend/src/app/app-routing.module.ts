@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponceResetComponent } from './components/password/responce-reset/responce-reset.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { TripsComponent } from './pages/trips/trips.component';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent, canActivate: [BeforeLoginService] },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AfterLoginService] },
   { path: 'request-password-reset', component: RequestResetComponent, canActivate: [BeforeLoginService]  },
   { path: 'response-password-reset', component: ResponceResetComponent, canActivate: [BeforeLoginService]  },
+  { path: 'trips', component: TripsComponent, canActivate: [BeforeLoginService]  },
   { path: '**', component: PageNotFoundComponent },
 ];
 

@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LuggageService {
-  api = Configure.api;
+  api = Configure.api();
 
   constructor(
     private http: HttpClient,
@@ -47,6 +47,13 @@ export class LuggageService {
    */
   delete(id: Number) {
     return this.http.delete(`${this.api}/luggage/${id}`);
+  }
+  /**
+   * http://localhost:8000/api/trips?page=2
+   * @param url gets data with page
+   */
+  getWith(url) {
+    return this.http.get(url);
   }
 
 }

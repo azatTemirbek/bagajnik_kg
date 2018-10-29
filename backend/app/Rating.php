@@ -9,8 +9,8 @@ class Rating extends Model
     protected $fillable = [
         'rate_value',
         'comment',
-        'rate_value',
-        'comment'
+        'from_user_id',
+        'to_user_id'
     ];
 
     /**

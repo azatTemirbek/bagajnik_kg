@@ -19,6 +19,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { OfferService } from './service/offer.service';
+import { TripsComponent } from './pages/trips/trips.component';
 
 
 
@@ -33,6 +34,7 @@ import { OfferService } from './service/offer.service';
     ResponceResetComponent,
     PageNotFoundComponent,
     HomePageComponent,
+    TripsComponent,
   ],
   imports: [
     BrowserModule,

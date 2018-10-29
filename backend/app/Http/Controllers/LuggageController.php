@@ -77,9 +77,24 @@ class LuggageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Luggage $luggage)
     {
-        //
+
+        if($luggage->update($request->only([
+            'takerPhone1',
+            'takerPhone2',
+            'takerName',
+            'comertial',
+            'start_dt',
+            'end_dt',
+            'value',
+            'price',
+            'from',
+            'mass',
+            'to',
+        ]))){
+            return new LuggageResource($luggage);
+        }
     }
 
     /**

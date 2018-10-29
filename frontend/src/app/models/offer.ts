@@ -5,7 +5,7 @@ export class Offer {
   trip_id: Number;
   agree: Boolean;
   status: String;
-  isValid(){
+  isValid() {
     return true;
   }
 }

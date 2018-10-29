@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TripService {
-  api = Configure.api;
+  api = Configure.api();
 
   constructor(
     private http: HttpClient,
@@ -17,8 +17,8 @@ export class TripService {
   /**
    * will return all the trips with pagination
    */
-  getAll() {
-    return this.http.get(`${this.api}/trips`);
+  getAll(params) {
+    return this.http.get(`${this.api}/trips`, params);
   }
   /**
    * will get spesific trip
@@ -47,6 +47,13 @@ export class TripService {
    */
   delete(id: Number) {
     return this.http.delete(`${this.api}/trip/${id}`);
+  }
+  /**
+   * http://localhost:8000/api/trips?page=2
+   * @param url gets data with page
+   */
+  getWith(url) {
+    return this.http.get(url);
   }
 
 }
