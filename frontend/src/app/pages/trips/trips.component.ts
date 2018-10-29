@@ -17,15 +17,14 @@ export class TripsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getAll();
+    this.getAll({name: 'azat'});
   }
   /**
    * will run only first time to load all the trips
   */
-  getAll() {
-    this.trip.getAll().subscribe(
+  getAll(params) {
+    this.trip.getAll(params).subscribe(
       (req: RequestData) => {
-        console.log(req);
         this.data = req.data;
         this.links = req.links;
         this.meta = req.meta;

@@ -15,9 +15,12 @@ class TripsController extends Controller
      * @return TripsResourceCollection
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        return new TripsResourceCollection(Trip::paginate(15));
+        $query = Trip::query();
+        $request->has ('name') && $query->where('carrier_id', '>=', 45);
+        $trip = $query->paginate(15);
+        return new TripsResourceCollection($trip);
     }
     /**
      * Show the form for creating a new resource.
