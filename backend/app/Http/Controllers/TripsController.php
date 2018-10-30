@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TripRequest;
 use App\Http\Resources\TripResources\TripsResource;
 use App\Http\Resources\TripResources\TripsResourceCollection;
 use App\Trip;
@@ -15,10 +16,13 @@ class TripsController extends Controller
      * @return TripsResourceCollection
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        return new TripsResourceCollection(Trip::paginate(15));
-
+        $query = Trip::query();
+        $request->has ('name') && $query->where('carrier_id', '>=', 45);
+        error_log($request->name);
+        $trip = $query->paginate(15);
+        return new TripsResourceCollection($trip);
     }
     /**
      * Show the form for creating a new resource.
@@ -36,8 +40,9 @@ class TripsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TripRequest $request)
     {
+        $validator = Validator::make($request->all(), $request->rules(), $request->messages());
 //        $this -> validate($request, [
 //            'carrier_id' => 'required',
 //            'offer_id' => 'required'
@@ -56,9 +61,8 @@ class TripsController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Trip $trip
+     * @return TripsResource
      */
     public function show(Trip $trip)
     {
@@ -66,11 +70,10 @@ class TripsController extends Controller
         return new TripsResource($trip);
     }
 
+
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
      */
     public function edit($id)
     {
@@ -84,46 +87,25 @@ class TripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Trip $trip)
     {
-        $errors = array(
-            "errors" => array(),
-            "hasErrors" => false
-        );
-        $agree = $request->get('agree');
-        $status = $request->get('status');
-        if(!($agree == 0 || $agree == 1)){
-            array_push($errors["errors"],"agree: might be 0 or 1");
-            $errors["hasErrors"] = true;
+//        $updated = Trip::findOrFail($trip->id)->update($request->all());
+//        return New TripsResource($updated);
+        if($trip->update($request->only([
+            'start_dt',
+            'end_dt',
+            'from',
+            'to',
+        ]))){
+            return new TripsResource($trip);
         }
-        if(!($status == "received" ||
-            $status == "progress" ||
-            $status == "delivered")){
-            array_push($errors["errors"],"status: invalid value");
-            $errors["hasErrors"] = true;
-        }
-        if($errors["hasErrors"]){
-            return $errors;
-        }
-        $updated = Offer::where('id', $id)->update($request->all());
-
-        $response = array(
-            "result" => ""
-        );
-        if($updated == 1){
-            $response["result"] = "Successfully updated";
-        } else {
-            $response["result"] = "Failed to update. Something went wrong";
-        }
-
-        return $response.toJSON();
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *  Remove the specified resource from storage.
+     * @param Trip $trip
+     * @return TripsResource
+     * @throws \Exception
      */
     public function destroy(Trip $trip)
     {

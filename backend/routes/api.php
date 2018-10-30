@@ -10,18 +10,15 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//todo: JSONresource , rename
-//todo: Colleaction+paginate, +controller ->done
-//todo: comment,
-//todo: create read update delete(owner controll)=>inside controller.
-// put-manual
-// patch update field by
-// get-list show
-// Post-new
-// delete-remove
-//todo:prrotected fillable->done
-//TODO:Resource(single) without data ResourceCollection(plural) to array ex=>offers relation type id data
-//TODO: Controller middlewarw api:
+//TODO: Controller middlewarw api: sonra
+//todo: query index (tripcontroller index)
+//todo: formrequest validator custom message (example triprequest)
+//todo: tema tabuu (bootstrap4)
+//todo: formatted address lat long placeid table_name table(faker)
+//todo: to from string->number(trip luggage faker) model realation koshulat model(relation)(azat)
+//todo: address table with ui autocompleate(azat)
+//todo: list item ui(azat+ayzat)
+//todo: colection katalar check toute name (php artisan routes:list)
 Route::group([
     'middleware' => 'api',
 ], function () {

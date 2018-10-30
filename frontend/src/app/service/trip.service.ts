@@ -17,8 +17,8 @@ export class TripService {
   /**
    * will return all the trips with pagination
    */
-  getAll(params) {
-    return this.http.get(`${this.api}/trips`, params);
+  getAll(params): any {
+    return this.http.get(`${this.api}/trips`, {params});
   }
   /**
    * will get spesific trip
