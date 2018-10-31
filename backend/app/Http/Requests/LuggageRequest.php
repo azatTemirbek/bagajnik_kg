@@ -23,8 +23,72 @@ class LuggageRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        switch($this->method())
+        {
+            case 'GET':
+            case 'DELETE':
+                {
+                    return [];
+                }
+            case 'POST':
+                {
+                    return [
+                        'takerName' => 'required',
+                        'takerPhone1'  => 'required|numeric|phone_number|size:11',
+                        'takerPhone2' => 'nullable|numeric|phone_number|size:11',
+                        'mass'  => 'required',
+                        'comertial' => 'required',
+                        'value'  => 'required',
+                        'price'  => 'required',
+                        'from' => 'required',
+                        'to'  => 'required',
+                        'start_dt'      => 'required|date|date_format:Y-m-d|after:yesterday',
+                        'end_dt'   => 'required|date|date_format:Y-m-d|after:start_dt',
+                    ];
+                }
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return [
+                        'from' => 'required',
+                        'to'  => 'required',
+                        'start_dt'      => 'required|date|date_format:Y-m-d|after:yesterday',
+                        'end_dt'   => 'required|date|date_format:Y-m-d|after:start_dt',
+                    ];
+                }
+            default:break;
+        }
+    }
+
+    public function messages()
+    {
+        switch($this->method())
+        {
+            case 'GET':
+            case 'DELETE':
+                {
+                    return [];
+                }
+            case 'POST':
+                {
+                    return [
+                        'from.required' => 'Откуда',
+                        'to.required' => 'Куда',
+                        'start_dt.required' => 'Дата вылета и время',
+                        'end_d.required'   => 'Дата прилета и время',
+                    ];
+                }
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return [
+                        'from.required' => 'Откуда',
+                        'to.required' => 'Куда',
+                        'start_dt.required' => 'Дата вылета и время',
+                        'end_d.required'   => 'Дата прилета и время',
+                    ];
+                }
+            default:break;
+        }
     }
 }

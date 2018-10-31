@@ -98,7 +98,7 @@ class RatingController extends Controller
             $errors["hasErrors"] = true;
         }
         if(!(strlen($comment) <= 200 )){
-            array_push($errors["errors"],"comment: max length 250");
+            array_push($errors["errors"],"comment: max length 200");
             $errors["hasErrors"] = true;
         }
         if($errors["hasErrors"]){
