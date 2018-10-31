@@ -1,10 +1,11 @@
+import { DynamicFormBuilderModule } from './dynamic-form-builder/dynamic-form-builder.module';
 import { LuggageService } from './service/luggage.service';
 import { TripService } from './service/trip.service';
 import { TokenService } from './service/token.service';
 import { JarvisService } from './service/jarvis.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -41,7 +42,9 @@ import { TripsComponent } from './pages/trips/trips.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    SnotifyModule
+    SnotifyModule,
+    ReactiveFormsModule,
+    DynamicFormBuilderModule
   ],
   providers: [
     JarvisService,
