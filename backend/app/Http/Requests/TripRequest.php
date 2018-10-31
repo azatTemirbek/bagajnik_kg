@@ -35,19 +35,19 @@ class TripRequest extends FormRequest
                 {
                     return [
                         'from' => 'required',
-//                        'user.name.last'  => 'required',
-//                        'user.email'      => 'required|email|unique:users,email',
-//                        'user.password'   => 'required|confirmed',
+                        'to'  => 'required',
+                        'start_dt'      => 'required|date|date_format:Y-m-d|after:yesterday',
+                        'end_dt'   => 'required|date|date_format:Y-m-d|after:start_dt',
                     ];
                 }
             case 'PUT':
             case 'PATCH':
                 {
                     return [
-//                        'user.name.first' => 'required',
-//                        'user.name.last'  => 'required',
-//                        'user.email'      => 'required|emAd,
-//                        'user.password'   => 'required|confirmed',
+                        'from' => 'required',
+                        'to'  => 'required',
+                        'start_dt'      => 'required|date|date_format:Y-m-d|after:yesterday',
+                        'end_dt'   => 'required|date|date_format:Y-m-d|after:start_dt',
                     ];
                 }
             default:break;
@@ -70,21 +70,21 @@ class TripRequest extends FormRequest
             case 'POST':
                 {
                     return [
-                        'from.required' => 'Kaydan bolgonun jaziniz',
-                        'user.name.last'  => 'required',
-                        'user.email'      => 'required|email|unique:users,email',
-                        'user.password'   => 'required|confirmed',
+                        'from.required' => 'Откуда',
+                        'to.required' => 'Куда',
+                        'start_dt.required' => 'Дата вылета и время',
+                        'end_d.required'   => 'Дата прилета и время',
                     ];
                 }
             case 'PUT':
             case 'PATCH':
                 {
                     return [
-                        'user.' => 'required',
-                        'user.name.last'  => 'required',
-                        'user.email'      => 'required|email|unique:users,email,'.$user->id,
-                        'user.password'   => 'required|confirmed',
-                    ];
+                        'from.required' => 'Откуда',
+                        'to.required' => 'Куда',
+                        'start_dt.required' => 'Дата вылета и время',
+                        'end_d.required'   => 'Дата прилета и время',
+                        ];
                 }
             default:break;
         }
