@@ -24,7 +24,7 @@ class TripsResourceCollection extends ResourceCollection
     public function with($request) {
         return [
             'version' => '1.0',
-            'url' => url('http://example.com'),
+            'url' => url('/'),
         ];
     }
 }

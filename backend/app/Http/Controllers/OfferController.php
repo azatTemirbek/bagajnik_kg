@@ -14,9 +14,13 @@ class OfferController extends Controller
     /**
      * @return OfferResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new OfferResourceCollection(Offer::paginate(15));
+        $query = Offer::query();
+        $request->has ('req_user') && $query->where('req_user_id', '>=', 45);
+        error_log($request->req_user);
+        $offer = $query->paginate(15);
+        return new OfferResourceCollection($offer);
     }
 
     /**

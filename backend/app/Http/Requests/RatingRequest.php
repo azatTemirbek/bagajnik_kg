@@ -23,8 +23,55 @@ class RatingRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        switch($this->method())
+        {
+            case 'GET':
+            case 'DELETE':
+                {
+                    return [];
+                }
+            case 'POST':
+                {
+                    return [
+                        'rate_value' => 'required',
+                        'comment'  => 'nullable',
+                    ];
+                }
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return [
+                        'rate_value' => 'required',
+                        'comment'  => 'nullable',
+                    ];
+                }
+            default:break;
+        }
+    }public function messages()
+{
+    switch($this->method())
+    {
+        case 'GET':
+        case 'DELETE':
+            {
+                return [];
+            }
+        case 'POST':
+            {
+                return [
+                    'rate_value.required' => 'Пожалуйста, оцените работу пользователя',
+                    'comment.required' => 'Можете оставить свои комментарии',
+                ];
+            }
+        case 'PUT':
+        case 'PATCH':
+            {
+                return [
+                    'rate_value.required' => 'Пожалуйста, оцените работу пользователя',
+                    'comment.required' => 'Можете оставить свои комментарии',
+                ];
+            }
+        default:break;
     }
+}
 }

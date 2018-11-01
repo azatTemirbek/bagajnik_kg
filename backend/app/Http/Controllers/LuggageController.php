@@ -21,9 +21,15 @@ class LuggageController extends Controller
      *
      */
 
-    public function index()
+
+
+    public function index(Request $request)
     {
-        return new LuggageResourceCollection(Luggage::paginate(15));
+        $query = Luggage::query();
+        $request->has ('name') && $query->where('owner_id', '>=', 45);
+        error_log($request->name);
+        $luggage = $query->paginate(15);
+        return new LuggageResourceCollection($luggage);
     }
     /**
      * Show the form for creating a new resource.
@@ -123,9 +129,15 @@ class LuggageController extends Controller
             'end_dt',
             'value',
             'price',
-            'from',
             'mass',
-            'to',
+            'from_lat',
+            'from_lng',
+            'from_formatted_address',
+            'from_place_id',
+            'to_lat',
+            'to_lng',
+            'to_formatted_address',
+            'to_place_id',
         ]))){
             return new LuggageResource($luggage);
         }

@@ -23,8 +23,57 @@ class OfferRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        switch($this->method())
+        {
+            case 'GET':
+            case 'DELETE':
+                {
+                    return [];
+                }
+            case 'POST':
+                {
+                    return [
+                        'agree' => 'required',
+                        'status'  => 'required',
+                    ];
+                }
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return [
+                        'agree' => 'required',
+                        'status'  => 'required',
+                    ];
+                }
+            default:break;
+        }
+    }
+    public function messages()
+    {
+        switch($this->method())
+        {
+            case 'GET':
+            case 'DELETE':
+                {
+                    return [];
+                }
+            case 'POST':
+                {
+                    return [
+                        'agree.required' => 'Согласны ли вы взять этот заказ?',
+                        'status.required' => 'Статус заказа',
+                        ];
+
+                }
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return [
+                        'agree.required' => 'Согласны ли вы взять этот заказ?',
+                        'status.required' => 'Статус заказа',
+                    ];
+                }
+            default:break;
+        }
     }
 }

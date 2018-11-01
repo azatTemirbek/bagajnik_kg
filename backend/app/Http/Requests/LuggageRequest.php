@@ -40,8 +40,14 @@ class LuggageRequest extends FormRequest
                         'comertial' => 'required',
                         'value'  => 'required',
                         'price'  => 'required',
-                        'from' => 'required',
-                        'to'  => 'required',
+                        'from_lat'=> 'required',
+                        'from_lng'=>'required',
+                        'from_formatted_address'=>'required',
+                        'from_place_id'=>'required',
+                        'to_lat'=>'required',
+                        'to_lng'=>'required',
+                        'to_formatted_address'=>'required',
+                        'to_place_id'=>'required',
                         'start_dt'      => 'required|date|date_format:Y-m-d|after:yesterday',
                         'end_dt'   => 'required|date|date_format:Y-m-d|after:start_dt',
                     ];
@@ -50,6 +56,13 @@ class LuggageRequest extends FormRequest
             case 'PATCH':
                 {
                     return [
+                        'takerName' => 'required',
+                        'takerPhone1'  => 'required|numeric|phone_number|size:11',
+                        'takerPhone2' => 'nullable|numeric|phone_number|size:11',
+                        'mass'  => 'required',
+                        'comertial' => 'required',
+                        'value'  => 'required',
+                        'price'  => 'required',
                         'from' => 'required',
                         'to'  => 'required',
                         'start_dt'      => 'required|date|date_format:Y-m-d|after:yesterday',
@@ -72,6 +85,13 @@ class LuggageRequest extends FormRequest
             case 'POST':
                 {
                     return [
+                        'takerName.required' => 'Получатель',
+                        'takerPhone1.required' => 'Номер получателя',
+                        'takerPhone2.required' => 'Номер получателя 2',
+                        'mass.required'   => 'Масса багажа',
+                        'comertial.required' => 'Коммерческий/Некоммерческий',
+                        'value.required' => 'Ценность товара',
+                        'price.required' => 'Цена',
                         'from.required' => 'Откуда',
                         'to.required' => 'Куда',
                         'start_dt.required' => 'Дата вылета и время',
@@ -82,6 +102,13 @@ class LuggageRequest extends FormRequest
             case 'PATCH':
                 {
                     return [
+                        'takerName.required' => 'Получатель',
+                        'takerPhone1.required' => 'Номер получателя',
+                        'takerPhone2.required' => 'Номер получателя 2',
+                        'mass.required'   => 'Масса багажа',
+                        'comertial.required' => 'Коммерческий/Некоммерческий',
+                        'value.required' => 'Ценность товара',
+                        'price.required' => 'Цена',
                         'from.required' => 'Откуда',
                         'to.required' => 'Куда',
                         'start_dt.required' => 'Дата вылета и время',

@@ -11,7 +11,7 @@
 |
 */
 //TODO: Controller middlewarw api: sonra
-//todo: query index (tripcontroller index)
+//todo: query index (tripcontroller index)+
 //todo: formrequest validator custom message (example triprequest)
 //todo: tema tabuu (bootstrap4)
 //todo: formatted address lat long placeid table_name table(faker)

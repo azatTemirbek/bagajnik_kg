@@ -94,8 +94,14 @@ class TripsController extends Controller
         if($trip->update($request->only([
             'start_dt',
             'end_dt',
-            'from',
-            'to',
+            'from_lat',
+            'from_lng',
+            'from_formatted_address',
+            'from_place_id',
+            'to_lat',
+            'to_lng',
+            'to_formatted_address',
+            'to_place_id',
         ]))){
             return new TripsResource($trip);
         }

@@ -13,22 +13,26 @@ class RatingController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return RatingsResourceCollection
      *
      * "first_page_url": "http://127.0.0.1:8000/api/ratings?page=1",
-    "from": 1,
-    "last_page": 5,
-    "last_page_url": "http://127.0.0.1:8000/api/ratings?page=5",
-    "next_page_url": "http://127.0.0.1:8000/api/ratings?page=2",
-    "path": "http://127.0.0.1:8000/api/ratings",
-    "per_page": 10,
-    "prev_page_url": null,
-    "to": 10,
-    "total": 50
+    * "from": 1,
+    * "last_page": 5,
+    * "last_page_url": "http://127.0.0.1:8000/api/ratings?page=5",
+    * "next_page_url": "http://127.0.0.1:8000/api/ratings?page=2",
+    * "path": "http://127.0.0.1:8000/api/ratings",
+    * "per_page": 10,
+    * "prev_page_url": null,
+    * "to": 10,
+    * "total": 50
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new RatingsResourceCollection(Rating::paginate(15));
+        $query = Rating::query();
+        $request->has ('name') && $query->where('to_user_id', '>=', 45);
+        error_log($request->name);
+        $rating = $query->paginate(15);
+        return new RatingsResourceCollection($rating);
     }
 
     /**
