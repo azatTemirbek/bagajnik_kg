@@ -1,4 +1,3 @@
-import { DynamicFormBuilderModule } from './dynamic-form-builder/dynamic-form-builder.module';
 import { LuggageService } from './service/luggage.service';
 import { TripService } from './service/trip.service';
 import { TokenService } from './service/token.service';
@@ -44,7 +43,6 @@ import { TripsComponent } from './pages/trips/trips.component';
     HttpClientModule,
     SnotifyModule,
     ReactiveFormsModule,
-    DynamicFormBuilderModule
   ],
   providers: [
     JarvisService,

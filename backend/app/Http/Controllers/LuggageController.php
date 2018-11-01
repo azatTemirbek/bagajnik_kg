@@ -132,10 +132,10 @@ class LuggageController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
+     * remove the specified resource from storage.
+     * @param Luggage $luggage
      * @return LuggageResource
+     * @throws \Exception
      */
     public function destroy(Luggage $luggage)
     {
