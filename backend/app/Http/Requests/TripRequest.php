@@ -44,8 +44,14 @@ class TripRequest extends FormRequest
             case 'PATCH':
                 {
                     return [
-                        'from' => 'required',
-                        'to'  => 'required',
+                        'from_lat'=> 'required',
+                        'from_lng'=>'required',
+                        'from_formatted_address'=>'required',
+                        'from_place_id'=>'required',
+                        'to_lat'=>'required',
+                        'to_lng'=>'required',
+                        'to_formatted_address'=>'required',
+                        'to_place_id'=>'required',
                         'start_dt'      => 'required|date|date_format:Y-m-d|after:yesterday',
                         'end_dt'   => 'required|date|date_format:Y-m-d|after:start_dt',
                     ];
