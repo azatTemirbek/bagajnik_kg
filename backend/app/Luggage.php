@@ -12,26 +12,28 @@ class Luggage extends Model
         'end_dt',
         'value',
         'price',
-        'from',
+        'from_lat',
+        'from_lng',
+        'from_formatted_address',
+        'from_place_id',
+        'to_lat',
+        'to_lng',
+        'to_formatted_address',
+        'to_place_id',
         'mass',
-        'to',
     ];
+
     /**
      * Get owner of the luggage
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-
-    public function to() {
-        return $this->belongsTo('App\Address','id');
-    }
-    public function from() {
-        return $this->belongsTo('App\Address','id');
-    }
-
     public function owner() {
         return $this->belongsTo('App\User','owner_id');
     }
+
     /**
      * Get all the offers.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function offers()
     {

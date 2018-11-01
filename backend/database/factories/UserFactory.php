@@ -24,24 +24,20 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Address::class, function (Faker $faker) {
-
-    return [
-        'formatted address' => $faker->numberBetween($min = 1, $max = 50),
-        'long' => $faker->numberBetween($min = 1, $max = 1000),
-        'lat' => $faker->numberBetween($min = 1, $max = 1000),
-        'place_id' => $faker->numberBetween($min = 1, $max = 100),
-    ];
-});
-
 $factory->define(App\Trip::class, function (Faker $faker) {
 
     return [
         'carrier_id' => $faker->numberBetween($min = 1, $max = 50),
         'start_dt' => $faker->dateTime,
         'end_dt' => $faker->dateTime,
-        'from' => $faker->numberBetween($min = 1, $max = 100),
-        'to' => $faker->numberBetween($min = 1, $max = 100)
+        'from_lat' => $faker->numberBetween($min = 1, $max = 100),
+        'from_lng' => $faker->numberBetween($min = 1, $max = 100),
+        'from_formatted_address' => $faker->address(),
+        'from_place_id' => $faker->numberBetween($min = 1, $max = 100),
+        'to_lat' => $faker->numberBetween($min = 1, $max = 100),
+        'to_lng' => $faker->numberBetween($min = 1, $max = 100),
+        'to_formatted_address' => $faker->address(),
+        'to_place_id' => $faker->numberBetween($min = 1, $max = 100),
     ];
 });
 
@@ -71,6 +67,15 @@ $factory->define(App\Luggage::class, function (Faker $faker) {
         'to' => $faker->numberBetween($min = 1, $max = 100),
         'start_dt' => $faker->dateTime,
         'end_dt' => $faker->dateTime,
+
+        'from_lat' => $faker->numberBetween($min = 1, $max = 100),
+        'from_lng' => $faker->numberBetween($min = 1, $max = 100),
+        'from_formatted_address' => $faker->address(),
+        'from_place_id' => $faker->numberBetween($min = 1, $max = 100),
+        'to_lat' => $faker->numberBetween($min = 1, $max = 100),
+        'to_lng' => $faker->numberBetween($min = 1, $max = 100),
+        'to_formatted_address' => $faker->address(),
+        'to_place_id' => $faker->numberBetween($min = 1, $max = 100),
 
     ];
 });

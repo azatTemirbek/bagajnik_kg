@@ -19,8 +19,14 @@ class CreateTripsTable extends Migration
             $table->foreign('carrier_id')->references('id')->on('users');
             $table->timestamp('start_dt')->useCurrent();
             $table->timestamp('end_dt');
-            $table->string('from',20); // adress tablo or json data
-            $table->string('to',20); // adress tablo or json data
+            $table->string('from_lat');
+            $table->string('from_lng');
+            $table->string('from_formatted_address');
+            $table->string('from_place_id');
+            $table->string('to_lat');
+            $table->string('to_lng');
+            $table->string('to_formatted_address');
+            $table->string('to_place_id');
             $table->timestamps();
         });
     }

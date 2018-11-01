@@ -10,20 +10,20 @@ class Trip extends Model
         'carrier_id',
         'start_dt',
         'end_dt',
-        'from',
-        'to',
+        'from_lat',
+        'from_lng',
+        'from_formatted_address',
+        'from_place_id',
+        'to_lat',
+        'to_lng',
+        'to_formatted_address',
+        'to_place_id',
     ];
+
     /**
      * Get user who is bag carrier
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-
-    public function to() {
-        return $this->belongsTo('App\Address','id');
-    }
-    public function from() {
-        return $this->belongsTo('App\Address','id');
-    }
-
     public function carrier() {
         return $this->belongsTo('App\User','carrier_id');
     }
