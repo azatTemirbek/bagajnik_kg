@@ -63,8 +63,6 @@ $factory->define(App\Luggage::class, function (Faker $faker) {
         'comertial' => $faker->boolean($chanceOfGettingTrue = 50),
         'value' => $faker->word,
         'price' => $faker->word,
-        'from' => $faker->numberBetween($min = 1, $max = 100),
-        'to' => $faker->numberBetween($min = 1, $max = 100),
         'start_dt' => $faker->dateTime,
         'end_dt' => $faker->dateTime,
         'from_lat' => $faker->latitude($min = -90, $max = 90),
