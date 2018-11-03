@@ -1,5 +1,4 @@
 import { Trip } from './../models/trip';
-import { AuthService } from './auth.service';
 import { Configure } from './configure';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';

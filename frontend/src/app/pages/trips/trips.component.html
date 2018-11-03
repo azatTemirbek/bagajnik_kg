@@ -1,11 +1,20 @@
 <div class="row">
-    <div class="col-md-3">
-      filter toolss
-      </div>
-      <div class="col-md-9">
-        <div *ngFor='let a of data' class="col-md-12">
-            {{a.attributes.from}}->
-            {{a.attributes.to}}
-        </div>
-      </div>
+  <div class="col-md-3">
+    <form [formGroup]="formGroup">
+
+      <dynamic-ng-bootstrap-form
+        [group]="formGroup"
+        [model]="formModel"
+        (change)='onChange($event)'
+        ></dynamic-ng-bootstrap-form>
+
+    </form>
+  </div>
+  <div class="col-md-9">
+    <div *ngFor='let trip of data' class="col-md-12">
+      {{trip.attributes.from_formatted_address}}->
+      {{trip.attributes.to_formatted_address}}
+      {{trip.hello()}}
+    </div>
+  </div>
 </div>

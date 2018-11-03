@@ -42,7 +42,7 @@ class TripsController extends Controller
      */
     public function store(TripRequest $request)
     {
-        $validator = Validator::make($request->all(), $request->rules(), $request->messages());
+//        $validator = Validator::make($request->all(), $request->rules(), $request->messages());
 //        $this -> validate($request, [
 //            'carrier_id' => 'required',
 //            'offer_id' => 'required'

@@ -17,8 +17,8 @@ export class OfferService {
   /**
    * will return all the offers with pagination
    */
-  getAll() {
-    return this.http.get(`${this.api}/offers`);
+  getAll(params) {
+    return this.http.get(`${this.api}/offers`,{params});
   }
   /**
    * will get spesific offer

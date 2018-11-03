@@ -20,6 +20,10 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { OfferService } from './service/offer.service';
 import { TripsComponent } from './pages/trips/trips.component';
+import { DynamicFormsCoreModule } from '@ng-dynamic-forms/core';
+import { DynamicFormsNGBootstrapUIModule } from '@ng-dynamic-forms/ui-ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -37,12 +41,15 @@ import { TripsComponent } from './pages/trips/trips.component';
     TripsComponent,
   ],
   imports: [
+    FormsModule,
+    NgbModule,
+    SnotifyModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
-    SnotifyModule,
     ReactiveFormsModule,
+    DynamicFormsCoreModule,
+    DynamicFormsNGBootstrapUIModule
   ],
   providers: [
     JarvisService,
