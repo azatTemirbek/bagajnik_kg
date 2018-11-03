@@ -20,14 +20,14 @@ class UserResource extends JsonResource
     {
         //return parent::toArray($request);
         return [
-            'type' => 'user',
+//            'type' => 'user',
             'id' => (string) $this->id,
-            'attributes' => [
-               'name' => $this->name,
+//            'attributes' => [
+                'name' => $this->name,
                 'surname' => $this->surname,
                 'phone' =>$this->phone,
                 'email' =>$this->email,
-            ],
+//            ],
         ];
     }
 }

@@ -17,9 +17,9 @@ class TripsResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'type' =>'trips',
+//            'type' =>'trips',
             'id' =>(string) $this->id,
-            'attributes' => [
+//            'attributes' => [
                 'carrier_id' => $this->carrier_id,
                 'start_dt' =>  (string)  $this->start_dt,
                 'end_dt' => (string) $this->end_dt,
@@ -31,7 +31,7 @@ class TripsResource extends JsonResource
                 'to_lng' => $this->to_lng,
                 'to_formatted_address' => $this->to_formatted_address,
                 'to_place_id' => $this->to_place_id,
-            ],
+//            ],
             'relationships' => [
                 'carrier' => new UserResource($this->carrier),
                 //'offers' => new OfferResource($this->offers)

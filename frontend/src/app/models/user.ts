@@ -1,4 +1,4 @@
-export class User {
+export class User implements IUser {
   name: String;
   surname: String;
   phone: String;
@@ -12,4 +12,11 @@ export class User {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(mail);
   }
+}
+
+export interface IUser {
+  name: String;
+  surname: String;
+  phone: String;
+  email: String;
 }

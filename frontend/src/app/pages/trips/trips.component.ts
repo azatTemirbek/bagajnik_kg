@@ -1,8 +1,8 @@
+import { ITrip } from './../../models/trip';
 import { SnotifyService } from 'ng-snotify';
 import { RequestData } from './../../models/request-data';
 import { TripService } from './../../service/trip.service';
 import { Component, OnInit } from '@angular/core';
-import { Trip } from 'src/app/models/trip';
 import { DynamicFormService, DynamicFormModel, DynamicInputModel } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
 
@@ -12,7 +12,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./trips.component.css']
 })
 export class TripsComponent implements OnInit {
-  data: Array<Trip>;
+  data: Array<ITrip>;
   links: any;
   meta: any;
   filter: any;
@@ -63,7 +63,6 @@ export class TripsComponent implements OnInit {
         this.data = req.data;
         this.links = req.links;
         this.meta = req.meta;
-        console.log(this.data);
       },
       error => this.handleError(error),
     );

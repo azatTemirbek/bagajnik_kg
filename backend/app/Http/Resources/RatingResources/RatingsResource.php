@@ -16,14 +16,14 @@ class RatingsResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'type' => 'ratings',
+//            'type' => 'ratings',
             'id' => (string) $this->id,
-            'attributes' => [
+//            'attributes' => [
                 'from_user_id' => $this->from_user_id,
                 'to_user_id' => $this->to_user_id,
                 'rate_value' => $this->rate_value,
                 'comment' => $this->comment,
-            ],
+//            ],
             'relationships' => [
                 'from_user' => new UserResource($this->from_user),
                 'to_user' => new UserResource($this->to_user),

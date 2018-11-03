@@ -16,9 +16,9 @@ class LuggageResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'type' => 'luggages',
+//            'type' => 'luggages',
             'id' => (string) $this->id,
-            'attributes' => [
+//            'attributes' => [
                 'takerName' => $this->takerName,
                 'takerPhone1' => (string)$this->takerPhone1,
                 'takerPhone2' => (string)$this->takerPhone2,
@@ -36,7 +36,7 @@ class LuggageResource extends JsonResource
                 'to_place_id' => $this->to_place_id,
                 'start_dt' => $this->start_dt,
                 'end_dt' => $this->end_dt,
-            ],
+//            ],
             'relationships' => [
                 'owner' => new UserResource($this->owner),
                 'offer' => new LuggageResource($this->offer),

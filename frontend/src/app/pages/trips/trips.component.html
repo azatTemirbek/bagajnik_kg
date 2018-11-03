@@ -12,9 +12,8 @@
   </div>
   <div class="col-md-9">
     <div *ngFor='let trip of data' class="col-md-12">
-      {{trip.attributes.from_formatted_address}}->
-      {{trip.attributes.to_formatted_address}}
-      {{trip.hello()}}
+      {{trip.from_formatted_address}}->
+      {{trip.to_formatted_address}}
     </div>
   </div>
 </div>
