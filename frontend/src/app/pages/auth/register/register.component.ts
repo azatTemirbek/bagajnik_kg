@@ -1,4 +1,4 @@
-import { JarvisService } from './../../service/jarvis.service';
+import { JarvisService } from '../../service/jarvis.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/service/token.service';

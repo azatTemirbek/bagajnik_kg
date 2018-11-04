@@ -4,7 +4,7 @@
       Login here
     </div>
     <div class="card-body">
-      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+      <form class="custom" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
 
         <div class="alert alert-danger" [hidden]='!error'>
           {{error}}

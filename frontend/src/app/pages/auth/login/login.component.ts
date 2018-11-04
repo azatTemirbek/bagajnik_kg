@@ -1,7 +1,7 @@
-import { AuthService } from './../../service/auth.service';
+import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
-import { TokenService } from './../../service/token.service';
-import { JarvisService } from './../../service/jarvis.service';
+import { TokenService } from '../../service/token.service';
+import { JarvisService } from '../../service/jarvis.service';
 import { Component, OnInit } from '@angular/core';
 import { SnotifyService } from 'ng-snotify';
 

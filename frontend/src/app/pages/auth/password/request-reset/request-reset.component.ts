@@ -1,4 +1,4 @@
-import { JarvisService } from './../../../service/jarvis.service';
+import { JarvisService } from '../../../service/jarvis.service';
 import { Component, OnInit } from '@angular/core';
 import { SnotifyService } from 'ng-snotify';
 
