@@ -1,4 +1,4 @@
-import { TokenService } from 'src/app/service/token.service';
+import { TokenService } from 'src/app/service/auth/token.service';
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 

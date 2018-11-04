@@ -2,18 +2,22 @@
   <div class="col-md-3">
     <form [formGroup]="formGroup">
 
-      <dynamic-ng-bootstrap-form
-        [group]="formGroup"
-        [model]="formModel"
-        (change)='onChange($event)'
-        ></dynamic-ng-bootstrap-form>
+      <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel" (change)='onChange($event)'></dynamic-ng-bootstrap-form>
 
     </form>
   </div>
   <div class="col-md-9">
-    <div *ngFor='let trip of data' class="col-md-12">
-      {{trip.from_formatted_address}}->
-      {{trip.to_formatted_address}}
+
+    <div class="results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
+      [scrollWindow]="false">
+      <!-- todo if data null then show loading component -->
+      <div *ngFor='let trip of data' class="col-md-12">
+        {{trip.from_formatted_address}}->
+        {{trip.to_formatted_address}}
+      </div>
     </div>
   </div>
+<!-- todo: make pagnantion css with bootstrapt  -->
+  <ngb-pagination [collectionSize]="75" [(page)]="page" aria-label="Default pagination" (pageChange)="pageChange($event)"></ngb-pagination>
+
 </div>

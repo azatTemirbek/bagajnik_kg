@@ -1,14 +1,14 @@
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { AfterLoginService } from './service/after-login.service';
-import { BeforeLoginService } from './service/before-login.service';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AfterLoginService } from './service/guards/after-login.service';
+import { BeforeLoginService } from './service/guards/before-login.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
-import { ResponceResetComponent } from './components/password/responce-reset/responce-reset.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { RequestResetComponent } from './pages/auth/password/request-reset/request-reset.component';
+import { ResponceResetComponent } from './pages/auth/password/responce-reset/responce-reset.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TripsComponent } from './pages/trips/trips.component';
 
 const routes: Routes = [

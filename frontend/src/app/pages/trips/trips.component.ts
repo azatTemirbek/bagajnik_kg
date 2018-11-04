@@ -1,10 +1,14 @@
-import { ITrip } from './../../models/trip';
-import { SnotifyService } from 'ng-snotify';
-import { RequestData } from './../../models/request-data';
-import { TripService } from './../../service/trip.service';
 import { Component, OnInit } from '@angular/core';
-import { DynamicFormService, DynamicFormModel, DynamicInputModel } from '@ng-dynamic-forms/core';
+import {
+  DynamicFormModel,
+  DynamicFormService,
+  DynamicInputModel
+} from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
+import { TripService } from '../../service/trip.service';
+import { SnotifyService } from 'ng-snotify';
+import { RequestData } from '../../models/request-data';
+import { ITrip } from '../../interface/itrip';
 
 @Component({
   selector: 'app-trips',
@@ -16,6 +20,7 @@ export class TripsComponent implements OnInit {
   links: any;
   meta: any;
   filter: any;
+  page: Number = 1;
   /**
    *used to define searchform
    */
@@ -41,7 +46,7 @@ export class TripsComponent implements OnInit {
     private trip: TripService,
     private formService: DynamicFormService,
     private notify: SnotifyService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getAll({});
@@ -56,15 +61,16 @@ export class TripsComponent implements OnInit {
   }
   /**
    * will run only first time to load all the trips
-  */
+   */
   getAll(params) {
     this.trip.getAll(params).subscribe(
       (req: RequestData) => {
+        console.log(req);
         this.data = req.data;
         this.links = req.links;
         this.meta = req.meta;
       },
-      error => this.handleError(error),
+      error => this.handleError(error)
     );
   }
   /**
@@ -74,4 +80,17 @@ export class TripsComponent implements OnInit {
     this.notify.error(error);
   }
 
+  /**
+   * when the scroll  t the end
+   */
+  onScroll() {
+    console.log('scrolled!!');
+  }
+
+  /**
+   * pagination is changed
+   */
+  pageChange(pagin: Number) {
+    console.log('hello');
+  }
 }

@@ -1,5 +1,5 @@
 import { Luggage } from './../models/luggage';
-import { AuthService } from './auth.service';
+import { AuthService } from './auth/auth.service';
 import { Configure } from './configure';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';

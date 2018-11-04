@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Configure } from './configure';
+import { Configure } from '../configure';
 
 @Injectable()
 export class TokenService {

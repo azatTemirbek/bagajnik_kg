@@ -1,7 +1,7 @@
-import { JarvisService } from '../../service/jarvis.service';
+import { JarvisService } from '../../../service/auth/jarvis.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { TokenService } from 'src/app/service/token.service';
+import { TokenService } from 'src/app/service/auth/token.service';
 import { SnotifyService } from 'ng-snotify';
 
 @Component({
