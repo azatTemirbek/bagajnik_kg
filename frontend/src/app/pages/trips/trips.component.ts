@@ -20,9 +20,10 @@ export class TripsComponent implements OnInit {
   links: any;
   meta: any;
   filter: any;
-  page: Number = 1;
   /**
    *used to define searchform
+   * @type {DynamicFormModel}
+   * @memberof TripsComponent
    */
   formModel: DynamicFormModel = [
     new DynamicInputModel({
@@ -53,19 +54,22 @@ export class TripsComponent implements OnInit {
     this.formGroup = this.formService.createFormGroup(this.formModel);
   }
   /**
-   * to get form data and make filter
-   * @param event form event to get forms data
+   * a funtion to get form data and make filter
+   * @param {*} event - event ftom form
+   * @memberof TripsComponent
    */
   onChange(event) {
-    this.getAll(event.group.value);
+    this.filter = event.group.value;
+    this.getAll(this.filter);
   }
   /**
-   * will run only first time to load all the trips
+   * a function to make request with pagin and filtering
+   * @param {*} params
+   * @memberof TripsComponent
    */
   getAll(params) {
     this.trip.getAll(params).subscribe(
       (req: RequestData) => {
-        console.log(req);
         this.data = req.data;
         this.links = req.links;
         this.meta = req.meta;
@@ -74,23 +78,20 @@ export class TripsComponent implements OnInit {
     );
   }
   /**
-   * used to handle error
+   *used to notify errors from backend
+   * @param {*} error
+   * @returns {*}
+   * @memberof TripsComponent
    */
   handleError(error): any {
     this.notify.error(error);
   }
-
   /**
-   * when the scroll  t the end
-   */
-  onScroll() {
-    console.log('scrolled!!');
-  }
-
-  /**
-   * pagination is changed
+   *pagination onchange method
+   * @param {Number} pagin
+   * @memberof TripsComponent
    */
   pageChange(pagin: Number) {
-    console.log('hello');
+    this.getAll({ page: pagin, ...this.filter });
   }
 }

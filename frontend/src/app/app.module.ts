@@ -23,7 +23,7 @@ import { TripsComponent } from './pages/trips/trips.component';
 import { DynamicFormsCoreModule } from '@ng-dynamic-forms/core';
 import { DynamicFormsNGBootstrapUIModule } from '@ng-dynamic-forms/ui-ng-bootstrap';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 
 
