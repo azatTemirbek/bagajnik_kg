@@ -42,16 +42,6 @@ class TripsController extends Controller
      */
     public function store(TripRequest $request)
     {
-//        $validator = Validator::make($request->all(), $request->rules(), $request->messages());
-//        $this -> validate($request, [
-//            'carrier_id' => 'required',
-//            'offer_id' => 'required'
-//        ]);
-
-//        $offer_id  = Trip::find($request->input('offer_id'));
-//        //On left field name in DB and on right field name in Form/view
-//        $trip->carrier = $request->input('carrier_id');
-//        $trip->offers = $request->input('offer_id');
         $trip = new Trip($request->all());
         if($trip->save()){
             return New TripsResource($trip);
@@ -87,24 +77,11 @@ class TripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trip $trip)
+    public function update(TripRequest $request, $id)
     {
-//        $updated = Trip::findOrFail($trip->id)->update($request->all());
-//        return New TripsResource($updated);
-        if($trip->update($request->only([
-            'start_dt',
-            'end_dt',
-            'from_lat',
-            'from_lng',
-            'from_formatted_address',
-            'from_place_id',
-            'to_lat',
-            'to_lng',
-            'to_formatted_address',
-            'to_place_id',
-        ]))){
-            return new TripsResource($trip);
-        }
+       $tripUpdate = Trip::findOrFail($id);
+       $inputs = $request->all();
+       $tripUpdate->fill($inputs)->save();
     }
 
     /**

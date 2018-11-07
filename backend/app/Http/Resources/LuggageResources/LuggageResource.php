@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\LuggageResources;
 
+use App\Http\Resources\OfferResources\OfferResource;
 use App\Http\Resources\UserResources\UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -39,7 +40,7 @@ class LuggageResource extends JsonResource
 //            ],
             'relationships' => [
                 'owner' => new UserResource($this->owner),
-                'offer' => new LuggageResource($this->offer),
+               // 'offer' => new OfferResource($this->offer),
 
             ],
         ];

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RatingRequest;
 use App\Http\Resources\RatingResources\RatingsResource;
 use App\Http\Resources\RatingResources\RatingsResourceCollection;
 use App\Rating;
@@ -51,7 +52,7 @@ class RatingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RatingRequest $request)
     {
         $rating = new Rating($request->all());
         if ($rating->save()) {
@@ -89,37 +90,11 @@ class RatingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RatingRequest $request, $id)
     {
-        $errors = array(
-            "errors" => array(),
-            "hasErrors" => false
-        );
-        $rate = $request->get('rate_value');
-        $comment = $request->get('comment');
-        if(!($rate >= 5)){
-            array_push($errors["errors"],"rate: might be max 5");
-            $errors["hasErrors"] = true;
-        }
-        if(!(strlen($comment) <= 200 )){
-            array_push($errors["errors"],"comment: max length 200");
-            $errors["hasErrors"] = true;
-        }
-        if($errors["hasErrors"]){
-            return $errors;
-        }
-        $updated = Rating::where('id', $id)->update($request->all());
-
-        $response = array(
-            "result" => ""
-        );
-        if($updated == 1){
-            $response["result"] = "Successfully updated";
-        } else {
-            $response["result"] = "Failed to update. Something went wrong";
-        }
-
-        return $response.toJSON();
+        $ratingUpdate = Rating::findOrFail($id);
+        $inputs = $request->all();
+        $ratingUpdate->fill($inputs)->save();
     }
 
     /**
