@@ -22,6 +22,7 @@ class CreateRatingsTable extends Migration
             $table->integer('rate_value'); // adress tablo or json data
             $table->string('comment',200); // adress tablo or json data
             $table->timestamps();
+
         });
     }
 
