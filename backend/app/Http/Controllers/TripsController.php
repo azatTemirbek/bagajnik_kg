@@ -19,8 +19,8 @@ class TripsController extends Controller
     public function index(Request $request)
     {
         $query = Trip::query();
-        $request->has ('name') && $query->where('carrier_id', '>=', 45);
-        error_log($request->name);
+        $request->has ('carrier_id') && $query->where('carrier_id', '>=', $request->carrier_id);
+        $request->has ('to_formatted_address') && $query->where('to_formatted_address', 'like', '%'+$request->to_formatted_address+'%');
         $trip = $query->paginate(15);
         return new TripsResourceCollection($trip);
     }

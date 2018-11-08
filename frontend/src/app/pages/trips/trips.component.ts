@@ -27,16 +27,16 @@ export class TripsComponent implements OnInit {
    */
   formModel: DynamicFormModel = [
     new DynamicInputModel({
-      id: 'sampleInput',
-      label: 'Sample Input',
+      id: 'carrier_id',
+      label: 'carrier_id',
       maxLength: 42,
-      placeholder: 'Sample input'
+      placeholder: 'carrier_id'
     }),
     new DynamicInputModel({
-      id: 'sampleInpu1',
-      label: 'Sample Input1',
+      id: 'to_formatted_address',
+      label: 'to_formatted_address',
       maxLength: 42,
-      placeholder: 'Sample 1'
+      placeholder: 'to_formatted_address'
     })
   ];
   /**
