@@ -6,6 +6,7 @@ use App\Http\Requests\TripRequest;
 use App\Http\Resources\TripResources\TripsResource;
 use App\Http\Resources\TripResources\TripsResourceCollection;
 use App\Trip;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TripsController extends Controller
@@ -19,8 +20,18 @@ class TripsController extends Controller
     public function index(Request $request)
     {
         $query = Trip::query();
-        $request->has ('carrier_id') && $query->where('carrier_id', '>=', $request->carrier_id);
-        $request->has ('to_formatted_address') && $query->where('to_formatted_address', 'like', '%'+$request->to_formatted_address+'%');
+        if($request->has ('to_formatted_address') && $request->to_formatted_address <> 'null'){
+            $query->where('to_formatted_address', 'like', "%$request->to_formatted_address%");
+        }
+        if($request->has ('from_formatted_address') && $request->from_formatted_address <> 'null'){
+            $query->where('from_formatted_address', 'like', "%$request->from_formatted_address%");
+        }
+        if($request->has ('start_dt') && $request->start_dt <> 'null'){
+            $query->whereDate('start_dt', '>', Carbon::parse($request->start_dt));
+        }
+        if($request->has ('end_dt') && $request->end_dt <> 'null'){
+            $query->whereDate('end_dt', '<', Carbon::parse($request->end_dt));
+        }
         $trip = $query->paginate(15);
         return new TripsResourceCollection($trip);
     }

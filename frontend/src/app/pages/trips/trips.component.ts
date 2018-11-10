@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
+  DynamicDatePickerModel,
   DynamicFormModel,
   DynamicFormService,
   DynamicInputModel
@@ -9,63 +10,77 @@ import { TripService } from '../../service/trip.service';
 import { SnotifyService } from 'ng-snotify';
 import { RequestData } from '../../models/request-data';
 import { ITrip } from '../../interface/itrip';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-trips',
   templateUrl: './trips.component.html',
   styleUrls: ['./trips.component.css']
 })
-export class TripsComponent implements OnInit {
+export class TripsComponent implements OnInit, OnDestroy {
   data: Array<ITrip>;
   links: any;
   meta: any;
-  filter: any;
+  filter: any = {};
   /**
-   *used to define searchform
-   * @type {DynamicFormModel}
-   * @memberof TripsComponent
+   * used to define searchform
    */
   formModel: DynamicFormModel = [
     new DynamicInputModel({
-      id: 'carrier_id',
-      label: 'carrier_id',
+      id: 'from_formatted_address',
+      label: 'From',
       maxLength: 42,
-      placeholder: 'carrier_id'
+      placeholder: 'From: Ankara'
     }),
     new DynamicInputModel({
       id: 'to_formatted_address',
-      label: 'to_formatted_address',
+      label: 'To',
       maxLength: 42,
-      placeholder: 'to_formatted_address'
-    })
+      placeholder: 'To: Bishkek'
+    }),
+    new DynamicDatePickerModel({
+      id: 'start_dt',
+      label: 'From Date',
+      placeholder: 'YYYY-MM-DD',
+      toggleLabel: '#',
+    }),
+    new DynamicDatePickerModel({
+      id: 'end_dt',
+      label: 'To Date',
+      placeholder: 'YYYY-MM-DD',
+      toggleLabel: '#'
+    }),
   ];
   /**
    * used to store formGroup
    */
   formGroup: FormGroup;
+  private valchange: Subscription;
   constructor(
     private trip: TripService,
     private formService: DynamicFormService,
     private notify: SnotifyService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getAll({});
     this.formGroup = this.formService.createFormGroup(this.formModel);
+    this.valchange = this.formGroup.valueChanges.subscribe(({ start_dt, end_dt, from_formatted_address, to_formatted_address }) => {
+      this.filter.end_dt = end_dt && `${end_dt.year}-${end_dt.month}-${end_dt.day} 00:00:00`;
+      this.filter.start_dt = start_dt && `${start_dt.year}-${start_dt.month}-${start_dt.day} 00:00:00`;
+      this.filter.from_formatted_address = from_formatted_address;
+      this.filter.to_formatted_address = to_formatted_address;
+    });
   }
   /**
-   * a funtion to get form data and make filter
-   * @param {*} event - event ftom form
-   * @memberof TripsComponent
+   * Finds trips component with given parameters
    */
-  onChange(event) {
-    this.filter = event.group.value;
+  find() {
     this.getAll(this.filter);
   }
   /**
-   * a function to make request with pagin and filtering
-   * @param {*} params
-   * @memberof TripsComponent
+   * Gets all a function to make request with pagin and filtering
+   * @param params
    */
   getAll(params) {
     this.trip.getAll(params).subscribe(
@@ -74,24 +89,20 @@ export class TripsComponent implements OnInit {
         this.links = req.links;
         this.meta = req.meta;
       },
-      error => this.handleError(error)
+      error => this.notify.error(error)
     );
   }
   /**
-   *used to notify errors from backend
-   * @param {*} error
-   * @returns {*}
-   * @memberof TripsComponent
+   * Pages change pagination onchange method
+   * @param page
    */
-  handleError(error): any {
-    this.notify.error(error);
+  pageChange(page: Number) {
+    this.getAll({ page, ...this.filter });
   }
   /**
-   *pagination onchange method
-   * @param {Number} pagin
-   * @memberof TripsComponent
+   * on destroy will work when the compnent leave the dom
    */
-  pageChange(pagin: Number) {
-    this.getAll({ page: pagin, ...this.filter });
+  ngOnDestroy(): void {
+    this.valchange.unsubscribe();
   }
 }

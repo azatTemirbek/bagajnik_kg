@@ -19,7 +19,14 @@ class Trip extends Model
         'to_formatted_address',
         'to_place_id',
     ];
-
+    /**
+     * used to make fielad datetime
+     * @var array
+     */
+    protected $dates=[
+        'start_dt',
+        'end_dt',
+    ];
     /**
      * Get user who is bag carrier
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
