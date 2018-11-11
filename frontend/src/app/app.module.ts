@@ -25,6 +25,7 @@ import { DynamicFormsCoreModule } from '@ng-dynamic-forms/core';
 import { DynamicFormsNGBootstrapUIModule } from '@ng-dynamic-forms/ui-ng-bootstrap';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import { TripFormComponent } from './pages/form/trip-form/trip-form.component';
 
 
 
@@ -42,6 +43,7 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
     HomePageComponent,
     TripsComponent,
     LuggagesComponent,
+    TripFormComponent,
   ],
   imports: [
     FormsModule,

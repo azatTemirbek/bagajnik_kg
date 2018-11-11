@@ -11,4 +11,5 @@ export interface ITrip {
     to_lng: any;
     to_formatted_address: String;
     to_place_id: any;
+    relationships: any;
 }
