@@ -16,14 +16,14 @@ class CreateLuggageTable extends Migration
         Schema::create('luggage', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('owner_id')->nullable()->unsigned();
-            $table->foreign('owner_id')->references('id')->on('users');
-                    // ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('owner_id')->references('id')->on('users')
+                    ->onDelete('cascade')->onUpdate('cascade');
             $table->integer('taker_id')->nullable()->unsigned();
             $table->foreign('taker_id')->references('id')->on('users');
             $table->string('takerName',20)->nullable();
             $table->string('takerPhone1',20)->nullable();
             $table->string('takerPhone2',20)->nullable();
-            $table->string('mass',20);
+            $table->integer('mass');
             $table->boolean('comertial')->default(false);
             $table->string('value',20)->nullable();
             $table->string('price',20)->nullable();

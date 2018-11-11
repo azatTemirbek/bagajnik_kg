@@ -22,6 +22,10 @@ class Luggage extends Model
         'to_place_id',
         'mass',
     ];
+    protected $dates = [
+        'start_dt',
+        'end_dt',
+    ];
 
     /**
      * Get owner of the luggage

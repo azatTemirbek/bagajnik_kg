@@ -1,3 +1,4 @@
+import { LuggagesComponent } from './pages/luggages/luggages.component';
 import { LuggageService } from './service/luggage.service';
 import { TripService } from './service/trip.service';
 import { TokenService } from './service/auth/token.service';
@@ -40,6 +41,7 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
     PageNotFoundComponent,
     HomePageComponent,
     TripsComponent,
+    LuggagesComponent,
   ],
   imports: [
     FormsModule,

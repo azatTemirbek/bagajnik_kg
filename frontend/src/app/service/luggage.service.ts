@@ -17,8 +17,8 @@ export class LuggageService {
   /**
    * will return all the luggages with pagination
    */
-  getAll() {
-    return this.http.get(`${this.api}/luggages`);
+  getAll(params): any {
+    return this.http.get(`${this.api}/luggages`, {params});
   }
   /**
    * will get spesific luggage
