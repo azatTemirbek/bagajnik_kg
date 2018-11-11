@@ -3,3 +3,17 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+.trip_end{
+    margin-left: 505px;
+    margin-top: -24px;
+    margin-bottom: -19px;
+}
+.trip_to{
+    margin-top: -24px;
+    margin-left: 505px;
+}
+.air_img{
+    width: 40px;
+    height: 40px;
+    margin-left: 434px;
+}

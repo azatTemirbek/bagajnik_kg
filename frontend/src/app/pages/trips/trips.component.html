@@ -1,35 +1,24 @@
 <div class="row pt-5">
   <div class="col-md-3">
-    <!-- form -->
-    <h3>Search form</h3>
-    <form [formGroup]="formGroup" (submit)="find($event)">
-      <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
-      <div class="btn-group mt-5" role="group">
-        <button class="btn btn-danger" type="submit">
-          <i class="fas fa-search"></i>
-          Search
-        </button>
-        <button class="btn btn-outline-danger" type="button" (click)="formGroup.reset()">
-            <i class="fas fa-sync-alt"></i>
-            Reset
-        </button>
-      </div>
+    <form [formGroup]="formGroup">
+
+      <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel" (change)='onChange($event)'></dynamic-ng-bootstrap-form>
+
     </form>
-    <!-- form -->
   </div>
   <div class="col-md-9">
-    <!-- items -->
-    <h2 class='text-center mb-4'>Trip List</h2>
+
     <div class="results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [scrollWindow]="false">
       <div *ngFor='let trip of data' class="col-md-12">
-        {{trip.from_formatted_address}}<br>
-        {{trip.to_formatted_address}}<br>
-        {{trip.start_dt}}<br>
-        {{trip.end_dt}}<br>
+              <div class="trip_start">{{trip.start_dt }}</div>
+              <div class="trip_end">{{trip.end_dt }}</div>
+              <div><img src="http://www.clker.com/cliparts/C/K/F/L/T/v/blue-plane-th.png" class="air_img"></div> 
+              <div class="trip_from">{{trip.from_formatted_address }}</div> 
+              <div class="trip_to">{{trip.to_formatted_address }}</div>
+        -----------------------------------------------------------------------------------------------------------------------------
       </div>
     </div>
-    <!-- items -->
-    <!-- pagin -->
+
     <div class="row">
       <div class="col"></div>
       <div *ngIf='data' class="col pt-5">
@@ -38,6 +27,6 @@
       </div>
       <div class="col"></div>
     </div>
-    <!-- pagin -->
+
   </div>
 </div>
