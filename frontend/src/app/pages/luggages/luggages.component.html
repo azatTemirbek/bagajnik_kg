@@ -1,43 +1,47 @@
-<div class="row pt-5">
-  <div class="col-md-3">
-    <!-- form -->
-    <h3>Search form</h3>
-    <form [formGroup]="formGroup" (submit)="find($event)">
-      <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
-      <div class="btn-group mt-5" role="group">
-        <button class="btn btn-danger" type="submit">
-          <i class="fas fa-search"></i>
-          Search
-        </button>
-        <button class="btn btn-outline-danger" type="button" (click)="formGroup.reset();find()">
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-md-3">
+      <!-- form -->
+      <h3>Search form</h3>
+      <form [formGroup]="formGroup" (submit)="find($event)">
+        <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
+        <div class="btn-group mt-5" role="group">
+          <button class="btn btn-danger" type="submit">
+            <i class="fas fa-search"></i>
+            Search
+          </button>
+          <button class="btn btn-outline-danger" type="button" (click)="formGroup.reset();find()">
             <i class="fas fa-sync-alt"></i>
             Reset
-        </button>
-      </div>
-    </form>
-    <!-- form -->
-  </div>
-  <div class="col-md-9">
-    <!-- items -->
-    <h2 class='text-center mb-4'>Luggage List</h2>
-    <div #myinfiniteScroll class="results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [scrollWindow]="false">
-      <div *ngFor='let trip of data' class="col-md-12">
-        {{trip.from_formatted_address}}<br>
-        {{trip.to_formatted_address}}<br>
-        {{trip.start_dt}}<br>
-        {{trip.end_dt}}<br>
-      </div>
+          </button>
+        </div>
+      </form>
+      <!-- form -->
     </div>
-    <!-- items -->
-    <!-- pagin -->
-    <div class="row">
-      <div class="col"></div>
-      <div *ngIf='data' class="col pt-5">
-        <ngb-pagination [pageSize]='meta.per_page' [collectionSize]="meta.total" [(page)]="meta.current_page"
-          aria-label="Default pagination" (pageChange)="pageChange($event)"></ngb-pagination>
+    <div class="col-md-9">
+      <!-- items -->
+      <h2 class='text-center mb-4'>Luggage List</h2>
+      <div #myinfiniteScroll class="results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+        [scrollWindow]="false">
+        <div *ngFor='let trip of data' class="col-md-12">
+          {{trip.from_formatted_address}}<br>
+          {{trip.to_formatted_address}}<br>
+          {{trip.start_dt}}<br>
+          {{trip.end_dt}}<br>
+        </div>
       </div>
-      <div class="col"></div>
+      <!-- items -->
+      <!-- pagin -->
+      <div class="row">
+        <div class="col"></div>
+        <div *ngIf='data' class="col pt-5">
+          <ngb-pagination [pageSize]='meta.per_page' [collectionSize]="meta.total" [(page)]="meta.current_page"
+            aria-label="Default pagination" (pageChange)="pageChange($event)"></ngb-pagination>
+        </div>
+        <div class="col"></div>
+      </div>
+      <!-- pagin -->
     </div>
-    <!-- pagin -->
   </div>
+
 </div>

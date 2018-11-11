@@ -1,68 +1,76 @@
-<div class="row pt-5">
-  <div class="col-md-3">
-    <!-- form -->
-    <h3>Search form</h3>
-    <form [formGroup]="formGroup" (submit)="find($event)">
-      <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
-      <div class="btn-group mt-5" role="group">
-        <button class="btn btn-danger" type="submit">
-          <i class="fas fa-search"></i>
-          Search
-        </button>
-        <button class="btn btn-outline-danger" type="button" (click)="formGroup.reset();find()">
-          <i class="fas fa-sync-alt"></i>
-          Reset
-        </button>
-      </div>
-    </form>
-    <!-- form -->
-  </div>
-  <div class="col-md-9">
-    <!-- items -->
-    <h2 class='text-center mb-4'>Trip List</h2>
-    <div #myinfiniteScroll class="results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
-      [scrollWindow]="false">
-      <div *ngFor='let trip of data' class="col-md-12">
+<div class="container">
 
-        <div class="card mb-2">
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                  <h5 class="card-title"><i class="fas fa-plane-departure text-primary fa-2x m-2"></i> {{trip.from_formatted_address}}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i> {{trip.start_dt }}</h6>
+  <div class="row pt-5">
+    <div class="col-md-3">
+      <!-- form -->
+      <h3>Search form</h3>
+      <form [formGroup]="formGroup" (submit)="find($event)">
+        <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
+        <div class="btn-group mt-5" role="group">
+          <button class="btn btn-danger" type="submit">
+            <i class="fas fa-search"></i>
+            Search
+          </button>
+          <button class="btn btn-outline-danger" type="button" (click)="formGroup.reset();find()">
+            <i class="fas fa-sync-alt"></i>
+            Reset
+          </button>
+        </div>
+      </form>
+      <!-- form -->
+    </div>
+    <div class="col-md-9">
+      <!-- items -->
+      <h2 class='text-center mb-4'>Trip List</h2>
+      <div #myinfiniteScroll class="results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+        [scrollWindow]="false">
+        <div *ngFor='let trip of data' class="col-md-12">
+
+          <div class="card mb-2">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title"><i class="fas fa-plane-departure text-primary fa-2x m-2"></i>
+                    {{trip.from_formatted_address}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
+                    {{trip.start_dt }}</h6>
+                </div>
+                <div class="col">
+                  <h5 class="card-title"><i class="fas fa-plane-arrival text-warning fa-2x m-2"></i>
+                    {{trip.to_formatted_address }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
+                    {{trip.end_dt }}</h6>
+                </div>
               </div>
-              <div class="col">
-                  <h5 class="card-title"><i class="fas fa-plane-arrival text-warning fa-2x m-2"></i> {{trip.to_formatted_address }}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i> {{trip.end_dt }}</h6>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
+              <div class="row">
+                <div class="col">
                   <p class="card-text h4">
-                      <i class="fab fa-whatsapp text-success"></i> {{trip.relationships.carrier.phone}}
+                    <i class="fab fa-whatsapp text-success"></i> {{trip.relationships.carrier.phone}}
                   </p>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                </div>
               </div>
-            </div>
-            <div class="float-right">
-              <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+              <div class="float-right">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
-    </div>
-    <!-- items -->
-    <!-- pagin -->
-    <div class="row">
-      <div class="col"></div>
-      <div *ngIf='data' class="col pt-5">
-        <ngb-pagination [pageSize]='meta.per_page' [collectionSize]="meta.total" [(page)]="meta.current_page"
-          aria-label="Default pagination" (pageChange)="pageChange($event)"></ngb-pagination>
+      <!-- items -->
+      <!-- pagin -->
+      <div class="row">
+        <div class="col"></div>
+        <div *ngIf='data' class="col pt-5">
+          <ngb-pagination [pageSize]='meta.per_page' [collectionSize]="meta.total" [(page)]="meta.current_page"
+            aria-label="Default pagination" (pageChange)="pageChange($event)"></ngb-pagination>
+        </div>
+        <div class="col"></div>
       </div>
-      <div class="col"></div>
+      <!-- pagin -->
     </div>
-    <!-- pagin -->
   </div>
 </div>
