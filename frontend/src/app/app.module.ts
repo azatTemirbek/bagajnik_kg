@@ -26,6 +26,8 @@ import { DynamicFormsNGBootstrapUIModule } from '@ng-dynamic-forms/ui-ng-bootstr
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { TripFormComponent } from './pages/form/trip-form/trip-form.component';
+import { JumbotronComponent } from './components/Jumbotron/Jumbotron.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -44,6 +46,8 @@ import { TripFormComponent } from './pages/form/trip-form/trip-form.component';
     TripsComponent,
     LuggagesComponent,
     TripFormComponent,
+    JumbotronComponent,
+    FooterComponent
   ],
   imports: [
     FormsModule,
