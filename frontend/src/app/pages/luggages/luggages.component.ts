@@ -1,5 +1,5 @@
 import { ILuggage } from './../../interface/iluggage';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ElementRef, ViewChild } from '@angular/core';
 import {
   DynamicDatePickerModel,
   DynamicFormModel,
@@ -81,7 +81,6 @@ export class LuggagesComponent implements OnInit, OnDestroy {
             value: '20,1000'
           }
       ],
-      value: 'single-room'
   }),
     new DynamicCheckboxModel({
       id: 'comertial',
@@ -93,6 +92,7 @@ export class LuggagesComponent implements OnInit, OnDestroy {
    */
   formGroup: FormGroup;
   private valchange: Subscription;
+  @ViewChild('myinfiniteScroll') myinfiniteScroll: ElementRef;
   constructor(
     private luggages: LuggageService,
     private formService: DynamicFormService,
@@ -143,6 +143,7 @@ export class LuggagesComponent implements OnInit, OnDestroy {
    * @param page -
    */
   pageChange(page: Number) {
+    this.myinfiniteScroll.nativeElement.scrollTop = 0;
     this.getAll({ page, ...this.filter });
   }
   /**

@@ -9,7 +9,7 @@
           <i class="fas fa-search"></i>
           Search
         </button>
-        <button class="btn btn-outline-danger" type="button" (click)="formGroup.reset()">
+        <button class="btn btn-outline-danger" type="button" (click)="formGroup.reset();find()">
             <i class="fas fa-sync-alt"></i>
             Reset
         </button>
@@ -20,7 +20,7 @@
   <div class="col-md-9">
     <!-- items -->
     <h2 class='text-center mb-4'>Trip List</h2>
-    <div class="results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [scrollWindow]="false">
+    <div #myinfiniteScroll class="results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [scrollWindow]="false">
       <div *ngFor='let trip of data' class="col-md-12">
         {{trip.from_formatted_address}}<br>
         {{trip.to_formatted_address}}<br>
