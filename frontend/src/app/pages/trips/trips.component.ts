@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ElementRef, ViewChild } from '@angular/core';
 import {
   DynamicDatePickerModel,
   DynamicFormModel,
@@ -22,6 +22,7 @@ export class TripsComponent implements OnInit, OnDestroy {
   links: any;
   meta: any;
   filter: any = {};
+  @ViewChild('myinfiniteScroll') myinfiniteScroll: ElementRef;
   /**
    * used to define searchform
    */
@@ -80,7 +81,7 @@ export class TripsComponent implements OnInit, OnDestroy {
   }
   /**
    * Gets all a function to make request with pagin and filtering
-   * @param params
+   * @param params -
    */
   getAll(params) {
     this.trip.getAll(params).subscribe(
@@ -94,9 +95,10 @@ export class TripsComponent implements OnInit, OnDestroy {
   }
   /**
    * Pages change pagination onchange method
-   * @param page
+   * @param page -
    */
   pageChange(page: Number) {
+    this.myinfiniteScroll.nativeElement.scrollTop = 0;
     this.getAll({ page, ...this.filter });
   }
   /**

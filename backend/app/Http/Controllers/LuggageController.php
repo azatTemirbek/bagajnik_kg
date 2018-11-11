@@ -42,8 +42,7 @@ class LuggageController extends Controller
             $query->where('comertial', '=',$request->comertial);
         }
         if($request->has ('mass') && $request->mass <> 'null'){
-            error_log($request->mass);
-            $query->whereBetween('mass', $request->mass);
+            $query->whereBetween('mass',explode(',', $request->mass));
         }
         $luggage = $query->paginate(15);
         return new LuggageResourceCollection($luggage);
