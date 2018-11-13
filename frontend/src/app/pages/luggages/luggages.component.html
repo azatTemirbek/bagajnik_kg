@@ -2,17 +2,17 @@
   <div class="row pt-5">
     <div class="col-md-3">
       <!-- form -->
-      <h3>Search form</h3>
+      <h3 class="text-capitalize" >поиск</h3>
       <form [formGroup]="formGroup" (submit)="find($event)">
         <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
         <div class="btn-group mt-5" role="group">
           <button class="btn btn-danger" type="submit">
-            <i class="fas fa-search"></i>
-            Search
+            <i class="fas fa-search text-capitalize"></i>
+            поиск
           </button>
           <button class="btn btn-outline-danger" type="button" (click)="formGroup.reset();find()">
-            <i class="fas fa-sync-alt"></i>
-            Reset
+            <i class="fas fa-sync-alt text-capitalize"></i>
+            сброс
           </button>
         </div>
       </form>
@@ -20,7 +20,7 @@
     </div>
     <div class="col-md-9">
       <!-- items -->
-      <h2 class='text-center mb-4'>Luggage List</h2>
+      <h2 class='text-center mb-4 text-capitalize'>Список багажа</h2>
       <div #myinfiniteScroll class="results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
         [scrollWindow]="false">
         <div *ngFor='let trip of data' class="col-md-12">

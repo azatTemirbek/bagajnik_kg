@@ -30,31 +30,31 @@ export class LuggagesComponent implements OnInit, OnDestroy {
   formModel: DynamicFormModel = [
     new DynamicInputModel({
       id: 'from_formatted_address',
-      label: 'From',
+      label: 'Место Отправки',
       maxLength: 42,
-      placeholder: 'From: Ankara'
+      placeholder: 'Анкара'
     }),
     new DynamicInputModel({
       id: 'to_formatted_address',
-      label: 'To',
+      label: 'Место Доставки',
       maxLength: 42,
-      placeholder: 'To: Bishkek'
+      placeholder: 'Бишкек'
     }),
     new DynamicDatePickerModel({
       id: 'start_dt',
-      label: 'From Date',
-      placeholder: 'YYYY-MM-DD',
+      label: 'Начальная Дата',
+      placeholder: 'ГГГГ-ММ-ДД',
       toggleLabel: '#',
     }),
     new DynamicDatePickerModel({
       id: 'end_dt',
-      label: 'To Date',
-      placeholder: 'YYYY-MM-DD',
+      label: 'Дата Окончание',
+      placeholder: 'ГГГГ-ММ-ДД',
       toggleLabel: '#'
     }),
     new DynamicSelectModel({
       id: 'mass',
-      label: 'Mass',
+      label: 'Вес',
       options: [
           {
               label: '0 - 1',
@@ -84,7 +84,7 @@ export class LuggagesComponent implements OnInit, OnDestroy {
   }),
     new DynamicCheckboxModel({
       id: 'comertial',
-      label: 'Comertial',
+      label: 'Коммерческий',
     }),
   ];
   /**

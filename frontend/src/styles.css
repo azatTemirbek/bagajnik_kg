@@ -8,3 +8,9 @@ form.custom.ng-invalid:not(form){
 form.custom.ng-valid:not(form){
   border-left: 5px solid green;
 }
+.results {
+  height: 65vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
