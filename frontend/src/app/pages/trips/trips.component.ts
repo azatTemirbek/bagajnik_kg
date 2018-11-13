@@ -42,13 +42,13 @@ export class TripsComponent implements OnInit, OnDestroy {
     new DynamicDatePickerModel({
       id: 'start_dt',
       label: 'From Date',
-      placeholder: 'YYYY-MM-DD',
+      placeholder: 'YYYY-MM-DD hh-mm',
       toggleLabel: '#',
     }),
     new DynamicDatePickerModel({
       id: 'end_dt',
       label: 'To Date',
-      placeholder: 'YYYY-MM-DD',
+      placeholder: 'YYYY-MM-DD hh-mm',
       toggleLabel: '#'
     }),
   ];
