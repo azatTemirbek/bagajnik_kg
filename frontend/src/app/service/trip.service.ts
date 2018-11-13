@@ -24,13 +24,13 @@ export class TripService {
    * @param id tripId
    */
   read(id: Number) {
-    return this.http.get(`${this.api}/trip/${id}`);
+    return this.http.get(`${this.api}/trips/${id}`);
   }
   /**
    * will create trip
    * @param data trip data
    */
-  create(data: Trip) {
+  create(data) {
     return this.http.post(`${this.api}/trips`, data);
   }
   /**
@@ -38,14 +38,14 @@ export class TripService {
    * @param data trip data
    */
   update(data: Trip) {
-    return this.http.post(`${this.api}/trip/${data.id}`, data);
+    return this.http.post(`${this.api}/trips/${data.id}`, data);
   }
   /**
    * to delete offfer
    * @param id id of the delete trip
    */
   delete(id: Number) {
-    return this.http.delete(`${this.api}/trip/${id}`);
+    return this.http.delete(`${this.api}/trips/${id}`);
   }
   /**
    * http://localhost:8000/api/trips?page=2

@@ -57,7 +57,6 @@ class TripsController extends Controller
         if($trip->save()){
             return New TripsResource($trip);
         }
-        //
     }
 
     /**

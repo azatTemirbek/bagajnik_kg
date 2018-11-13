@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'request-password-reset', component: RequestResetComponent, canActivate: [BeforeLoginService]  },
   { path: 'response-password-reset', component: ResponceResetComponent, canActivate: [BeforeLoginService]  },
   { path: 'trips', component: TripsComponent, canActivate: [BeforeLoginService]  },
-  { path: 'tripform', component: TripFormComponent, canActivate: [BeforeLoginService]  },
+  { path: 'tripform/:id', component: TripFormComponent, canActivate: [BeforeLoginService]  },
   { path: 'luggages', component: LuggagesComponent, canActivate: [BeforeLoginService]  },
   { path: '**', component: PageNotFoundComponent },
 ];

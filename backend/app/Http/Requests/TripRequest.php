@@ -34,32 +34,32 @@ class TripRequest extends FormRequest
             case 'POST':
                 {
                     return [
-                        'from_lat' => 'required',
-                        'from_lng' => 'required',
-                        'from_formatted_address' => 'required',
-                        'from_place_id' => 'required',
-                        'to_lat' => 'required',
-                        'to_lng' => 'required',
+                        // 'from_lat' => 'required',
+                        // 'from_lng' => 'required',
+                        // 'from_place_id' => 'required',
+                        // 'to_lat' => 'required',
+                        // 'to_lng' => 'required',
+                        // 'to_place_id'=> 'required',
                         'to_formatted_address' => 'required',
-                        'to_place_id'=> 'required',
-                        'start_dt'      => 'required|date|date_format:Y-m-d|after:yesterday',
-                        'end_dt'   => 'required|date|date_format:Y-m-d|after:start_dt',
+                        'from_formatted_address' => 'required',
+                        'start_dt'      => 'required|date|after:yesterday',
+                        'end_dt'   => 'required|date|after:start_dt',
                     ];
                 }
             case 'PUT':
             case 'PATCH':
                 {
                     return [
-                        'from_lat'=> 'required',
-                        'from_lng'=>'required',
-                        'from_formatted_address'=>'required',
-                        'from_place_id'=>'required',
-                        'to_lat'=>'required',
-                        'to_lng'=>'required',
-                        'to_formatted_address'=>'required',
-                        'to_place_id'=>'required',
-                        'start_dt'      => 'required|date|date_format:Y-m-d|after:yesterday',
-                        'end_dt'   => 'required|date|date_format:Y-m-d|after:start_dt',
+                        // 'from_lat' => 'required',
+                        // 'from_lng' => 'required',
+                        // 'from_place_id' => 'required',
+                        // 'to_lat' => 'required',
+                        // 'to_lng' => 'required',
+                        // 'to_place_id'=> 'required',
+                        'to_formatted_address' => 'required',
+                        'from_formatted_address' => 'required',
+                        'start_dt'      => 'required|date|after:yesterday',
+                        'end_dt'   => 'required|date|after:start_dt',
                     ];
                 }
             default:break;
@@ -82,14 +82,14 @@ class TripRequest extends FormRequest
             case 'POST':
                 {
                     return [
-                        'from_lat.required'  => 'долгота Откуда',
-                        'from_lng.required'  => 'широта Откуда',
-                        'from_formatted_address.required'  => 'Откуда',
-                        'from_place_id.required' => 'ID место Откуда',
-                        'to_lat.required' => 'долгота Куда',
-                        'to_lng.required' => 'широта Куда',
+                        // 'from_lat.required'  => 'долгота Откуда',
+                        // 'from_lng.required'  => 'широта Откуда',
+                        // 'from_place_id.required' => 'ID место Откуда',
+                        // 'to_lat.required' => 'долгота Куда',
+                        // 'to_lng.required' => 'широта Куда',
+                        // 'to_place_id.required'  => 'ID место Куда',
                         'to_formatted_address.required'  => 'Куда',
-                        'to_place_id.required'  => 'ID место Куда',
+                        'from_formatted_address.required'  => 'Откуда',
                         'start_dt.required' => 'Дата вылета и время',
                         'end_d.required'   => 'Дата прилета и время',
                     ];
@@ -98,14 +98,14 @@ class TripRequest extends FormRequest
             case 'PATCH':
                 {
                     return [
-                        'from_lat.required'  => 'долгота Откуда',
-                        'from_lng.required'  => 'широта Откуда',
-                        'from_formatted_address.required'  => 'Откуда',
-                        'from_place_id.required' => 'ID место Откуда',
-                        'to_lat.required' => 'долгота Куда',
-                        'to_lng.required' => 'широта Куда',
+                        // 'from_lat.required'  => 'долгота Откуда',
+                        // 'from_lng.required'  => 'широта Откуда',
+                        // 'from_place_id.required' => 'ID место Откуда',
+                        // 'to_lat.required' => 'долгота Куда',
+                        // 'to_lng.required' => 'широта Куда',
+                        // 'to_place_id.required'  => 'ID место Куда',
                         'to_formatted_address.required'  => 'Куда',
-                        'to_place_id.required'  => 'ID место Куда',
+                        'from_formatted_address.required'  => 'Откуда',
                         'start_dt.required' => 'Дата вылета и время',
                         'end_d.required'   => 'Дата прилета и время',
                         ];
