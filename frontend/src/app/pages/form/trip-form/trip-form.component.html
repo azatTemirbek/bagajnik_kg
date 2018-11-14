@@ -3,12 +3,12 @@
   <div class="row pt-5">
     <div class="col-md-12">
       <!-- form -->
-      <h3>form</h3>
+      <h3 class="text-uppercase text-center mb-5">создать поездку</h3>
       <form [formGroup]="formGroup" (submit)="submitForm($event)">
         <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
         <div class="btn-group mt-5" role="group">
-          <button class="btn btn-success" type="submit">
-            <!-- <i class="fas fa-search"></i> -->
+          <button class="btn btn-success" [disabled]='formGroup.invalid' type="submit">
+            <i class="fas fa-plus-circle"></i>
             Публиковать
           </button>
           <button class="btn btn-outline-success" type="button" (click)="formGroup.reset();">

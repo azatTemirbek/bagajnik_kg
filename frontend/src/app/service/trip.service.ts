@@ -37,7 +37,7 @@ export class TripService {
    * to update trip
    * @param data trip data
    */
-  update(data: Trip) {
+  update(data) {
     return this.http.post(`${this.api}/trips/${data.id}`, data);
   }
   /**
