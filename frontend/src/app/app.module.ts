@@ -28,6 +28,7 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { TripFormComponent } from './pages/form/trip-form/trip-form.component';
 import { JumbotronComponent } from './components/Jumbotron/Jumbotron.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LuggageFormComponent } from './pages/form/luggage-form/luggage-form.component';
 
 
 
@@ -47,7 +48,8 @@ import { FooterComponent } from './components/footer/footer.component';
     LuggagesComponent,
     TripFormComponent,
     JumbotronComponent,
-    FooterComponent
+    FooterComponent,
+    LuggageFormComponent
   ],
   imports: [
     FormsModule,

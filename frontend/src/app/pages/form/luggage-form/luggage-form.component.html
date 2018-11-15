@@ -1,0 +1,21 @@
+<div class="container">
+
+  <div class="row pt-5">
+    <div class="col-md-12">
+      <h3>Ваш пост</h3>
+      <form [formGroup]="formGroup" (submit)="submitForm($event)">
+        <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
+        <div class="btn-group mt-5" role="group">
+          <button class="btn btn-success" type="submit">
+            Публиковать
+          </button>
+          <button class="btn btn-outline-success" type="button" (click)="formGroup.reset();">
+            <i class="fas fa-sync-alt"></i>
+            Сброс
+          </button>
+        </div>
+      </form>
+      <!-- form -->
+    </div>
+  </div>
+</div>

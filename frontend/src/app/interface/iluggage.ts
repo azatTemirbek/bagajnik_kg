@@ -2,6 +2,8 @@
 export interface ILuggage {
     id: Number;
     owner_id: Number;
+    start_dt: Date;
+    end_dt: Date;
     taker_id: Number;
     takerName: String;
     takerPhone1: String;
@@ -17,6 +19,5 @@ export interface ILuggage {
     to_lng: any;
     to_formatted_address: String;
     to_place_id: any;
-    start_dt: Date;
-    end_dt: Date;
+
 }
