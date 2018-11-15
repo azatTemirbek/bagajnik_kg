@@ -7,9 +7,9 @@
       <form [formGroup]="formGroup" (submit)="submitForm($event)">
         <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
         <div class="btn-group mt-5" role="group">
-          <button class="btn btn-success" [disabled]='formGroup.invalid' type="submit">
+          <button class="btn btn-success" [disabled]='!formGroup.valid' type="submit">
             <i class="fas fa-plus-circle"></i>
-            Публиковать
+            {{(id>0)?'Обновить':'Публиковать'}}
           </button>
           <button class="btn btn-outline-success" type="button" (click)="formGroup.reset();">
             <i class="fas fa-sync-alt"></i>

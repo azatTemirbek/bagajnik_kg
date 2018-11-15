@@ -9,16 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  open: Boolean = false;
 
   constructor(
     public Auth: AuthService,
     private route: Router,
-    private  Token: TokenService
-    ) { }
+    private Token: TokenService
+  ) { }
 
   ngOnInit() {
   }
-  logout(){
+  /**
+   * function to toggle the mobile menu
+   */
+  toggleOpen() {
+    this.open = !this.open;
+  }
+  /**
+   * auth logout method
+   */
+  logout() {
     this.Auth.loggedIn.next(!this.Auth.loggedIn.getValue());
     this.route.navigateByUrl('/login');
     this.Token.remove();

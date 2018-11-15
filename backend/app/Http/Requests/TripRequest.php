@@ -42,8 +42,10 @@ class TripRequest extends FormRequest
                         // 'to_place_id'=> 'required',
                         'to_formatted_address' => 'required',
                         'from_formatted_address' => 'required',
-                        'start_dt'      => 'required|date|after:yesterday',
-                        'end_dt'   => 'required|date|after:start_dt',
+                        'start_dt'      => 'required|date',
+                        // 'start_dt'      => 'required|date|after:yesterday',
+                        'end_dt'   => 'required|date',
+                        // 'end_dt'   => 'required|date|after:start_dt',
                     ];
                 }
             case 'PUT':
@@ -58,8 +60,10 @@ class TripRequest extends FormRequest
                         // 'to_place_id'=> 'required',
                         'to_formatted_address' => 'required',
                         'from_formatted_address' => 'required',
-                        'start_dt'      => 'required|date|after:yesterday',
-                        'end_dt'   => 'required|date|after:start_dt',
+                        'start_dt'      => 'required|date',
+                        // 'start_dt'      => 'required|date|after:yesterday',
+                        'end_dt'   => 'required|date',
+                        // 'end_dt'   => 'required|date|after:start_dt',
                     ];
                 }
             default:break;
@@ -88,10 +92,10 @@ class TripRequest extends FormRequest
                         // 'to_lat.required' => 'долгота Куда',
                         // 'to_lng.required' => 'широта Куда',
                         // 'to_place_id.required'  => 'ID место Куда',
-                        'to_formatted_address.required'  => 'Куда',
-                        'from_formatted_address.required'  => 'Откуда',
-                        'start_dt.required' => 'Дата вылета и время',
-                        'end_d.required'   => 'Дата прилета и время',
+                        'to_formatted_address.required'  => 'Куда необходимо!',
+                        'from_formatted_address.required'  => 'Откуда необходимо!',
+                        'start_dt.required' => 'Дата вылета необходимо!',
+                        'end_dt.required'   => 'Дата прилета необходимо!',
                     ];
                 }
             case 'PUT':
@@ -104,10 +108,10 @@ class TripRequest extends FormRequest
                         // 'to_lat.required' => 'долгота Куда',
                         // 'to_lng.required' => 'широта Куда',
                         // 'to_place_id.required'  => 'ID место Куда',
-                        'to_formatted_address.required'  => 'Куда',
-                        'from_formatted_address.required'  => 'Откуда',
-                        'start_dt.required' => 'Дата вылета и время',
-                        'end_d.required'   => 'Дата прилета и время',
+                        'to_formatted_address.required'  => 'Куда необходимо!',
+                        'from_formatted_address.required'  => 'Откуда необходимо!',
+                        'start_dt.required' => 'Дата вылета необходимо!',
+                        'end_dt.required'   => 'Дата прилета необходимо!',
                         ];
                 }
             default:break;

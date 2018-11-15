@@ -17,18 +17,33 @@
       <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
     </svg>
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06" aria-controls="navbarsExample06"
+  <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="toggleOpen()" data-target="#navbarsExample06" aria-controls="navbarsExample06"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarsExample06">
+  <div class="collapse navbar-collapse" [ngClass]="{'show': open}" id="navbarsExample06">
     <ul class="navbar-nav ml-auto">
-      <a *ngIf='!Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/register' ]" routerLinkActive="active">Регистация</a>
-      <a *ngIf='!Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/login' ]" routerLinkActive="active">Вход</a>
-      <a *ngIf='Auth.loggedIn.getValue()' class="nav-item nav-link" (click)='logout()' routerLinkActive="active">Выход</a>
-      <a *ngIf='Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/profile' ]" routerLinkActive="active">Профиль</a>
-      <a *ngIf='Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/profile' ]" routerLinkActive="active">Уведомления</a>
+      <a *ngIf='!Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/register' ]" routerLinkActive="active">
+        <i class="fab fa-wpforms"></i>
+         Регистация
+      </a>
+      <a *ngIf='!Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/login' ]" routerLinkActive="active">
+        <i class="fas fa-sign-in-alt"></i>
+        Вход
+      </a>
+      <a *ngIf='Auth.loggedIn.getValue()' class="nav-item nav-link" (click)='logout()' routerLinkActive="active">
+        <i class="fas fa-sign-out-alt "></i>
+        Выход
+      </a>
+      <a *ngIf='Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/profile' ]" routerLinkActive="active">
+        <i class="fa fa-user-circle "></i>
+        Профиль
+      </a>
+      <a *ngIf='Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/profile' ]" routerLinkActive="active">
+        <i class="fas fa-bell "></i>
+        Уведомления
+      </a>
     </ul>
   </div>
 </nav>

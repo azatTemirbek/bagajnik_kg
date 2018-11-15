@@ -41,13 +41,13 @@ export class TripsComponent implements OnInit, OnDestroy {
     }),
     new DynamicDatePickerModel({
       id: 'start_dt',
-      label: 'Начальная Дата',
+      label: 'Дата вылета c:',
       placeholder: 'ГГГГ-ММ-ДД',
       toggleLabel: '#',
     }),
     new DynamicDatePickerModel({
       id: 'end_dt',
-      label: 'Дата Окончание',
+      label: 'Дата вылета до:',
       placeholder: 'ГГГГ-ММ-ДД',
       toggleLabel: '#'
     }),

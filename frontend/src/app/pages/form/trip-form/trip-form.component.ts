@@ -22,7 +22,7 @@ export class TripFormComponent implements OnInit, OnDestroy {
   formModel: DynamicFormModel = [
     new DynamicInputModel({
       id: 'from_formatted_address',
-      label: 'Место Отправки',
+      label: 'Откуда',
       maxLength: 400,
       placeholder: 'Анкара',
       validators: {
@@ -34,7 +34,7 @@ export class TripFormComponent implements OnInit, OnDestroy {
     }),
     new DynamicInputModel({
       id: 'to_formatted_address',
-      label: 'Место Достаяки',
+      label: 'Куда',
       maxLength: 400,
       placeholder: 'Бишкек',
       validators: {
@@ -46,7 +46,7 @@ export class TripFormComponent implements OnInit, OnDestroy {
     }),
     new DynamicDatePickerModel({
       id: 'start_dt',
-      label: 'Начальная Дата',
+      label: 'Дата вылета',
       placeholder: 'ГГГГ-ММ-ДД',
       toggleLabel: '#',
       validators: {
@@ -58,7 +58,7 @@ export class TripFormComponent implements OnInit, OnDestroy {
     }),
     new DynamicDatePickerModel({
       id: 'end_dt',
-      label: 'Дата Окончание',
+      label: 'Дата прилета',
       placeholder: 'ГГГГ-ММ-ДД',
       toggleLabel: '#',
       validators: {
@@ -83,18 +83,22 @@ export class TripFormComponent implements OnInit, OnDestroy {
   sub: Subscription;
   tripData: BehaviorSubject<any> = new BehaviorSubject({});
   id: Number;
+  trips: any;
+  tripr: Subscription;
   constructor(
     private formService: DynamicFormService,
     private notifyService: SnotifyService,
     private tripService: TripService,
     private route: ActivatedRoute,
     private router: Router,
+
   ) { }
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params.id;
       if (+params.id > 0) {
-        this.tripService.read(+params.id).subscribe(({ end_dt, start_dt, from_formatted_address, to_formatted_address, id }: ITrip) => {
+        this.tripr = this.tripService.read(+params.id)
+        .subscribe(({ end_dt, start_dt, from_formatted_address, to_formatted_address, id }: ITrip) => {
           this.formGroup.setValue({
             end_dt: dateParse(end_dt),
             start_dt: dateParse(start_dt),
@@ -120,21 +124,20 @@ export class TripFormComponent implements OnInit, OnDestroy {
    * form submit and get data from the backend
    */
   submitForm() {
-    if (!this.formGroup.valid) {
-      if (this.id === -1) {
-        this.tripService.create(this.formData).subscribe(
-          success => this.handleSuccess(success),
-          error => this.handleError(error)
-        );
-      } else {
-        this.tripService.update({
-          ...this.formData,
-          id: this.id
-        }).subscribe(
-          success => this.handleSuccess(success),
-          error => this.handleError(error)
-        );
-      }
+    if (this.id === -1) {
+      this.trips = this.tripService.create(this.formData)
+      .subscribe(
+        success => this.handleSuccess(success),
+        error => this.handleError(error)
+      );
+    } else {
+      this.trips = this.tripService.update({
+        ...this.formData,
+        id: this.id
+      }).subscribe(
+        success => this.handleSuccess(success),
+        error => this.handleError(error)
+      );
     }
   }
   /**
@@ -142,19 +145,28 @@ export class TripFormComponent implements OnInit, OnDestroy {
    * @param data success data
    */
   handleSuccess(data) {
-    console.log(data);
-    this.notifyService.success('error');
+    if (data.id !== '') {
+      this.notifyService.success('Успешно обновлено!');
+    } else {
+      this.notifyService.success('Успешно создан!');
+    }
+    this.router.navigateByUrl('/trips');
   }
   /**
    * a function used to notify
    * @param error validtion text from the back
    */
   handleError({ error }) {
-    console.log(error.errors);
-    this.notifyService.success('error');
+    for (const key in error.errors) {
+      if (error.errors.hasOwnProperty(key)) {
+        this.notifyService.error(error.errors[key][0]);
+      }
+    }
   }
   ngOnDestroy(): void {
     this.valchange.unsubscribe();
     this.sub.unsubscribe();
+    this.trips.unsubscribe();
+    this.tripr.unsubscribe();
   }
 }
