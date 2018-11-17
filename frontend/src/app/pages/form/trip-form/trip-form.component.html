@@ -3,7 +3,7 @@
   <div class="row pt-5">
     <div class="col-md-12">
       <!-- form -->
-      <h3 class="text-uppercase text-center mb-5">создать поездку</h3>
+      <h3 class="text-uppercase text-center mb-5">{{(id>0)?'Обновить':'Создать'}} Поездку</h3>
       <form [formGroup]="formGroup" (submit)="submitForm($event)">
         <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
         <div class="btn-group mt-5" role="group">

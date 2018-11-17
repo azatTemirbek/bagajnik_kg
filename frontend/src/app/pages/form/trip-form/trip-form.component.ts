@@ -73,18 +73,17 @@ export class TripFormComponent implements OnInit, OnDestroy {
    * used to store formGroup
    */
   formGroup: FormGroup;
-  private valchange: Subscription;
   formData: {
     end_dt: string;
     start_dt: string;
     from_formatted_address: any;
     to_formatted_address: any;
   };
-  sub: Subscription;
-  tripData: BehaviorSubject<any> = new BehaviorSubject({});
   id: Number;
-  trips: any;
+  sub: Subscription;
+  trips: Subscription;
   tripr: Subscription;
+  valchange: Subscription;
   constructor(
     private formService: DynamicFormService,
     private notifyService: SnotifyService,
@@ -145,7 +144,7 @@ export class TripFormComponent implements OnInit, OnDestroy {
    * @param data success data
    */
   handleSuccess(data) {
-    if (data.id !== '') {
+    if (this.id > 0) {
       this.notifyService.success('Успешно обновлено!');
     } else {
       this.notifyService.success('Успешно создан!');
