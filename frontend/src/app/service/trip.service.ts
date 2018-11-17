@@ -37,8 +37,8 @@ export class TripService {
    * to update trip
    * @param data trip data
    */
-  update(data: Trip) {
-    return this.http.post(`${this.api}/trips/${data.id}`, data);
+  update(data) {
+    return this.http.put(`${this.api}/trips/${data.id}`, data);
   }
   /**
    * to delete offfer

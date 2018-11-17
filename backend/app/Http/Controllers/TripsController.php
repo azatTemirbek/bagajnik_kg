@@ -30,9 +30,9 @@ class TripsController extends Controller
             $query->whereDate('start_dt', '>', Carbon::parse($request->start_dt));
         }
         if($request->has ('end_dt') && $request->end_dt <> 'null'){
-            $query->whereDate('end_dt', '<', Carbon::parse($request->end_dt));
+            $query->whereDate('start_dt', '<', Carbon::parse($request->end_dt));
         }
-        $trip = $query->paginate(15);
+        $trip = $query->orderBy('id', 'desc')->paginate(15);
         return new TripsResourceCollection($trip);
     }
     /**
@@ -90,8 +90,9 @@ class TripsController extends Controller
     public function update(TripRequest $request, $id)
     {
        $tripUpdate = Trip::findOrFail($id);
-       $inputs = $request->all();
-       $tripUpdate->fill($inputs)->save();
+       if($tripUpdate->fill($request->all())->save()){
+           return new TripsResource($tripUpdate);
+       };
     }
 
     /**

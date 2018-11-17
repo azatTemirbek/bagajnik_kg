@@ -20,33 +20,53 @@ import { dateParse } from 'src/app/helpers/util';
 })
 export class TripFormComponent implements OnInit, OnDestroy {
   formModel: DynamicFormModel = [
-    // new DynamicInputModel({
-    //   id: 'id',
-    //   hidden: true
-    // }),
     new DynamicInputModel({
       id: 'from_formatted_address',
-      label: 'Место Отправки',
+      label: 'Откуда',
       maxLength: 400,
-      placeholder: 'Анкара'
+      placeholder: 'Анкара',
+      validators: {
+        required: null
+      },
+      errorMessages: {
+        required: '{{ label }} необходимо.'
+      }
     }),
     new DynamicInputModel({
       id: 'to_formatted_address',
-      label: 'Место Достаяки',
+      label: 'Куда',
       maxLength: 400,
-      placeholder: 'Бишкек'
+      placeholder: 'Бишкек',
+      validators: {
+        required: null
+      },
+      errorMessages: {
+        required: '{{ label }} необходимо.'
+      }
     }),
     new DynamicDatePickerModel({
       id: 'start_dt',
-      label: 'Начальная Дата',
+      label: 'Дата вылета',
       placeholder: 'ГГГГ-ММ-ДД',
       toggleLabel: '#',
+      validators: {
+        required: null
+      },
+      errorMessages: {
+        required: '{{ label }} необходимо.'
+      }
     }),
     new DynamicDatePickerModel({
       id: 'end_dt',
-      label: 'Дата Окончание',
+      label: 'Дата прилета',
       placeholder: 'ГГГГ-ММ-ДД',
-      toggleLabel: '#'
+      toggleLabel: '#',
+      validators: {
+        required: null
+      },
+      errorMessages: {
+        required: '{{ label }} необходимо.'
+      }
     }),
   ];
   /**
@@ -62,23 +82,31 @@ export class TripFormComponent implements OnInit, OnDestroy {
   };
   sub: Subscription;
   tripData: BehaviorSubject<any> = new BehaviorSubject({});
+  id: Number;
+  trips: any;
+  tripr: Subscription;
   constructor(
     private formService: DynamicFormService,
-    private notify: SnotifyService,
+    private notifyService: SnotifyService,
     private tripService: TripService,
     private route: ActivatedRoute,
     private router: Router,
+
   ) { }
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.tripService.read(+params.id).subscribe(({ end_dt, start_dt, from_formatted_address, to_formatted_address}: ITrip) => {
-        this.formGroup.setValue({
-          end_dt: dateParse(end_dt),
-          start_dt: dateParse(start_dt),
-          from_formatted_address,
-          to_formatted_address
+      this.id = +params.id;
+      if (+params.id > 0) {
+        this.tripr = this.tripService.read(+params.id)
+        .subscribe(({ end_dt, start_dt, from_formatted_address, to_formatted_address, id }: ITrip) => {
+          this.formGroup.setValue({
+            end_dt: dateParse(end_dt),
+            start_dt: dateParse(start_dt),
+            from_formatted_address,
+            to_formatted_address
+          });
         });
-      });
+      }
     });
     this.formGroup = this.formService.createFormGroup(this.formModel);
     this.valchange = this.formGroup.valueChanges.subscribe(
@@ -96,15 +124,49 @@ export class TripFormComponent implements OnInit, OnDestroy {
    * form submit and get data from the backend
    */
   submitForm() {
-    // todo: error/success notify
-    // todo: track id and deside weather update or create
-    this.tripService.create(this.formData).subscribe(
-      s => console.log(s),
-      e => console.log(e),
-    );
+    if (this.id === -1) {
+      this.trips = this.tripService.create(this.formData)
+      .subscribe(
+        success => this.handleSuccess(success),
+        error => this.handleError(error)
+      );
+    } else {
+      this.trips = this.tripService.update({
+        ...this.formData,
+        id: this.id
+      }).subscribe(
+        success => this.handleSuccess(success),
+        error => this.handleError(error)
+      );
+    }
+  }
+  /**
+   * a function to handle the responce
+   * @param data success data
+   */
+  handleSuccess(data) {
+    if (data.id !== '') {
+      this.notifyService.success('Успешно обновлено!');
+    } else {
+      this.notifyService.success('Успешно создан!');
+    }
+    this.router.navigateByUrl('/trips');
+  }
+  /**
+   * a function used to notify
+   * @param error validtion text from the back
+   */
+  handleError({ error }) {
+    for (const key in error.errors) {
+      if (error.errors.hasOwnProperty(key)) {
+        this.notifyService.error(error.errors[key][0]);
+      }
+    }
   }
   ngOnDestroy(): void {
     this.valchange.unsubscribe();
     this.sub.unsubscribe();
+    this.trips.unsubscribe();
+    this.tripr.unsubscribe();
   }
 }
