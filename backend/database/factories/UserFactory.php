@@ -25,7 +25,6 @@ $factory->define(App\User::class, function (Faker $faker) {
 });
 
 $factory->define(App\Trip::class, function (Faker $faker) {
-
     return [
         'carrier_id' => $faker->numberBetween($min = 1, $max = 50),
         'start_dt' => $faker->dateTime,
@@ -42,7 +41,6 @@ $factory->define(App\Trip::class, function (Faker $faker) {
 });
 
 $factory->define(App\Rating::class, function (Faker $faker) {
-
     return [
         'from_user_id' => $faker->numberBetween($min = 1, $max = 50),
         'to_user_id' => $faker->numberBetween($min = 1, $max = 50),
@@ -52,7 +50,6 @@ $factory->define(App\Rating::class, function (Faker $faker) {
 });
 
 $factory->define(App\Luggage::class, function (Faker $faker) {
-
    return [
         'owner_id' => $faker->numberBetween($min = 1, $max = 50),
         'taker_id' => $faker->numberBetween($min = 1, $max = 50),
@@ -61,8 +58,8 @@ $factory->define(App\Luggage::class, function (Faker $faker) {
         'takerPhone2' => $faker->phoneNumber,
         'mass' => $faker->numberBetween($min = 1, $max = 50),
         'comertial' => $faker->boolean($chanceOfGettingTrue = 50),
-        'value' => $faker->word,
-        'price' => $faker->word,
+        'value' => $faker->randomElement($array = array ('Ценный','Не ценный')),
+        'price' => $faker->numberBetween($min = 0, $max = 1000),
         'start_dt' => $faker->dateTime,
         'end_dt' => $faker->dateTime,
         'from_lat' => $faker->latitude($min = -90, $max = 90),
@@ -73,7 +70,6 @@ $factory->define(App\Luggage::class, function (Faker $faker) {
         'to_lng' => $faker->longitude($min = -180, $max = 180),
         'to_formatted_address' => $faker->address(),
         'to_place_id' => $faker->numberBetween($min = 1, $max = 100),
-
     ];
 });
 
@@ -85,6 +81,5 @@ $factory->define(App\Offer::class, function (Faker $faker) {
         'trip_id' => $faker->numberBetween($min = 1, $max = 50),
         'agree' => $faker->numberBetween($min = 1, $max = 9),
         'status' => $faker->word
-
     ];
 });

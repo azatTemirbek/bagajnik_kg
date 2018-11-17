@@ -26,7 +26,7 @@ class CreateLuggageTable extends Migration
             $table->integer('mass');
             $table->boolean('comertial')->default(false);
             $table->string('value',20)->nullable();
-            $table->string('price',20)->nullable();
+            $table->decimal('price',9,2)->default(0);
             $table->string('from_lat');
             $table->string('from_lng');
             $table->string('from_formatted_address');

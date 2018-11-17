@@ -44,7 +44,16 @@ class LuggageController extends Controller
         if($request->has ('mass') && $request->mass <> 'null'){
             $query->whereBetween('mass',explode(',', $request->mass));
         }
-        $luggage = $query->paginate(15);
+        if($request->has ('value') && $request->value <> 'null'){
+            $query->where('value', 'like', "%$request->value%");
+        }
+        if($request->has ('price') && $request->price <> 'null'){
+            $query->whereBetween('price',explode(',', $request->price));
+        }
+
+        // offer aggre false olanlari filtrele
+        // $query->offers()->where('agree','=',false);
+        $luggage = $query->orderBy('id', 'desc')->paginate(15);
         return new LuggageResourceCollection($luggage);
     }
     /**

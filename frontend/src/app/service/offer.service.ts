@@ -18,14 +18,14 @@ export class OfferService {
    * will return all the offers with pagination
    */
   getAll(params) {
-    return this.http.get(`${this.api}/offers`,{params});
+    return this.http.get(`${this.api}/offers`, { params });
   }
   /**
    * will get spesific offer
    * @param id offerId
    */
   read(id: Number) {
-    return this.http.get(`${this.api}/offer/${id}`);
+    return this.http.get(`${this.api}/offers/${id}`);
   }
   /**
    * will create offer
@@ -39,14 +39,14 @@ export class OfferService {
    * @param data offer data
    */
   update(data: Offer) {
-    return this.http.post(`${this.api}/offer/${data.id}`, data);
+    return this.http.post(`${this.api}/offers/${data.id}`, data);
   }
   /**
    * to delete offfer
    * @param id id of the delete Offer
    */
   delete(id: Number) {
-    return this.http.delete(`${this.api}/offer/${id}`);
+    return this.http.delete(`${this.api}/offers/${id}`);
   }
   /**
    * http://localhost:8000/api/trips?page=2
@@ -55,5 +55,4 @@ export class OfferService {
   getWith(url) {
     return this.http.get(url);
   }
-
 }

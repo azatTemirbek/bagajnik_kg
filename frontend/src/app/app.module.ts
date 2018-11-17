@@ -29,6 +29,7 @@ import { TripFormComponent } from './pages/form/trip-form/trip-form.component';
 import { JumbotronComponent } from './components/Jumbotron/Jumbotron.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LuggageFormComponent } from './pages/form/luggage-form/luggage-form.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 
 
@@ -62,6 +63,7 @@ import { LuggageFormComponent } from './pages/form/luggage-form/luggage-form.com
     DynamicFormsCoreModule,
     DynamicFormsNGBootstrapUIModule,
     InfiniteScrollModule,
+    Ng5SliderModule
   ],
   providers: [
     JarvisService,

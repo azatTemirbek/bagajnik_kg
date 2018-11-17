@@ -1,15 +1,15 @@
 <div class="mt-4 col-8 offset-2">
   <div class="card">
     <div class="card-header">
-      Send e-mail for password
+        Отправить e-mail для пароля
     </div>
-    <div class="card-body">
+    <div class="card-body mt-5">
       <form class="custom" #RequestResetForm="ngForm" (ngSubmit)="onSubmit(RequestResetForm)">
 
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Эл. адрес</label>
           <div class="col-sm-10">
-            <input [(ngModel)]="form.email" type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email"
+            <input [(ngModel)]="form.email" type="email" name="email" class="form-control" id="inputEmail3" placeholder="mail@mail.com"
               required>
           </div>
         </div>
@@ -17,8 +17,9 @@
         <div class="form-group row">
           <div class="col-sm-12">
             <div class="btn-group float-right" role="group" aria-label="Basic example">
-              <button type="submit" [disabled]="!RequestResetForm.valid" class="btn btn-primary">Send Password Reset
-                Email</button>
+              <button type="submit" [disabled]="!RequestResetForm.valid" class="btn btn-primary">
+                  Отправить пароль
+              </button>
             </div>
           </div>
 

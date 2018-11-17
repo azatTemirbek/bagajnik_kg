@@ -88,8 +88,7 @@ export class TripFormComponent implements OnInit, OnDestroy {
     private tripService: TripService,
     private route: ActivatedRoute,
     private router: Router,
-
-  ) { }
+    ) { }
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params.id;

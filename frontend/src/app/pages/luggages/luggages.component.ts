@@ -13,6 +13,7 @@ import { SnotifyService } from 'ng-snotify';
 import { RequestData } from '../../models/request-data';
 import { Subscription } from 'rxjs';
 import { LuggageService } from 'src/app/service/luggage.service';
+import { Options, LabelType } from 'ng5-slider';
 
 @Component({
   selector: 'app-luggage',
@@ -20,6 +21,25 @@ import { LuggageService } from 'src/app/service/luggage.service';
   styleUrls: ['./luggages.component.css']
 })
 export class LuggagesComponent implements OnInit, OnDestroy {
+  /** range price */
+  minValue: Number = 0;
+  maxValue: Number = 1000;
+  options: Options = {
+    floor: 0,
+    ceil: 1000,
+    translate: (value: Number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return `${value} сом`;
+        case LabelType.High:
+          return `${value} сом`;
+        default:
+          return value + 'сом';
+      }
+    }
+  };
+  /** range price end */
+  /** list of luggages */
   data: Array<ILuggage>;
   links: any;
   meta: any;
@@ -56,32 +76,46 @@ export class LuggagesComponent implements OnInit, OnDestroy {
       id: 'mass',
       label: 'Вес',
       options: [
-          {
-              label: '0 - 1',
-              value: '0,1'
-          },
-          {
-              label: '1 - 5',
-              value: '1,5'
-          },
-          {
-              label: '5 - 10',
-              value: '5,10'
-          },
-          {
-              label: '10 - 15',
-              value: '10,15'
-          },
-          {
-              label: '15-20',
-              value: '10,20'
-          },
-          {
-            label: '20-More',
-            value: '20,1000'
-          }
+        {
+          label: '0 - 1',
+          value: '0,1'
+        },
+        {
+          label: '1 - 5',
+          value: '1,5'
+        },
+        {
+          label: '5 - 10',
+          value: '5,10'
+        },
+        {
+          label: '10 - 15',
+          value: '10,15'
+        },
+        {
+          label: '15-20',
+          value: '10,20'
+        },
+        {
+          label: '20-More',
+          value: '20,1000'
+        }
       ],
-  }),
+    }),
+    new DynamicSelectModel({
+      id: 'value',
+      label: 'Ценность',
+      options: [
+        {
+          label: 'Ценный',
+          value: 'Ценный'
+        },
+        {
+          label: 'Не ценный',
+          value: 'Не ценный'
+        }
+      ],
+    }),
     new DynamicCheckboxModel({
       id: 'comertial',
       label: 'Коммерческий',
@@ -108,7 +142,8 @@ export class LuggagesComponent implements OnInit, OnDestroy {
       from_formatted_address,
       to_formatted_address,
       comertial,
-      mass
+      mass,
+      value
     }) => {
       this.filter.end_dt = end_dt && `${end_dt.year}-${end_dt.month}-${end_dt.day} 00:00:00`;
       this.filter.start_dt = start_dt && `${start_dt.year}-${start_dt.month}-${start_dt.day} 00:00:00`;
@@ -116,13 +151,17 @@ export class LuggagesComponent implements OnInit, OnDestroy {
       this.filter.to_formatted_address = to_formatted_address;
       this.filter.comertial = comertial;
       this.filter.mass = mass;
+      this.filter.value = value;
     });
   }
   /**
    * Finds luggagess component with given parameters
    */
   find() {
-    this.getAll(this.filter);
+    this.getAll({
+      ...this.filter,
+      price: this.minValue + ',' + this.maxValue
+    });
   }
   /**
    * Gets all a function to make request with pagin and filtering
