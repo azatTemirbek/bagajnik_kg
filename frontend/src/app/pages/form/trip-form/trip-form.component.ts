@@ -81,8 +81,6 @@ export class TripFormComponent implements OnInit, OnDestroy {
   };
   id: Number;
   sub: Subscription;
-  trips: Subscription;
-  tripr: Subscription;
   valchange: Subscription;
   constructor(
     private formService: DynamicFormService,
@@ -96,7 +94,7 @@ export class TripFormComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params.id;
       if (+params.id > 0) {
-        this.tripr = this.tripService.read(+params.id)
+        this.tripService.read(+params.id)
         .subscribe(({ end_dt, start_dt, from_formatted_address, to_formatted_address, id }: ITrip) => {
           this.formGroup.setValue({
             end_dt: dateParse(end_dt),
@@ -124,13 +122,13 @@ export class TripFormComponent implements OnInit, OnDestroy {
    */
   submitForm() {
     if (this.id === -1) {
-      this.trips = this.tripService.create(this.formData)
+      this.tripService.create(this.formData)
       .subscribe(
         success => this.handleSuccess(success),
         error => this.handleError(error)
       );
     } else {
-      this.trips = this.tripService.update({
+      this.tripService.update({
         ...this.formData,
         id: this.id
       }).subscribe(
@@ -165,7 +163,5 @@ export class TripFormComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.valchange.unsubscribe();
     this.sub.unsubscribe();
-    this.trips.unsubscribe();
-    this.tripr.unsubscribe();
   }
 }
