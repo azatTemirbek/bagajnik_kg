@@ -16,7 +16,6 @@
   </div>
   <div class="row">
     <div class="col-lg-3">
-      <h4>Поиск</h4>
       <div class="card">
         <div class="card-body">
           <form [formGroup]="formGroup" (submit)="find($event)">
@@ -54,13 +53,13 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col">
-                        <h5 class="card-title"><i class="fas fa-plane-departure text-primary fa-2x m-2"></i>
+                        <h5 class="card-title"><i class="fas fa-suitcase text-primary fa-2x m-2"></i>
                           {{trip?.from_formatted_address}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
                           {{trip?.start_dt }}</h6>
                       </div>
                       <div class="col">
-                        <h5 class="card-title"><i class="fas fa-plane-arrival text-warning fa-2x m-2"></i>
+                        <h5 class="card-title"><i class="fas fa-luggage-cart text-warning fa-2x m-2"></i>
                           {{trip?.to_formatted_address }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
                           {{trip?.end_dt }}</h6>
