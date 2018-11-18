@@ -164,6 +164,15 @@ export class LuggagesComponent implements OnInit, OnDestroy {
     });
   }
   /**
+   * used to reset the form
+   */
+  resetAndFind() {
+    this.formGroup.reset();
+    this.minValue = 0;
+    this.maxValue = 1000;
+    this.find();
+  }
+  /**
    * Gets all a function to make request with pagin and filtering
    * @param params -
    */

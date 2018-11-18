@@ -3,7 +3,8 @@ import {
   DynamicFormModel,
   DynamicInputModel,
   DynamicDatePickerModel,
-  DynamicFormService
+  DynamicFormService,
+  DynamicFormLayout
 } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription, BehaviorSubject } from 'rxjs';
@@ -12,6 +13,7 @@ import { TripService } from 'src/app/service/trip.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ITrip } from 'src/app/interface/itrip';
 import { dateParse } from 'src/app/helpers/util';
+import { MY_FORM_LAYOUT } from './TRIP_LAYOUT';
 
 @Component({
   selector: 'app-trip-form',
@@ -19,6 +21,7 @@ import { dateParse } from 'src/app/helpers/util';
   styleUrls: ['./trip-form.component.css']
 })
 export class TripFormComponent implements OnInit, OnDestroy {
+  formLayout: DynamicFormLayout = MY_FORM_LAYOUT;
   formModel: DynamicFormModel = [
     new DynamicInputModel({
       id: 'from_formatted_address',

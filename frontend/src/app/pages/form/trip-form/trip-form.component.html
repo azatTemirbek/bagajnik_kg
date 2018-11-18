@@ -1,12 +1,24 @@
 <div class="container">
-
-  <div class="row pt-5">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Главная страница</a></li>
+          <li class="breadcrumb-item"><a href="#"> Создать Поездку </a></li>
+          <li class="col"></li>
+          <a [routerLink]="[ '/trips']" class="btn justify-content-end btn-sm btn-primary text-capitalize text-white pr-3">
+            <i class="fas fa-list-ul"></i>
+            Список Поездок
+          </a>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div class="row pt-3">
     <div class="col-md-12">
-      <!-- form -->
-      <h3 class="text-uppercase text-center mb-5">{{(id>0)?'Обновить':'Создать'}} Поездку</h3>
       <form [formGroup]="formGroup" (submit)="submitForm($event)">
-        <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
-        <div class="btn-group mt-5" role="group">
+        <dynamic-ng-bootstrap-form [group]="formGroup" [layout]="formLayout" [model]="formModel"></dynamic-ng-bootstrap-form>
+        <div class="btn-group mt-5 d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center " role="group">
           <button class="btn btn-success" [disabled]='!formGroup.valid' type="submit">
             <i class="fas fa-plus-circle"></i>
             {{(id>0)?'Обновить':'Публиковать'}}
@@ -17,7 +29,6 @@
           </button>
         </div>
       </form>
-      <!-- form -->
     </div>
   </div>
 </div>
