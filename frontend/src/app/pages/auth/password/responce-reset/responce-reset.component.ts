@@ -32,7 +32,7 @@ export class ResponceResetComponent implements OnInit {
   }
   onSubmit(form) {
     if (!this.form.restToken) {
-      this.notify.error('Token not found');
+      this.notify.error('Токен не найден');
     }
     this.jarvis.changePassword(this.form).subscribe(
       data => this.handleResponse(data),
@@ -41,9 +41,8 @@ export class ResponceResetComponent implements OnInit {
   }
 
   handleResponse(data) {
-
     const _router = this.router;
-    this.notify.confirm('Done!, Now login with new Password', {
+    this.notify.confirm('Теперь войдите с новым паролем', {
       buttons: [
         {
           text: 'Yes!',

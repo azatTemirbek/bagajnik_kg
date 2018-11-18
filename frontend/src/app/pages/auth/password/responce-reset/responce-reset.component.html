@@ -1,15 +1,15 @@
 <div class="mt-4 col-8 offset-2">
   <div class="card">
     <div class="card-header">
-      Reset Password
+        Сброс пароля
     </div>
     <div class="card-body">
       <form class="custom" #ResetPasswordForm="ngForm" (ngSubmit)="onSubmit(ResetPasswordForm)">
 
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+          <label for="inputEmail3" class="col-sm-3 col-form-label">Эл. адрес</label>
           <div class="col-sm-9">
-            <input [(ngModel)]="form.email" type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email"
+            <input [(ngModel)]="form.email" type="email" name="email" class="form-control" id="inputEmail3" placeholder="Эл. адрес"
               required>
               <span [hidden]='!error.email' class="text-danger">
                 {{error.email}}
@@ -18,10 +18,10 @@
         </div>
 
         <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
+          <label for="inputPassword3" class="col-sm-3 col-form-label">Пароль</label>
           <div class="col-sm-9">
             <input type="password" [(ngModel)]="form.password" name="password" class="form-control" id="inputPassword3"
-              placeholder="Password" required>
+              placeholder="Пароль" required>
               <span [hidden]='!error.password' class="text-danger">
                 {{error.password}}
               </span>
@@ -29,10 +29,10 @@
         </div>
 
         <div class="form-group row">
-          <label for="inputPassword4" class="col-sm-3 col-form-label">Password Confirmation</label>
+          <label for="inputPassword4" class="col-sm-3 col-form-label">Подтверждение пароля</label>
           <div class="col-sm-9">
             <input type="password" [(ngModel)]="form.password_confirmation" name="password_confirmation" class="form-control" id="inputPassword4"
-              placeholder="Password Confirmation" required>
+              placeholder="Подтверждение пароля" required>
               <span [hidden]='!error.password_confirmation' class="text-danger">
                 {{error.password_confirmation}}
               </span>
@@ -42,7 +42,7 @@
         <div class="form-group row">
           <div class="col-sm-12">
             <div class="btn-group float-right" role="group" aria-label="Basic example">
-              <button type="submit" [disabled]="!ResetPasswordForm.valid" class="btn btn-primary">Change Password</button>
+              <button type="submit" [disabled]="!ResetPasswordForm.valid" class="btn btn-primary">Изменить пароль</button>
               <!-- <button type="button"
               [routerLink]="['/register']"
               routerLinkActive="router-link-active"

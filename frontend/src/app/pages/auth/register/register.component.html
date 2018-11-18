@@ -7,7 +7,7 @@
         <div class="form-group row">
           <label for="inputName3" class="col-sm-2 col-form-label">Имя</label>
           <div class="col-sm-10">
-            <input type="text" name="name" class="form-control" id="inputname3" placeholder="Name" [(ngModel)]="form.name"
+            <input type="text" name="name" class="form-control" id="inputname3" placeholder="Имя" [(ngModel)]="form.name"
               required>
             <div class="alert alert-danger" [hidden]="!error.name">
               {{error?.name}}
@@ -18,7 +18,7 @@
         <div class="form-group row">
           <label for="inputName4" class="col-sm-2 col-form-label">Фамилия</label>
           <div class="col-sm-10">
-            <input type="text" name="surname" class="form-control" id="inputname4" placeholder="Surname" [(ngModel)]="form.surname"
+            <input type="text" name="surname" class="form-control" id="inputname4" placeholder="Фамилия" [(ngModel)]="form.surname"
               required>
             <div class="alert alert-danger" [hidden]="!error.surname">
               {{error?.surname}}
@@ -29,7 +29,7 @@
         <div class="form-group row">
           <label for="inputName5" class="col-sm-2 col-form-label">Телефон</label>
           <div class="col-sm-10">
-            <input type="text" name="phone" class="form-control" id="inputname5" placeholder="Phone" [(ngModel)]="form.phone"
+            <input type="text" name="phone" class="form-control" id="inputname5" placeholder="Телефон" [(ngModel)]="form.phone"
               required>
             <div class="alert alert-danger" [hidden]="!error.phone">
               {{error?.phone}}
@@ -40,7 +40,7 @@
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Эл. адрес</label>
           <div class="col-sm-10">
-            <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email" [(ngModel)]="form.email"
+            <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="mail@mail.com" [(ngModel)]="form.email"
               required>
             <div class="alert alert-danger" [hidden]="!error.email">
               {{error?.email}}
@@ -51,7 +51,7 @@
         <div class="form-group row">
           <label for="inputPasswordConfirmation3" class="col-sm-2 col-form-label">Пароль</label>
           <div class="col-sm-10">
-            <input type="password" name="password" class="form-control" id="inputPasswordConfirmation3" placeholder="Confirm Password"
+            <input type="password" name="password" class="form-control" id="inputPasswordConfirmation3" placeholder="Пароль"
               [(ngModel)]="form.password" required>
             <div class="alert alert-danger" [hidden]="!error.password">
               {{error?.password}}
@@ -62,7 +62,7 @@
         <div class="form-group row">
           <label for="inputPassword3" class="col-sm-2 col-form-label">Подтвердите Пароль</label>
           <div class="col-sm-10">
-            <input type="password" name="password_confirmation" class="form-control" id="inputPassword3" placeholder="Password"
+            <input type="password" name="password_confirmation" class="form-control" id="inputPassword3" placeholder="Подтвердите Пароль"
               [(ngModel)]="form.password_confirmation" required>
           </div>
         </div>

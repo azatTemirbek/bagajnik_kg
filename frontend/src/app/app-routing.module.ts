@@ -12,7 +12,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TripsComponent } from './pages/trips/trips.component';
 import { LuggagesComponent } from './pages/luggages/luggages.component';
 import { TripFormComponent } from './pages/form/trip-form/trip-form.component';
-import {LuggageFormComponent} from "./pages/form/luggage-form/luggage-form.component";
+import {LuggageFormComponent} from './pages/form/luggage-form/luggage-form.component';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent, canActivate: [BeforeLoginService] },
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [BeforeLoginService] },
   { path: 'profile', component: ProfileComponent, canActivate: [BeforeLoginService] },
   { path: 'request-password-reset', component: RequestResetComponent, canActivate: [BeforeLoginService]  },
-  { path: 'response-password-reset', component: ResponceResetComponent, canActivate: [BeforeLoginService]  },
+  { path: 'responce-password-reset', component: ResponceResetComponent, canActivate: [BeforeLoginService]  },
   { path: 'trips', component: TripsComponent, canActivate: [BeforeLoginService]  },
   { path: 'tripform/:id', component: TripFormComponent, canActivate: [BeforeLoginService]  },
   { path: 'luggages', component: LuggagesComponent, canActivate: [BeforeLoginService]  },
