@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div class="row pt-5">
+    <div class="row pb-5">
       <div class="col-lg-3">
         <h4 class="pt-5">Поиск</h4>
 
@@ -113,9 +113,9 @@
                 </div>
               </div>
             </div>
-            <div class="row pb-5">
+            <div class="row">
                 <div class="col"></div>
-                <div *ngIf='data' class="col pt-5">
+                <div *ngIf='data' class="col pt-3">
                   <ngb-pagination [pageSize]='meta.per_page' [collectionSize]="meta.total" [(page)]="meta.current_page"
                     aria-label="Default pagination" (pageChange)="pageChange($event)"></ngb-pagination>
                 </div>

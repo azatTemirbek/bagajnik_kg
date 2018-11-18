@@ -9,7 +9,7 @@ form.custom.ng-valid:not(form){
   border-left: 5px solid green;
 }
 .results {
-  height: 60vh;
+  height: 68vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
