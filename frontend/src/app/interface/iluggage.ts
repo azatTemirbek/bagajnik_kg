@@ -1,7 +1,7 @@
 
 export interface ILuggage {
     id: Number;
-    owner_id: Number;
+    //owner_id: Number;
     start_dt: Date;
     end_dt: Date;
     taker_id: Number;

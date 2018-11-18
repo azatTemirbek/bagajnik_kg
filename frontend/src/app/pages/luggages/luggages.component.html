@@ -76,35 +76,36 @@
             <div class="card-text">
                 <div #myinfiniteScroll class="results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
                 [scrollWindow]="false">
-                <div *ngFor='let trip of data' class="col-md-12">
+                <div *ngFor='let luggage of data' class="col-md-12">
 
                   <div class="card mb-2">
                     <div class="card-body">
                       <div class="row">
                         <div class="col">
-                          <h5 class="card-title"><i class="fas fa-plane-departure text-primary fa-2x m-2"></i>
-                            {{trip?.from_formatted_address}}</h5>
+                          <h5 class="card-title"><i class="fas fa-luggage-cart text-primary fa-2x m-2"></i>
+                            {{luggage?.from_formatted_address}}</h5>
                           <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
-                            {{trip?.start_dt }}</h6>
+                            {{luggage?.start_dt }}</h6>
                         </div>
                         <div class="col">
-                          <h5 class="card-title"><i class="fas fa-plane-arrival text-warning fa-2x m-2"></i>
-                            {{trip?.to_formatted_address }}</h5>
+                          <h5 class="card-title"><i class="fas fa-luggage-cart text-warning fa-2x m-2"></i>
+                            {{luggage?.to_formatted_address }}</h5>
                           <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
-                            {{trip?.end_dt }}</h6>
+                            {{luggage?.end_dt }}</h6>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col">
-                          <p class="card-text h4">
-                            <i class="fab fa-whatsapp text-success"></i> {{trip?.relationships.carrier?.phone}}
+                          <p class="card-text mb-2">
+                            <i class="fab fa-whatsapp text-success"></i> {{luggage?.takerPhone1}}<br>
+                            <i class="fab fa-whatsapp text-success"></i> {{luggage?.takerPhone1}}
                           </p>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                             card's content.</p>
                         </div>
                       </div>
                       <div class="float-right">
-                        <a routerLink="/tripform/-1" [queryParams]="{ offerTrip: trip.id }"  class="card-link">Предлажите доставить</a>
+                        <a routerLink="/luggageform/-1" [queryParams]="{ offerLuggage: luggage.id }"  class="card-link">Предлажите доставить</a>
                         <!-- <a href="#" class="card-link">Another link</a> -->
                       </div>
                     </div>

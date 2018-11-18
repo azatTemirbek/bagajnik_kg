@@ -128,7 +128,7 @@ export class LuggagesComponent implements OnInit, OnDestroy {
   private valchange: Subscription;
   @ViewChild('myinfiniteScroll') myinfiniteScroll: ElementRef;
   constructor(
-    private luggages: LuggageService,
+    private luggage: LuggageService,
     private formService: DynamicFormService,
     private notify: SnotifyService
   ) { }
@@ -168,7 +168,7 @@ export class LuggagesComponent implements OnInit, OnDestroy {
    * @param params -
    */
   getAll(params) {
-    this.luggages.getAll(params).subscribe(
+    this.luggage.getAll(params).subscribe(
       (req: RequestData) => {
         this.data = req.data;
         this.links = req.links;

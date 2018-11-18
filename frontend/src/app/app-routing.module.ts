@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'trips', component: TripsComponent, canActivate: [BeforeLoginService]  },
   { path: 'tripform/:id', component: TripFormComponent, canActivate: [BeforeLoginService]  },
   { path: 'luggages', component: LuggagesComponent, canActivate: [BeforeLoginService]  },
-  { path: 'luggageform', component: LuggageFormComponent, canActivate: [BeforeLoginService]  },
+  { path: 'luggageform/:id', component: LuggageFormComponent, canActivate: [BeforeLoginService]  },
   { path: '**', component: PageNotFoundComponent },
 ];
 
