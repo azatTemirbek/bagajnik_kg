@@ -5,8 +5,8 @@
       <!-- form -->
       <h3 class="text-uppercase text-center mb-5">{{(id>0)?'Обновить':'Создать'}} Поездку</h3>
       <form [formGroup]="formGroup" (submit)="submitForm($event)">
-        <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
-        <div class="btn-group mt-5" role="group">
+        <dynamic-ng-bootstrap-form [group]="formGroup" [layout]="formLayout" [model]="formModel"></dynamic-ng-bootstrap-form>
+        <div class="btn-group mt-5 d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center " role="group">
           <button class="btn btn-success" [disabled]='!formGroup.valid' type="submit">
             <i class="fas fa-plus-circle"></i>
             {{(id>0)?'Обновить':'Публиковать'}}
