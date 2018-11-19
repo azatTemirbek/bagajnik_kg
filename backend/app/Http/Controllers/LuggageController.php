@@ -35,7 +35,7 @@ class LuggageController extends Controller
         if($request->has ('start_dt') && $request->start_dt <> 'null'){
             $query->whereDate('start_dt', '>', Carbon::parse($request->start_dt));
         }
-        if($request->has ('end_dt') && $request->end_dt <> 'null'){
+        if($request->has ('start_dt') && $request->end_dt <> 'null'){
             $query->whereDate('end_dt', '<', Carbon::parse($request->end_dt));
         }
         if($request->has ('comertial') && $request->comertial <> 'null'){
@@ -50,9 +50,9 @@ class LuggageController extends Controller
         if($request->has ('price') && $request->price <> 'null'){
             $query->whereBetween('price',explode(',', $request->price));
         }
-
         // offer aggre false olanlari filtrele
         // $query->offers()->where('agree','=',false);
+        // $query->whereDate('end_dt', '>', Carbon::now());
         $luggage = $query->orderBy('id', 'desc')->paginate(15);
         return new LuggageResourceCollection($luggage);
     }

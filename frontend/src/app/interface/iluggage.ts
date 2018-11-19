@@ -13,6 +13,7 @@ export interface ILuggage {
     value: String;
     from_lat: any;
     from_lng: any;
+    price: any;
     from_formatted_address: String;
     from_place_id: any;
     to_lat: any;

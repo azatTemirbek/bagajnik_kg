@@ -30,10 +30,7 @@ import { JumbotronComponent } from './components/Jumbotron/Jumbotron.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LuggageFormComponent } from './pages/form/luggage-form/luggage-form.component';
 import { Ng5SliderModule } from 'ng5-slider';
-
-
-
-
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +51,10 @@ import { Ng5SliderModule } from 'ng5-slider';
   ],
   imports: [
     FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'YOUR KEY GOES HERE',
+      libraries: ['places']
+    }),
     NgbModule,
     SnotifyModule,
     BrowserModule,

@@ -32,6 +32,8 @@ class TripsController extends Controller
         if($request->has ('end_dt') && $request->end_dt <> 'null'){
             $query->whereDate('start_dt', '<', Carbon::parse($request->end_dt));
         }
+        /** post end date greater than now */
+        // $query->whereDate('end_dt', '>', Carbon::now());
         $trip = $query->orderBy('id', 'desc')->paginate(15);
         return new TripsResourceCollection($trip);
     }

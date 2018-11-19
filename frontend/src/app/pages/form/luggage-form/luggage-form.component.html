@@ -1,21 +1,39 @@
 <div class="container">
-
-  <div class="row pt-5 pb-5 mb-5">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Главная страница</a></li>
+          <li class="breadcrumb-item"><a href="#"> Создать Багаж </a></li>
+          <li class="col"></li>
+          <a [routerLink]="[ '/luggages']" class="btn justify-content-end btn-sm btn-primary text-capitalize text-white pr-3">
+            <i class="fas fa-list-ul"></i>
+            Список Багажa
+          </a>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div class="row pt-3">
     <div class="col-md-12">
-      <h3>Ваш пост</h3>
-      <form [formGroup]="formGroup" (submit)="submitForm($event)">
-        <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
-        <div class="btn-group mt-5" role="group">
-          <button class="btn btn-success" type="submit">
-            Публиковать
-          </button>
-          <button class="btn btn-outline-success" type="button" (click)="formGroup.reset();">
-            <i class="fas fa-sync-alt"></i>
-            Сброс
-          </button>
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="formGroup" (submit)="submitForm($event)">
+            <dynamic-ng-bootstrap-form [group]="formGroup" [layout]="formLayout" [model]="formModel">
+            </dynamic-ng-bootstrap-form>
+            <div class="btn-group mt-5 d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center " role="group">
+              <button class="btn btn-success" [disabled]='!formGroup.valid' type="submit">
+                <i class="fas fa-plus-circle"></i>
+                {{(id>0)?'Обновить':'Публиковать'}}
+              </button>
+              <button class="btn btn-outline-success" type="button" (click)="formGroup.reset();">
+                <i class="fas fa-sync-alt"></i>
+                Сброс
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
-      <!-- form -->
+      </div>
     </div>
   </div>
 </div>
