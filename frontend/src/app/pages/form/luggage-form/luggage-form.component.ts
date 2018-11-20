@@ -126,7 +126,7 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
     new DynamicInputModel({
       id: 'mass',
       label: 'Вес:',
-      placeholder: 'x кг',
+      placeholder: 'кг',
       validators: {
         required: null
       },
@@ -186,6 +186,8 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
   id: Number;
   sub: Subscription;
   valchange: Subscription;
+  ffa: any;
+  tfa: boolean;
   constructor(
     private formService: DynamicFormService,
     private notifyService: SnotifyService,
@@ -193,7 +195,6 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
     private route: ActivatedRoute,
     private router: Router,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
   ) { }
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -261,12 +262,14 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit(): void {
     this.mapsAPILoader.load().then(
       () => {
-        const autocomplete1 = new google.maps.places.Autocomplete(window.document.getElementById('from_formatted_address'), {
-          types: ['address']
-        });
-        const autocomplete1 = new google.maps.places.Autocomplete(window.document.getElementById('to_formatted_address'), {
-          types: ['address']
-        });
+        if (!this.ffa && !this.tfa) {
+          this.ffa = new google.maps.places.Autocomplete(document.getElementById('from_formatted_address'), {
+            types: ['(cities)']
+          });
+          this.ffa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
+            types: ['(cities)']
+          });
+        }
       }
     );
   }

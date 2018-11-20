@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import {
   DynamicDatePickerModel,
   DynamicFormModel,
@@ -11,13 +11,14 @@ import { SnotifyService } from 'ng-snotify';
 import { RequestData } from '../../models/request-data';
 import { ITrip } from '../../interface/itrip';
 import { Subscription } from 'rxjs';
+import { MapsAPILoader } from '@agm/core';
 
 @Component({
   selector: 'app-trips',
   templateUrl: './trips.component.html',
   styleUrls: ['./trips.component.css']
 })
-export class TripsComponent implements OnInit, OnDestroy {
+export class TripsComponent implements OnInit, OnDestroy, AfterViewInit {
   data: Array<ITrip>;
   links: any;
   meta: any;
@@ -57,10 +58,13 @@ export class TripsComponent implements OnInit, OnDestroy {
    */
   formGroup: FormGroup;
   private valchange: Subscription;
+  ffa: any;
+  tfa: any;
   constructor(
     private trip: TripService,
     private formService: DynamicFormService,
-    private notify: SnotifyService
+    private notify: SnotifyService,
+    private mapsAPILoader: MapsAPILoader
   ) { }
 
   ngOnInit() {
@@ -72,6 +76,20 @@ export class TripsComponent implements OnInit, OnDestroy {
       this.filter.from_formatted_address = from_formatted_address;
       this.filter.to_formatted_address = to_formatted_address;
     });
+  }
+  ngAfterViewInit(): void {
+    this.mapsAPILoader.load().then(
+      () => {
+        if (!this.ffa && !this.tfa) {
+          this.ffa = new google.maps.places.Autocomplete(document.getElementById('from_formatted_address'), {
+            types: ['(cities)']
+          });
+          this.ffa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
+            types: ['(cities)']
+          });
+        }
+      }
+    );
   }
   /**
    * Finds trips component with given parameters

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import {
   DynamicFormModel,
   DynamicInputModel,
@@ -14,13 +14,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ITrip } from 'src/app/interface/itrip';
 import { dateParse } from 'src/app/helpers/util';
 import { MY_FORM_LAYOUT } from './TRIP_LAYOUT';
+import { MapsAPILoader } from '@agm/core';
 
 @Component({
   selector: 'app-trip-form',
   templateUrl: './trip-form.component.html',
   styleUrls: ['./trip-form.component.css']
 })
-export class TripFormComponent implements OnInit, OnDestroy {
+export class TripFormComponent implements OnInit, OnDestroy, AfterViewInit {
   formLayout: DynamicFormLayout = MY_FORM_LAYOUT;
   formModel: DynamicFormModel = [
     new DynamicInputModel({
@@ -85,12 +86,15 @@ export class TripFormComponent implements OnInit, OnDestroy {
   id: Number;
   sub: Subscription;
   valchange: Subscription;
+  ffa: any;
+  tfa: any;
   constructor(
     private formService: DynamicFormService,
     private notifyService: SnotifyService,
     private tripService: TripService,
     private route: ActivatedRoute,
     private router: Router,
+    private mapsAPILoader: MapsAPILoader
     ) { }
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -116,6 +120,20 @@ export class TripFormComponent implements OnInit, OnDestroy {
           from_formatted_address,
           to_formatted_address
         };
+      }
+    );
+  }
+  ngAfterViewInit(): void {
+    this.mapsAPILoader.load().then(
+      () => {
+        if (!this.ffa && !this.tfa) {
+          this.ffa = new google.maps.places.Autocomplete(document.getElementById('from_formatted_address'), {
+            types: ['(cities)']
+          });
+          this.ffa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
+            types: ['(cities)']
+          });
+        }
       }
     );
   }

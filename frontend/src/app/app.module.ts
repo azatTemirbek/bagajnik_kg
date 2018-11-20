@@ -52,7 +52,7 @@ import { AgmCoreModule } from '@agm/core';
   imports: [
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'YOUR KEY GOES HERE',
+      apiKey: 'AIzaSyDzGmj_dvSshTUckKSqViJXojnes-ZTtnI',
       libraries: ['places']
     }),
     NgbModule,

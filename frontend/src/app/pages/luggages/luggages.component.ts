@@ -1,5 +1,5 @@
 import { ILuggage } from './../../interface/iluggage';
-import { Component, OnDestroy, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import {
   DynamicDatePickerModel,
   DynamicFormModel,
@@ -14,13 +14,14 @@ import { RequestData } from '../../models/request-data';
 import { Subscription } from 'rxjs';
 import { LuggageService } from 'src/app/service/luggage.service';
 import { Options, LabelType } from 'ng5-slider';
+import { MapsAPILoader } from '@agm/core';
 
 @Component({
   selector: 'app-luggage',
   templateUrl: './luggages.component.html',
   styleUrls: ['./luggages.component.css']
 })
-export class LuggagesComponent implements OnInit, OnDestroy {
+export class LuggagesComponent implements OnInit, OnDestroy, AfterViewInit {
   /** range price */
   minValue: Number = 0;
   maxValue: Number = 1000;
@@ -127,10 +128,13 @@ export class LuggagesComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
   private valchange: Subscription;
   @ViewChild('myinfiniteScroll') myinfiniteScroll: ElementRef;
+  ffa: any;
+  tfa: any;
   constructor(
     private luggage: LuggageService,
     private formService: DynamicFormService,
-    private notify: SnotifyService
+    private notify: SnotifyService,
+    private mapsAPILoader: MapsAPILoader
   ) { }
 
   ngOnInit() {
@@ -153,6 +157,20 @@ export class LuggagesComponent implements OnInit, OnDestroy {
       this.filter.mass = mass;
       this.filter.value = value;
     });
+  }
+  ngAfterViewInit(): void {
+    this.mapsAPILoader.load().then(
+      () => {
+        if (!this.ffa && !this.tfa) {
+          this.ffa = new google.maps.places.Autocomplete(document.getElementById('from_formatted_address'), {
+            types: ['(cities)']
+          });
+          this.ffa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
+            types: ['(cities)']
+          });
+        }
+      }
+    );
   }
   /**
    * Finds luggagess component with given parameters
