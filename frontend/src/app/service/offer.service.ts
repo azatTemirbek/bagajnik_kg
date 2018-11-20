@@ -12,7 +12,7 @@ export class OfferService {
 
   constructor(
     private http: HttpClient,
-    // private auth: AuthService
+    private auth: AuthService
   ) { }
   /**
    * will return all the offers with pagination
@@ -39,7 +39,7 @@ export class OfferService {
    * @param data offer data
    */
   update(data: Offer) {
-    return this.http.post(`${this.api}/offers/${data.id}`, data);
+    return this.http.put(`${this.api}/offers/${+data.id}`, data);
   }
   /**
    * to delete offfer
@@ -54,5 +54,14 @@ export class OfferService {
    */
   getWith(url) {
     return this.http.get(url);
+  }
+  /**
+   * used to get new offer count request
+   */
+  getNewOfferCount(): any {
+    return this.getAll({
+      from_req_user_id: 2,
+      status: 'requested'
+    });
   }
 }

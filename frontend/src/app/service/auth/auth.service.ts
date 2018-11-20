@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn = new BehaviorSubject < boolean >(this.Token.loggedIn());
-  constructor( private Token: TokenService ) { }
+  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject(this.Token.loggedIn());
+  // todo
+  me: BehaviorSubject<any> = new BehaviorSubject({ id: 2 });
+  constructor(private Token: TokenService) { }
 }

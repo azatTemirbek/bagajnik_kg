@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
   handleResponse(data) {
     this.Token.handle(data.access_token);
     this.Auth.loggedIn.next(true);
+    this.Auth.me.next(data.user_data);
     this.router.navigateByUrl('/profile');
   }
 

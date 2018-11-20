@@ -23,11 +23,16 @@ class OfferResource extends JsonResource
 //            'attributes' => [
             'agree' => $this->agree,
             'status' => $this->status,
+            'req_user_id' => $this->req_user_id,
+            'res_user_id' => $this->res_user_id,
+            'luggage_id' => $this->luggage_id,
+            'trip_id' => $this->trip_id,
 //            ],
             'relationships' => [
                 'trip' => new TripsResource($this->trip),
                 'luggage' => new LuggageResource($this->luggage),
-                'user' => new UserResource($this->user)
+                'req_user' => new UserResource($this->req_user),
+                'res_user' => new UserResource($this->res_user)
             ],
         ];
     }

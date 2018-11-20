@@ -17,8 +17,17 @@ class OfferController extends Controller
     public function index(Request $request)
     {
         $query = Offer::query();
-        $request->has ('req_user') && $query->where('req_user_id', '>=', 45);
-        error_log($request->req_user);
+        if($request->has ('req_user_id') && $request->req_user_id <> 'null'){
+            $query->where('req_user_id', '=', $request->req_user_id);
+        }
+        if($request->has ('res_user_id') && $request->res_user_id <> 'null'){
+            $query->where('res_user_id', '=', $request->res_user_id);
+        }
+        if($request->has ('status') && $request->status <> 'null'){
+            $query->where('status', '=', $request->status);
+        }
+        // dd($query->toSql());
+        // error_log($request->req_user);
         $offer = $query->paginate(15);
         return new OfferResourceCollection($offer);
     }

@@ -9,6 +9,7 @@ class Offer extends Model
 {
     protected $fillable = [
         'req_user_id',
+        'res_user_id',
         'luggage_id',
         'trip_id',
         'agree',
@@ -33,9 +34,16 @@ class Offer extends Model
     /**
      * Get the User that owns the offer.
      */
-    public function user()
+    public function req_user()
     {
         return $this->belongsTo('App\User', 'req_user_id');
+    }
+    /**
+     * user to whome the offer was targeted
+     */
+    public function res_user()
+    {
+        return $this->belongsTo('App\User', 'res_user_id');
     }
 }
 

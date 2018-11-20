@@ -18,6 +18,9 @@ class CreateOffersTable extends Migration
             $table->integer('req_user_id')->nullable()->unsigned();
             $table->foreign('req_user_id')->references('id')->on('users');
 
+            $table->integer('res_user_id')->nullable()->unsigned();
+            $table->foreign('res_user_id')->references('id')->on('users');
+
             $table->integer('luggage_id')->nullable()->unsigned();
             $table->foreign('luggage_id')->references('id')->on('luggage');
 

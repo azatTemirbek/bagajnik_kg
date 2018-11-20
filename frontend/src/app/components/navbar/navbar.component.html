@@ -17,16 +17,30 @@
       <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
     </svg>
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="toggleOpen()" data-target="#navbarsExample06" aria-controls="navbarsExample06"
-    aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="toggleOpen()" data-target="#navbarsExample06"
+    aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" [ngClass]="{'show': open}" id="navbarsExample06">
     <ul class="navbar-nav ml-auto">
+      <li *ngIf='!Auth.loggedIn.getValue()' class="nav-item dropdown" [ngClass]="{'show': dOpen}">
+        <a class="nav-link dropdown-toggle text-capitalize" (click)="toggleD()" id="navbarDropdown" role="button"
+          aria-haspopup="true" aria-expanded="false">
+          уведомление
+          <span class="badge badge-light">
+              {{' '+unReadedCount.getValue()}}
+          </span>
+        </a>
+        <div class="dropdown-menu" [ngClass]="{'show': dOpen}" aria-labelledby="navbarDropdown">
+          <div class="dropdown-item" *ngFor="let offer of unReadedData.getValue()" (click)="mouseHovering(offer)" >
+            {{offer|json}}
+          </div>
+        </div>
+      </li>
       <a *ngIf='!Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/register' ]" routerLinkActive="active">
         <i class="fab fa-wpforms"></i>
-         Регистация
+        Регистация
       </a>
       <a *ngIf='!Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/login' ]" routerLinkActive="active">
         <i class="fas fa-sign-in-alt"></i>

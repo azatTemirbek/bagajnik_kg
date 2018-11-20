@@ -76,10 +76,11 @@ $factory->define(App\Luggage::class, function (Faker $faker) {
 $factory->define(App\Offer::class, function (Faker $faker) {
 
     return [
-        'req_user_id' => $faker->numberBetween($min = 1, $max = 50),
+        'req_user_id' => $faker->numberBetween($min = 1, $max = 25),
+        'res_user_id' => $faker->numberBetween($min = 25, $max = 50),
         'luggage_id' => $faker->numberBetween($min = 1, $max = 50),
         'trip_id' => $faker->numberBetween($min = 1, $max = 50),
-        'agree' => $faker->numberBetween($min = 1, $max = 9),
-        'status' => $faker->word
+        'agree' => $faker->boolean($chanceOfGettingTrue = 50),
+        'status' => $faker->randomElement($array = array ('requested','viewed','responded')),
     ];
 });
