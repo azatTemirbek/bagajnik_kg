@@ -11,6 +11,7 @@
  * todo: accept logic @Aizat -( research and explain )
  * todo: profile photo show and upload @Azat
  * todo: 9 days to finish
+ * todo: guards backend frontend
  * todo:front build @Azat
  * todo:deployment @Azat
  */
