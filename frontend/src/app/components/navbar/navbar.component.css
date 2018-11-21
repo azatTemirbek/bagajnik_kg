@@ -1,0 +1,6 @@
+@media (min-width: 1200px) {
+  .des-width {
+    min-width: 20rem;
+    width: 20rem;
+  }
+}

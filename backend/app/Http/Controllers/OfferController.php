@@ -23,12 +23,16 @@ class OfferController extends Controller
         if($request->has ('res_user_id') && $request->res_user_id <> 'null'){
             $query->where('res_user_id', '=', $request->res_user_id);
         }
+        if($request->has ('status1') && $request->status1 <> 'null' && $request->has ('status2') && $request->status2 <> 'null'){
+            $query->orWhere('status', '=', $request->status1);
+            $query->orWhere('status', '=', $request->status2);
+        }
         if($request->has ('status') && $request->status <> 'null'){
             $query->where('status', '=', $request->status);
         }
         // dd($query->toSql());
         // error_log($request->req_user);
-        $offer = $query->paginate(15);
+        $offer = $query->orderBy('id', 'desc')->paginate(15);
         return new OfferResourceCollection($offer);
     }
 
@@ -66,11 +70,10 @@ class OfferController extends Controller
      */
     public function update(OfferRequest $request, $id)
     {
-//        //    todo:validate
-////       Todo: Update implemantation
         $offerUpdate = Offer::findOrFail($id);
         $inputs = $request->all();
         $offerUpdate->fill($inputs)->save();
+        return new OfferResource($offerUpdate);
     }
 
     /**

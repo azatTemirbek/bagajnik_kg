@@ -58,10 +58,11 @@ export class OfferService {
   /**
    * used to get new offer count request
    */
-  getNewOfferCount(): any {
+  public getNewOfferCount(): any {
     return this.getAll({
       from_req_user_id: 2,
-      status: 'requested'
+      status1: 'requested',
+      status2: 'responded'
     });
   }
 }

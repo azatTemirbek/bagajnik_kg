@@ -1,51 +1,65 @@
 import { TokenService } from 'src/app/service/auth/token.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth/auth.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ElementRef } from '@angular/core';
 import { BehaviorSubject, interval, Subscription } from 'rxjs';
 import { OfferService } from 'src/app/service/offer.service';
-
+import { Configure } from 'src/app/service/configure';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+  /** mobil */
   open: Boolean = false;
+  /** open dropdown */
   dOpen: Boolean = false;
-  unReadedCount: BehaviorSubject<any> = new BehaviorSubject(1);
+  /** unreded count of offer requested and responded */
+  unReadedCount: BehaviorSubject<Number> = new BehaviorSubject<Number>(0);
+  /** data of the unreaded and responded data */
   unReadedData: BehaviorSubject<any> = new BehaviorSubject([]);
+  /** subscribtion of the interval request */
   sub: Subscription;
-
   constructor(
     public Auth: AuthService,
     private route: Router,
     private Token: TokenService,
-    private offerService: OfferService
-  ) {
-    const source = interval(5000);
-    this.sub = source.subscribe((val) => {
-      this.offerService.getNewOfferCount().subscribe(({ data, meta }) => {
-        this.unReadedCount.next(meta.total);
-        if (!this.dOpen) {
-          this.unReadedData.next(data);
-        }
-        console.log(data);
-      });
+    private offerService: OfferService,
+    private eRef: ElementRef
+  ) { }
+  ngOnInit() {
+    if (this.Auth.loggedIn.getValue()) {
+      this.getOfferCount();
+      const source = interval(Configure.requestInterval);
+      this.sub = source.subscribe(a => this.getOfferCount());
+    }
+  }
+  ngOnDestroy() {
+    if (this.Auth.loggedIn.getValue()) {
+      this.sub.unsubscribe();
+    }
+  }
+  /**
+   * fets offer count
+   */
+  getOfferCount() {
+    this.offerService.getNewOfferCount().subscribe(({ data, meta }) => {
+      this.unReadedCount.next(meta.total);
+      if (!this.dOpen) {
+        this.unReadedData.next(data);
+      }
     });
   }
-
-  ngOnInit() { }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-  /**used to change status of the offer to viewed */
-  makeStatusViewed(offer) {
+  /**
+   * used to change status of the offer to viewed
+   */
+  makeStatusViewed(offer, eye) {
     this.offerService.update({ ...offer, status: 'viewed' })
       .subscribe(data => {
-        console.log('asdsadsadsadsadsadsadsdadasdsdsdsadsa');
-        console.log(data);
-        alert('hello');
+        this.unReadedCount.next(+this.unReadedCount.getValue() - 1);
+        eye.innerHTML = '<i class="far fa-eye-slash"></i>';
+        eye.style.backgroundColor = 'orange';
       });
   }
   /**
@@ -65,5 +79,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.Auth.loggedIn.next(!this.Auth.loggedIn.getValue());
     this.route.navigateByUrl('/login');
     this.Token.remove();
+  }
+  /**
+   * event used when clicked outside of the navigation
+   * @param event event used when clicked outside of the navigation
+   */
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    // tslint:disable-next-line:no-unused-expression
+    if(!this.eRef.nativeElement.contains(event.target)) {
+      this.dOpen = false;
+    };
   }
 }

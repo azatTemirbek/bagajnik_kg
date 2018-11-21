@@ -17,7 +17,7 @@ import { ILuggage } from 'src/app/interface/iluggage';
 import { dateParse } from '../../../helpers/util';
 import { MY_FORM_LAYOUT } from './LUGGAGE_LAYOUT';
 import { MapsAPILoader } from '@agm/core';
-declare var google; 
+declare var google;
 
 @Component({
   selector: 'app-luggage-form',
@@ -26,7 +26,6 @@ declare var google;
 })
 export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
   formLayout: DynamicFormLayout = MY_FORM_LAYOUT;
-  // autocorrect="off" autocapitalize="off" spellcheck="off"
   formModel: DynamicFormModel = [
     new DynamicInputModel({
       id: 'from_formatted_address',
@@ -135,16 +134,6 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
         required: '{{ label }} необходимо.'
       }
     }),
-    new DynamicCheckboxModel({
-      id: 'comertial',
-      label: 'Коммерческий:',
-      validators: {
-        required: null
-      },
-      errorMessages: {
-        required: '{{ label }} необходимо.'
-      }
-    }),
     new DynamicSelectModel({
       id: 'value',
       label: 'Ценность',
@@ -165,6 +154,16 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
         required: '{{ label }} необходимо.'
       }
 
+    }),
+    new DynamicCheckboxModel({
+      id: 'comertial',
+      label: 'Коммерческий:',
+      validators: {
+        required: null
+      },
+      errorMessages: {
+        required: '{{ label }} необходимо.'
+      }
     })
   ];
   /**

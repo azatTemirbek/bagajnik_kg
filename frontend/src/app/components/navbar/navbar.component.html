@@ -24,20 +24,56 @@
 
   <div class="collapse navbar-collapse" [ngClass]="{'show': open}" id="navbarsExample06">
     <ul class="navbar-nav ml-auto">
-      <li *ngIf='!Auth.loggedIn.getValue()' class="nav-item dropdown" [ngClass]="{'show': dOpen}">
-        <a class="nav-link dropdown-toggle text-capitalize" (click)="toggleD()" id="navbarDropdown" role="button"
-          aria-haspopup="true" aria-expanded="false">
+      <!-- notification -->
+      <li *ngIf='Auth.loggedIn.getValue()' class="nav-item dropdown" [ngClass]="{'show': dOpen}">
+        <a class="nav-link dropdown-toggle text-capitalize" style="cursor:pointer" (click)="toggleD()" id="navbarDropdown"
+          role="button" *ngIf="unReadedData.getValue()>0" aria-haspopup="true" aria-expanded="false">
           уведомление
-          <span class="badge badge-light">
-              {{' '+unReadedCount.getValue()}}
+          <span *ngIf="unReadedData.getValue()>0" class="badge badge-light">
+            {{' '+unReadedCount.getValue()}}
           </span>
         </a>
-        <div class="dropdown-menu" [ngClass]="{'show': dOpen}" aria-labelledby="navbarDropdown">
-          <div class="dropdown-item" *ngFor="let offer of unReadedData.getValue()" (click)="mouseHovering(offer)" >
-            {{offer|json}}
+        <div *ngIf="unReadedData.getValue()>0" class="dropdown-menu mt-3 des-width" style="overflow-y:auto;height:60vh" [ngClass]="{'show': dOpen}"
+          aria-labelledby="navbarDropdown">
+          <div class="m-2" *ngFor="let offer of unReadedData.getValue()">
+            <div class="card w-sm-100" [ngClass]="{'bg-warning': offer.status !== 'requested'}">
+              <div class="card-header small">
+                <span class="text-truncate">
+                  {{(offer.status === "requested")?'Запрос от: '+offer?.relationships?.req_user?.name:'Ответ от: '+offer?.relationships?.res_user?.name}}
+                </span>
+                <span #eye (click)="makeStatusViewed(offer,eye)" class="float-right badge badge-primary" style="cursor:pointer;">
+                  <i class="far fa-eye"></i>
+                </span>
+                <br>
+                <span class="small">
+                    <i class="fas fa-clock"></i> {{offer.updated_at}}
+                </span>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <p class="small">
+                        {{(offer.status == 'requested')?offer?.relationships?.trip?.from_formatted_address:offer?.relationships?.luggage?.from_formatted_address}}
+                      </p>
+                    </div>
+                    <div class="col-2">
+                      <i class="fas fa-plane text-black-50"></i>
+                    </div>
+                    <div class="col">
+                      <p class="small">
+                          {{(offer.status == 'requested')?offer?.relationships?.trip?.to_formatted_address:offer?.relationships?.luggage?.to_formatted_address}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="btn btn-sm btn-info float-right small" (click)="toggleD();makeStatusViewed(offer,eye)">Посмотреть(todo:)</div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </li>
+      <!-- notification -->
       <a *ngIf='!Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/register' ]" routerLinkActive="active">
         <i class="fab fa-wpforms"></i>
         Регистация

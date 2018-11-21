@@ -27,6 +27,7 @@ class OfferResource extends JsonResource
             'res_user_id' => $this->res_user_id,
             'luggage_id' => $this->luggage_id,
             'trip_id' => $this->trip_id,
+            'updated_at'=> (string) $this->updated_at,
 //            ],
             'relationships' => [
                 'trip' => new TripsResource($this->trip),
