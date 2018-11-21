@@ -17,6 +17,7 @@ import { ILuggage } from 'src/app/interface/iluggage';
 import { dateParse } from '../../../helpers/util';
 import { MY_FORM_LAYOUT } from './LUGGAGE_LAYOUT';
 import { MapsAPILoader } from '@agm/core';
+declare var google; 
 
 @Component({
   selector: 'app-luggage-form',
