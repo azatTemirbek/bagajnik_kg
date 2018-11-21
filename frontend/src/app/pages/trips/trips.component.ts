@@ -12,6 +12,7 @@ import { RequestData } from '../../models/request-data';
 import { ITrip } from '../../interface/itrip';
 import { Subscription } from 'rxjs';
 import { MapsAPILoader } from '@agm/core';
+declare var google; 
 
 @Component({
   selector: 'app-trips',
