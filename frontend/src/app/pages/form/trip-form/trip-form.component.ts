@@ -15,6 +15,7 @@ import { ITrip } from 'src/app/interface/itrip';
 import { dateParse } from 'src/app/helpers/util';
 import { MY_FORM_LAYOUT } from './TRIP_LAYOUT';
 import { MapsAPILoader } from '@agm/core';
+declare var google; 
 
 @Component({
   selector: 'app-trip-form',
