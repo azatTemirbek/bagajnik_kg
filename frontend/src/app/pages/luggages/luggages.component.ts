@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 import { LuggageService } from 'src/app/service/luggage.service';
 import { Options, LabelType } from 'ng5-slider';
 import { MapsAPILoader } from '@agm/core';
+declare var google; 
 
 @Component({
   selector: 'app-luggage',
