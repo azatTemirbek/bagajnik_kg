@@ -266,7 +266,7 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
           this.ffa = new google.maps.places.Autocomplete(document.getElementById('from_formatted_address'), {
             types: ['(cities)']
           });
-          this.ffa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
+          this.tfa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
             types: ['(cities)']
           });
         }

@@ -15,7 +15,7 @@ import { ITrip } from 'src/app/interface/itrip';
 import { dateParse } from 'src/app/helpers/util';
 import { MY_FORM_LAYOUT } from './TRIP_LAYOUT';
 import { MapsAPILoader } from '@agm/core';
-declare var google; 
+declare var google;
 
 @Component({
   selector: 'app-trip-form',
@@ -131,7 +131,7 @@ export class TripFormComponent implements OnInit, OnDestroy, AfterViewInit {
           this.ffa = new google.maps.places.Autocomplete(document.getElementById('from_formatted_address'), {
             types: ['(cities)']
           });
-          this.ffa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
+          this.tfa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
             types: ['(cities)']
           });
         }

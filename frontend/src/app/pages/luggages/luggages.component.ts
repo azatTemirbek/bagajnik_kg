@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
 import { LuggageService } from 'src/app/service/luggage.service';
 import { Options, LabelType } from 'ng5-slider';
 import { MapsAPILoader } from '@agm/core';
-declare var google; 
+declare var google;
 
 @Component({
   selector: 'app-luggage',
@@ -166,7 +166,7 @@ export class LuggagesComponent implements OnInit, OnDestroy, AfterViewInit {
           this.ffa = new google.maps.places.Autocomplete(document.getElementById('from_formatted_address'), {
             types: ['(cities)']
           });
-          this.ffa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
+          this.tfa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
             types: ['(cities)']
           });
         }
