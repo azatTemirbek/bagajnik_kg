@@ -1,3 +1,86 @@
-<p>
-  OfferResult works!
-</p>
+<div class="container mb-5">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Главная страница</a></li>
+          <li class="breadcrumb-item"><a href="#">Подтверждение отправки</a></li>
+          <li class="col"></li>
+          <!-- <a [routerLink]="[ '/tripform', -1 ]" class="btn justify-content-end btn-sm btn-primary text-capitalize text-white pr-3">
+            <i class="fas fa-plus-circle"></i>
+            создать поездку
+          </a> -->
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div class="row pb-5">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title h2 text-center mb-5">
+              <i *ngIf="offer.getValue()?.agree" class="fas fa-check-circle text-success fa-3x"></i>
+              <i *ngIf="!offer.getValue()?.agree" class="far fa-frown fa-3x text-danger"></i>
+          {{offer.getValue()?.relationships?.trip?.relationships?.carrier?.fullName}}
+          {{
+            (offer.getValue()?.agree)?'согласился взять ваш багаж':'не согласился взять ваш багаж'
+          }}
+          </h5>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Имя отправителя:</th>
+                <th scope="col">{{offer.getValue()?.relationships?.luggage?.relationships?.owner?.name}}</th>
+                <td scope="col">
+                    <app-whatsapp phone="{{offer.getValue()?.relationships?.luggage?.relationships?.owner?.phone}}" >
+                    </app-whatsapp>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Имя получателя:</th>
+                <td scope="col">{{offer.getValue()?.relationships?.luggage?.takerName}}</td>
+                <td scope="col">
+                    <app-whatsapp *ngIf="offer.getValue()?.relationships?.luggage?.takerPhone1" phone="{{offer.getValue()?.relationships?.luggage?.takerPhone1}}" ></app-whatsapp>,
+                    <app-whatsapp *ngIf="offer.getValue()?.relationships?.luggage?.takerPhone2" phone="{{offer.getValue()?.relationships?.luggage?.takerPhone2}}" ></app-whatsapp>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Тип посылки:</th>
+                <td>{{(offer.getValue()?.relationships?.luggage?.comertial)?'коммерческая':'не коммерческая'}}</td>
+                <td scope="col"></td>
+              </tr>
+              <tr>
+                <th scope="row">Вес и объем:</th>
+                <td>{{offer.getValue()?.relationships?.luggage?.mass +' kg'}}</td>
+                <td scope="col">
+                  <!-- 4x4 -->
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Откуда::</th>
+                <td>{{offer.getValue()?.relationships?.luggage.from_formatted_address}}</td>
+                <td scope="col"></td>
+              </tr>
+              <tr>
+                <th scope="row">Куда:</th>
+                <td>{{offer.getValue()?.relationships?.luggage.to_formatted_address}}</td>
+                <td scope="col"></td>
+              </tr>
+              <tr>
+                <th scope="row">Цена доставки:</th>
+                <td>{{offer.getValue()?.relationships?.luggage?.price+' сом'}}</td>
+                <td scope="col"></td>
+              </tr>
+            </tbody>
+          </table>
+          <div aria-label="Basic example" class="btn-group float-right" role="group">
+            <a href="{{link}}" (click)="accept(true)" class="btn btn-primary btn-lg text-white" role="button">Согласится</a>
+            <button (click)="accept(false)" class="btn btn-primary btn-lg btn-outline-primary" role="button">Отмена</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

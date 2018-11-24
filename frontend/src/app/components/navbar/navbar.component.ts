@@ -52,7 +52,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
   }
   navigate(offer) {
-    console.log(offer);
     if (offer.status === 'requested') {
       // navigate to confirm
       this.route.navigate(['/offerconfirm', offer.id]);
