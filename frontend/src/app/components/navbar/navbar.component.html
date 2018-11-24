@@ -27,13 +27,14 @@
       <!-- notification -->
       <li *ngIf='Auth.loggedIn.getValue()' class="nav-item dropdown" [ngClass]="{'show': dOpen}">
         <a class="nav-link dropdown-toggle text-capitalize" style="cursor:pointer" (click)="toggleD()" id="navbarDropdown"
-          role="button" *ngIf="unReadedData.getValue()>0" aria-haspopup="true" aria-expanded="false">
+          role="button" *ngIf="Auth.loggedIn.getValue()" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-bell "></i>
           уведомление
-          <span *ngIf="unReadedData.getValue()>0" class="badge badge-light">
+          <span *ngIf="Auth.loggedIn.getValue()" class="badge badge-light">
             {{' '+unReadedCount.getValue()}}
           </span>
         </a>
-        <div *ngIf="unReadedData.getValue()>0" class="dropdown-menu mt-3 des-width" style="overflow-y:auto;height:60vh" [ngClass]="{'show': dOpen}"
+        <div *ngIf="unReadedData.getValue()" class="dropdown-menu mt-3 des-width" style="overflow-y:auto;height:60vh" [ngClass]="{'show': dOpen}"
           aria-labelledby="navbarDropdown">
           <div class="m-2" *ngFor="let offer of unReadedData.getValue()">
             <div class="card w-sm-100" [ngClass]="{'bg-warning': offer.status !== 'requested'}">
@@ -66,7 +67,7 @@
                       </p>
                     </div>
                   </div>
-                  <div class="btn btn-sm btn-info float-right small" (click)="toggleD();makeStatusViewed(offer,eye)">Посмотреть(todo:)</div>
+                  <div class="btn btn-sm btn-info float-right small" (click)="toggleD();makeStatusViewed(offer,eye);navigate(offer)">Посмотреть</div>
                 </li>
               </ul>
             </div>
@@ -89,10 +90,6 @@
       <a *ngIf='Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/profile' ]" routerLinkActive="active">
         <i class="fa fa-user-circle "></i>
         Профиль
-      </a>
-      <a *ngIf='Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/profile' ]" routerLinkActive="active">
-        <i class="fas fa-bell "></i>
-        Уведомления
       </a>
     </ul>
   </div>

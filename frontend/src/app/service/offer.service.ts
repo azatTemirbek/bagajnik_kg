@@ -31,15 +31,22 @@ export class OfferService {
    * will create offer
    * @param data offer data
    */
-  create(data: Offer) {
+  create(data) {
     return this.http.post(`${this.api}/offers`, data);
   }
   /**
    * to update Offer
    * @param data offer data
    */
-  update(data: Offer) {
+  update(data) {
     return this.http.put(`${this.api}/offers/${+data.id}`, data);
+  }
+  /**
+   * to update Offer
+   * @param data offer data
+   */
+  patch(data) {
+    return this.http.patch(`${this.api}/offers/${+data.id}`, data);
   }
   /**
    * to delete offfer

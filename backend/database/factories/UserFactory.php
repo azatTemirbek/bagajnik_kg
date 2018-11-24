@@ -74,7 +74,6 @@ $factory->define(App\Luggage::class, function (Faker $faker) {
 });
 
 $factory->define(App\Offer::class, function (Faker $faker) {
-
     return [
         'req_user_id' => $faker->numberBetween($min = 1, $max = 25),
         'res_user_id' => $faker->numberBetween($min = 25, $max = 50),

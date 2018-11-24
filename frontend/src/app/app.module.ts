@@ -31,6 +31,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LuggageFormComponent } from './pages/form/luggage-form/luggage-form.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { AgmCoreModule } from '@agm/core';
+import { OfferViewComponent } from './pages/offerView/offerView.component';
+import { OfferConfirmComponent } from './pages/offer-confirm/offer-confirm.component';
+import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
+import { OfferResultComponent } from './pages/OfferResult/OfferResult.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +51,11 @@ import { AgmCoreModule } from '@agm/core';
     TripFormComponent,
     JumbotronComponent,
     FooterComponent,
-    LuggageFormComponent
+    LuggageFormComponent,
+    OfferViewComponent,
+    OfferConfirmComponent,
+    WhatsappComponent,
+    OfferResultComponent
   ],
   imports: [
     FormsModule,

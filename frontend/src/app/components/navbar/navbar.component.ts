@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private eRef: ElementRef
   ) { }
   ngOnInit() {
-    if (this.Auth.loggedIn.getValue()) {
+    if (this.Auth.loggedIn.getValue() && !this.sub) {
       this.getOfferCount();
       const source = interval(Configure.requestInterval);
       this.sub = source.subscribe(a => this.getOfferCount());
@@ -50,6 +50,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.unReadedData.next(data);
       }
     });
+  }
+  navigate(offer) {
+    console.log(offer);
+    if (offer.status === 'requested') {
+      // navigate to confirm
+      this.route.navigate(['/offerconfirm', offer.id]);
+    } else {
+      // navigate to view the
+      this.route.navigate(['/offer-result-from-peer', offer.id]);
+    }
   }
   /**
    * used to change status of the offer to viewed
@@ -86,9 +96,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
    */
   @HostListener('document:click', ['$event'])
   clickout(event) {
+    if (this.Auth.loggedIn.getValue() && !this.sub) {
+      this.getOfferCount();
+      const source = interval(Configure.requestInterval);
+      this.sub = source.subscribe(a => this.getOfferCount());
+    }
     // tslint:disable-next-line:no-unused-expression
-    if(!this.eRef.nativeElement.contains(event.target)) {
+    if (!this.eRef.nativeElement.contains(event.target)) {
       this.dOpen = false;
-    };
+    }
   }
 }

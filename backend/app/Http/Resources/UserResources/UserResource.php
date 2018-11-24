@@ -27,7 +27,14 @@ class UserResource extends JsonResource
                 'surname' => $this->surname,
                 'phone' =>$this->phone,
                 'email' =>$this->email,
+                'fullName' => $this->getFullname(),
 //            ],
         ];
+    }
+    /**
+     * to get full name of the user
+     */
+    public function getFullname(){
+        return $this->name.' '. $this->surname;;
     }
 }

@@ -1,6 +1,6 @@
 # TODO LIST
-- [ ] todo: view the offer - @Azat
-- [ ] todo: offeraccept page - @Azat
+- [x] todo: view the offer - @Azat
+- [x] todo: offeraccept page - @Azat
 - [ ] todo profile page: @Aizat
 - [ ] can be used card -> acccardion ->grid with searches
   - [ ]  -my offers - grid-list
@@ -11,6 +11,8 @@
  - [ ] todo: accept logic @Aizat -( research and explain )
  - [ ] todo: profile photo show and upload @Azat
  - [ ] todo: 9 days to finish
- - [ ] todo: guards backend frontend
+ - [x] todo: view the before offer - @Azat
+ - [ ] todo: guards backend
+ - [x] todo: guards frontend
  - [ ] todo:front build @Azat
  - [ ] todo:deployment @Azat

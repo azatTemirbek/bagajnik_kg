@@ -1,0 +1,68 @@
+<div class="container mb-5">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Главная страница</a></li>
+          <li class="breadcrumb-item"><a href="#">Подтверждение отправки</a></li>
+          <li class="col"></li>
+          <!-- <a [routerLink]="[ '/tripform', -1 ]" class="btn justify-content-end btn-sm btn-primary text-capitalize text-white pr-3">
+            <i class="fas fa-plus-circle"></i>
+            создать поездку
+          </a> -->
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div class="row pb-5">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title h2 text-center mb-5">Подтверждение отправки</h5>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Имя отправителя:</th>
+                <th scope="col">{{luggage.getValue()?.relationships?.owner?.fullName}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Имя пассажира:</th>
+                <td>{{trip.getValue()?.relationships?.carrier?.fullName}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Имя получателя:</th>
+                <td>{{luggage.getValue()?.takerName}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Тип посылки:</th>
+                <td>{{(luggage.getValue()?.comertial)?'коммерческая':'не коммерческая'}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Вес и объем:</th>
+                <td>{{luggage.getValue()?.mass +' kg'}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Откуда:</th>
+                <td>{{luggage.getValue()?.from_formatted_address}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Куда:</th>
+                <td>{{luggage.getValue()?.to_formatted_address}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Цена доставки:</th>
+                <td>{{luggage.getValue()?.price+' сом'}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div aria-label="Basic example" class="btn-group float-right" role="group">
+            <button (click)="sendTo(true)" class="btn btn-primary btn-lg" role="button">Отправить пассажиру</button>
+            <button (click)="sendTo(false)" class="btn btn-primary btn-lg btn-outline-primary" role="button">Отмена</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
