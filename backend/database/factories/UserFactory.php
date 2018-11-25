@@ -62,14 +62,8 @@ $factory->define(App\Luggage::class, function (Faker $faker) {
         'price' => $faker->numberBetween($min = 0, $max = 1000),
         'start_dt' => $faker->dateTime,
         'end_dt' => $faker->dateTime,
-        'from_lat' => $faker->latitude($min = -90, $max = 90),
-        'from_lng' => $faker->longitude($min = -180, $max = 180),
         'from_formatted_address' => $faker->address(),
-        'from_place_id' => $faker->numberBetween($min = 1, $max = 100),
-        'to_lat' => $faker->latitude($min = -90, $max = 90),
-        'to_lng' => $faker->longitude($min = -180, $max = 180),
         'to_formatted_address' => $faker->address(),
-        'to_place_id' => $faker->numberBetween($min = 1, $max = 100),
         'dsc' => $faker->text($maxNbChars = 200),
     ];
 });

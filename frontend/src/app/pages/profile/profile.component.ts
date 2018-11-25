@@ -87,6 +87,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
       email: this.authService.me.getValue().email,
       phone: this.authService.me.getValue().phone,
     });
+    this.authService.getUserData()
+    // todo:user data is used to display all the related actions and trips with offers and luggages history also
+      .subscribe(data => console.log(data));
   }
   /**
    * form submit and get data from the backend

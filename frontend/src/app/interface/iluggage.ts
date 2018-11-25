@@ -11,14 +11,8 @@ export interface ILuggage {
     mass: any;
     comertial: boolean;
     value: String;
-    from_lat: any;
-    from_lng: any;
     price: any;
     from_formatted_address: String;
-    from_place_id: any;
-    to_lat: any;
-    to_lng: any;
     to_formatted_address: String;
-    to_place_id: any;
     dsc: String;
 }

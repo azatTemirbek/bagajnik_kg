@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 class Luggage extends Model
 {
     protected $fillable = [
+        'owner_id',
         'takerPhone1',
         'takerPhone2',
         'takerName',
@@ -12,16 +13,9 @@ class Luggage extends Model
         'end_dt',
         'value',
         'price',
-        'from_lat',
-        'from_lng',
         'from_formatted_address',
-        'from_place_id',
-        'to_lat',
-        'to_lng',
         'to_formatted_address',
-        'to_place_id',
         'mass',
-        'owner_id',
         'dsc'
     ];
     protected $dates = [

@@ -27,18 +27,11 @@ class CreateLuggageTable extends Migration
             $table->boolean('comertial')->default(false);
             $table->string('value',20)->nullable();
             $table->decimal('price',9,2)->default(0);
-            $table->string('from_lat');
-            $table->string('from_lng');
             $table->string('dsc');
             $table->string('from_formatted_address');
-            $table->string('from_place_id');
-            $table->string('to_lat');
-            $table->string('to_lng');
             $table->string('to_formatted_address');
-            $table->string('to_place_id');
             $table->timestamp('start_dt');
             $table->timestamp('end_dt');
-
             $table->timestamps();
         });
     }

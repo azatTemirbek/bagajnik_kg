@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OfferRequest;
 use App\Http\Resources\OfferResources\OfferResource;
 use App\Http\Resources\OfferResources\OfferResourceCollection;
+use App\Luggage;
+use App\Mail\AcceptMail;
 use App\Offer;
+use App\Trip;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use function MongoDB\BSON\toJSON;
 
 class OfferController extends Controller
@@ -44,8 +48,13 @@ class OfferController extends Controller
      */
     public function store(OfferRequest $request)
     {
-//      todo:manual validate or Request validate
-        $offer = $request->all();
+        $offer = new Offer($request->all());
+        $offer -> req_user_id = $request->user()->id;
+//        get the trip and is uersid
+        $trip = Trip::findOrFail($request->trip_id);
+        //        get the luggage and is uersid
+        $luggage = Luggage::findOrFail($request->luggage_id);
+        $offer -> res_user_id = ($trip->carrier_id = $request->user()->id )?$luggage->owner_id:$trip->carrier_id;
         if($offer->save()){
             return New OfferResource($offer);
         }
@@ -74,6 +83,30 @@ class OfferController extends Controller
         $inputs = $request->all();
         $offerUpdate->fill($inputs)->save();
         return new OfferResource($offerUpdate);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * @param Request $request
+     * @param $id
+     */
+    public function accept(OfferRequest $request, $id)
+    {
+        $offerUpdate = Offer::findOrFail($id);
+        $inputs = $request->all(['agree','status']);
+        $offerUpdate->fill($inputs)->save();
+        $query = Offer::query();
+        $query->where('id','<>',$id);
+        $query->where('luggage_id','=',$offerUpdate->luggage_id);
+        $query->orWhere('trip_id','=',$offerUpdate->trip_id);
+        $query->update(['status' => 'responded', 'agree' => false]);
+        $this->sendMail($offerUpdate);
+        return new OfferResource($offerUpdate);
+    }
+    private function sendMail(Offer $offer){
+        Mail::to($offer->req_user->email)->send(new AcceptMail($offer));
+        Mail::to($offer->res_user->email)->send(new AcceptMail($offer));
+        return true;
     }
 
     /**

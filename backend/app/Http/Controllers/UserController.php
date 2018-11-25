@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Http\Resources\UserResources\UserFullResource;
 use App\Http\Resources\UserResources\UserResource;
 use App\Http\Resources\UserResources\UserResourceCollection;
 use App\User;
@@ -52,7 +53,7 @@ class UserController extends Controller
   public function show(User $user)
   {
     UserResource::withoutWrapping();
-    return new UserResource($user);
+    return new UserFullResource($user);
   }
 
   /**
@@ -76,7 +77,11 @@ class UserController extends Controller
   public function update(UserRequest $request, $id)
   {
     $userUpdate = User::findOrFail($id);
-    $inputs = $request->all();
+    $inputs = $request->all([
+        'surname',
+        'name',
+        'phone'
+    ]);
     $userUpdate->fill($inputs)->save();
     return new UserResource($userUpdate);
   }

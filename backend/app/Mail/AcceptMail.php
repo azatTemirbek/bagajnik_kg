@@ -7,18 +7,19 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ResetPasswordMail extends Mailable
+class AcceptMail extends Mailable
 {
     use Queueable, SerializesModels;
+    private $offer;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($offfer)
     {
-        //
+        $this->offer = $offfer;
     }
 
     /**
@@ -28,6 +29,6 @@ class ResetPasswordMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('Email.passworReset');
+        return $this->markdown('Email.accept')->with('offer', $this->offer);
     }
 }

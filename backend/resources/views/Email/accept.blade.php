@@ -1,10 +1,10 @@
 @component('mail::message')
-# Change password Request
+# Notification
 
-Click on the button below to change password
+Нажмите на кнопку ниже, чтобы просмотреть договор
 {{--todo have to change the url--}}
-@component('mail::button', ['url' => URL::to('/').':4200/response-password-reset?token='.$token])
-    Reset Password
+@component('mail::button', ['url' => URL::to('/').':4200/offer-result-from-peer/'.$offer->id])
+    Просмотреть Договор
 @endcomponent
 
 Thanks,<br>

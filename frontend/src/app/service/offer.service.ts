@@ -48,6 +48,13 @@ export class OfferService {
   patch(data) {
     return this.http.patch(`${this.api}/offers/${+data.id}`, data);
   }
+   /**
+   * to update Offer
+   * @param data offer data
+   */
+  accept(data) {
+    return this.http.patch(`${this.api}/offers-accept/${+data.id}`, data);
+  }
   /**
    * to delete offfer
    * @param id id of the delete Offer
@@ -67,7 +74,7 @@ export class OfferService {
    */
   public getNewOfferCount(): any {
     return this.getAll({
-      from_req_user_id: 2,
+      from_req_user_id: this.auth.me.getValue().id,
       status1: 'requested',
       status2: 'responded'
     });

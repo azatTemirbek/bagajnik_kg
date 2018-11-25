@@ -29,7 +29,6 @@ export class OfferResultComponent implements OnInit, OnDestroy {
       this.offerId = +params.id;
       this.offerService.read(this.offerId)
         .subscribe(data => {
-          console.log(data);
           this.offer.next(data);
         });
 

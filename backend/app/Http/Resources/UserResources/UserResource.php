@@ -30,11 +30,11 @@ class UserResource extends JsonResource
                 'email' =>$this->email,
                 'fullName' => $this->getFullname(),
 //            ],
-          'relationships' => [
-            'rating' => new RatingsResource($this->rating),
-            'offer' => new OfferResource($this->offer),
-            'trip' => new TripsResource($this->trip),
-          ],
+        //   'relationships' => [
+        //     'rating' => new RatingsResource($this->rating),
+        //     'offer' => new OfferResource($this->offer),
+        //     'trip' => new TripsResource($this->trip),
+        //   ],
         ];
     }
     /**

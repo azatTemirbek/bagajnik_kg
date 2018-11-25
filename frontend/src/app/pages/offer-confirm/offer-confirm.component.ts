@@ -49,7 +49,7 @@ export class OfferConfirmComponent implements OnInit {
    * @param bool accpt or not
    */
   accept(bool: Boolean) {
-    this.offerService.patch({
+    this.offerService.accept({
       id: this.id,
       agree: bool,
       status: 'responded'

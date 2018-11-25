@@ -38,3 +38,4 @@ Route::resource('/luggages', 'LuggageController');
 Route::delete('luggages/{luggage}', 'LuggageController@destroy');
 Route::resource('/users', 'UserController');
 Route::resource('/ratings', 'RatingController');
+Route::patch('offers-accept/{id}', 'OfferController@accept');

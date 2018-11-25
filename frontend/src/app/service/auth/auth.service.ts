@@ -20,8 +20,14 @@ export class AuthService {
       this.me.next(this.getLS());
     }
   }
+  getUserData() {
+    if (!this.loggedIn.getValue()) {
+      return;
+    }
+    return this.http.get(`${this.api}/users/${this.me.getValue().id}`);
+  }
   update(data) {
-    return this.http.patch(`${this.api}/user/${data.id}`, data);
+    return this.http.patch(`${this.api}/users/${data.id}`, data);
   }
   setMe(userdata) {
     this.setLS(userdata);
