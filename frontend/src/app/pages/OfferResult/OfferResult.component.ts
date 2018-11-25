@@ -4,6 +4,7 @@ import { SnotifyService } from 'ng-snotify';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { Subscription, BehaviorSubject } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-offer-result',
@@ -19,7 +20,8 @@ export class OfferResultComponent implements OnInit, OnDestroy {
     private notify: SnotifyService,
     private router: Router,
     private route: ActivatedRoute,
-    private auth: AuthService
+    private auth: AuthService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -36,5 +38,11 @@ export class OfferResultComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
-
+  /**
+   * go to back history back()
+   * @param bool -not used
+   */
+  accept(bool: Boolean) {
+    this.location.back();
+  }
 }
