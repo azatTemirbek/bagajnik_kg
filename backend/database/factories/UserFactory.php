@@ -45,7 +45,7 @@ $factory->define(App\Rating::class, function (Faker $faker) {
         'from_user_id' => $faker->numberBetween($min = 1, $max = 50),
         'to_user_id' => $faker->numberBetween($min = 1, $max = 50),
         'rate_value' => $faker->numberBetween($min = 1, $max = 50),
-        'comment' => $faker->name
+        'comment' =>  $faker->text($maxNbChars = 200)
     ];
 });
 
@@ -70,6 +70,7 @@ $factory->define(App\Luggage::class, function (Faker $faker) {
         'to_lng' => $faker->longitude($min = -180, $max = 180),
         'to_formatted_address' => $faker->address(),
         'to_place_id' => $faker->numberBetween($min = 1, $max = 100),
+        'dsc' => $faker->text($maxNbChars = 200),
     ];
 });
 
