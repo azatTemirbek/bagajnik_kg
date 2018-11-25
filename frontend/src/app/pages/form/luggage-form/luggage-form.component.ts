@@ -6,7 +6,8 @@ import {
   DynamicFormService,
   DynamicInputModel,
   DynamicSelectModel,
-  DynamicFormLayout
+  DynamicFormLayout,
+  DynamicTextAreaModel
 } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -164,7 +165,14 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
       errorMessages: {
         required: '{{ label }} необходимо.'
       }
-    })
+    }),
+    new DynamicTextAreaModel({
+      id: 'dsc',
+      label: 'Описание',
+      maxLength: 400,
+      placeholder: '',
+      spellCheck: true
+    }),
   ];
   /**
    * used to store formGroup
@@ -182,6 +190,7 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
     comertial: boolean;
     value: String;
     price: String;
+    dsc: String
   };
   id: Number;
   sub: Subscription;
@@ -212,7 +221,8 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
             mass,
             comertial,
             value,
-            price
+            price,
+            dsc
           }: ILuggage) => {
             this.formGroup.setValue({
               end_dt: dateParse(end_dt),
@@ -224,7 +234,8 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
               mass,
               comertial,
               value,
-              price: price
+              price: price,
+              dsc,
             });
           });
       }
@@ -242,7 +253,8 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
         mass,
         comertial,
         value,
-        price
+        price,
+        dsc
       }) => {
         this.formData = {
           end_dt: end_dt && `${end_dt.year}-${end_dt.month}-${end_dt.day} 00:00:00`,
@@ -255,7 +267,8 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
           mass,
           comertial,
           value,
-          price
+          price,
+          dsc,
         };
       });
   }

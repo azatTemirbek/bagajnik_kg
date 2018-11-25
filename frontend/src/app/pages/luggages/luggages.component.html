@@ -68,13 +68,21 @@
                     </div>
                     <div class="row">
                       <div class="col">
-                        <p class="card-text mb-2">
-                            <i class="fab fa-whatsapp text-success"></i> {{luggage?.takerPhone1}}<br>
-                            <i class="fab fa-whatsapp text-success"></i> {{luggage?.takerPhone2}}
+                        <div class="card-text mb-2">
+                          <div class="row">
+                            <div class="col">
+                              <i class="fab fa-whatsapp text-success"></i> {{luggage?.takerPhone1}}<br>
+                              <i class="fab fa-whatsapp text-success"></i> {{luggage?.takerPhone2}}
+                            </div>
+                            <div class="col">
+                              {{luggage?.mass}}kg - {{luggage?.value}} - {{luggage?.price}}сом <br>
+                              {{luggage?.relationships?.owner?.fullName}} - {{luggage?.relationships?.owner|json}}
+                            </div>
+                          </div>
+                        </div>
+                        <p class="card-text">
+                          {{luggage?.dsc}}
                         </p>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
                       </div>
                     </div>
                     <div class="float-right">

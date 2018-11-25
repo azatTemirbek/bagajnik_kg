@@ -108,5 +108,15 @@ export const MY_FORM_LAYOUT = {
       control: 'col-sm-9 col-md-6 col-lg-4',
       label: 'col-sm-3 col-form-label'
     }
-  }
+  },
+  'dsc': {
+    element: {
+      container: 'form-group d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center',
+      label: 'col-form-label'
+    },
+    grid: {
+      control: 'col-sm-9 col-md-6 col-lg-4',
+      label: 'col-sm-3 col-form-label'
+    }
+  },
 };

@@ -20,5 +20,5 @@ export interface ILuggage {
     to_lng: any;
     to_formatted_address: String;
     to_place_id: any;
-
+    dsc: String;
 }
