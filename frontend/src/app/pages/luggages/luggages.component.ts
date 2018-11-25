@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 import { LuggageService } from 'src/app/service/luggage.service';
 import { Options, LabelType } from 'ng5-slider';
 import { MapsAPILoader } from '@agm/core';
+import { AuthService } from 'src/app/service/auth/auth.service';
 declare var google;
 
 @Component({
@@ -135,7 +136,8 @@ export class LuggagesComponent implements OnInit, OnDestroy, AfterViewInit {
     private luggage: LuggageService,
     private formService: DynamicFormService,
     private notify: SnotifyService,
-    private mapsAPILoader: MapsAPILoader
+    private mapsAPILoader: MapsAPILoader,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {

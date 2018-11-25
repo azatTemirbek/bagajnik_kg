@@ -113,6 +113,7 @@ class LuggageController extends Controller
      */
     public function update(LuggageRequest $request, $id)
     {
+        error_log('udate');
         $luggageUpdate = Luggage::findOrFail($id);
         $inputs = $request->all();
         $luggageUpdate->fill($inputs)->save();

@@ -21,6 +21,8 @@ class Luggage extends Model
         'to_formatted_address',
         'to_place_id',
         'mass',
+        'owner_id',
+        'dsc'
     ];
     protected $dates = [
         'start_dt',

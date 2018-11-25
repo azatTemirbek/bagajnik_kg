@@ -39,7 +39,7 @@ export class LuggageService {
    * @param data luggage data
    */
   update(data) {
-    return this.http.post(`${this.api}/luggages/${data.id}`, data);
+    return this.http.patch(`${this.api}/luggages/${data.id}`, data);
   }
   /**
    * to delete offfer

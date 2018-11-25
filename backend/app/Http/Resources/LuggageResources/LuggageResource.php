@@ -38,6 +38,7 @@ class LuggageResource extends JsonResource
                 'start_dt' => (string) $this->start_dt,
                 'end_dt' => (string) $this->end_dt,
                 'dsc' => (string) $this->dsc,
+                'owner_id' => $this->owner_id,
 //            ],
             'relationships' => [
                 'owner' => new UserResource($this->owner),

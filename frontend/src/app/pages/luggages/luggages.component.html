@@ -86,8 +86,11 @@
                       </div>
                     </div>
                     <div class="float-right">
-                      <a routerLink="/luggageform/-1" [queryParams]="{ offerTrip: luggage.id }" class="card-link">Предлажите
-                        доставить</a>
+                        <a routerLink="/luggageform/-1" [queryParams]="{ offerTrip: luggage.id }" class="card-link">Предлажите
+                          доставить</a>
+                          <a *ngIf="luggage.owner_id===auth.me.getValue().id" routerLink="/luggageform/{{luggage.id}}" class="card-link">
+                            <i class="far fa-edit"></i>
+                          </a>
                     </div>
                   </div>
                 </div>

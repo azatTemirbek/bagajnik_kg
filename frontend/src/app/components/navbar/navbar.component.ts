@@ -84,7 +84,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
    * auth logout method
    */
   logout() {
-    this.Auth.me.next({});
+    this.Auth.removeMe();
     this.Auth.loggedIn.next(!this.Auth.loggedIn.getValue());
     this.route.navigateByUrl('/login');
     this.Token.remove();

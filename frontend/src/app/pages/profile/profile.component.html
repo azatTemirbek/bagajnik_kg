@@ -1,20 +1,69 @@
-<div class="container">
-    <div class="row pb-3">
-        <h3>User Profile</h3>
-        <div class="col-md-12">
-                    <form [formGroup]="formGroup" (submit)="submitForm($event)">
-                        <dynamic-ng-bootstrap-form [group]="formGroup" [layout]="formLayout" [model]="formModel"></dynamic-ng-bootstrap-form>
-                        <div class="btn-group mt-5 d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center " role="group">
-                            <button class="btn btn-success" [disabled]='!formGroup.valid' type="submit">
-                                <i class="fas fa-plus-circle"></i>
-                                {{(id>0)?'Обновить':'Сохранить'}}
-                            </button>
-                            <button class="btn btn-outline-success" type="button" (click)="formGroup.reset();">
-                                <i class="fas fa-sync-alt"></i>
-                                Сброс
-                            </button>
-                        </div>
-                    </form>
-        </div>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">Профиль пользователя</h3>
     </div>
+    <div class="col-md-4">
+      <form [formGroup]="formGroup" (submit)="submitForm($event)">
+        <dynamic-ng-bootstrap-form [group]="formGroup" [layout]="formLayout" [model]="formModel"></dynamic-ng-bootstrap-form>
+        <div class="btn-group mt-5 d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center " role="group">
+          <button class="btn btn-success" [disabled]='!formGroup.valid' type="submit">
+            {{(id>0)?'Обновить':'Сохранить'}}
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-8">
+      <ngb-accordion [closeOthers]="true" activeIds="static-1">
+        <ngb-panel id="static-1" title="Предложения">
+          <ng-template ngbPanelContent>
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+            officia
+            aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+            tempor,
+            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+            helvetica,
+            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+            Leggings
+            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
+            accusamus
+            labore sustainable VHS.
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel id="static-2">
+          <ng-template ngbPanelTitle>
+            <span>Багаж пользователя</span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+            officia
+            aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+            tempor,
+            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+            helvetica,
+            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+            Leggings
+            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
+            accusamus
+            labore sustainable VHS.
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel id="static-3" title="Поездки пользователя" >
+          <ng-template ngbPanelContent>
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+            officia
+            aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+            tempor,
+            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+            helvetica,
+            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+            Leggings
+            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
+            accusamus
+            labore sustainable VHS.
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+    </div>
+  </div>
 </div>
