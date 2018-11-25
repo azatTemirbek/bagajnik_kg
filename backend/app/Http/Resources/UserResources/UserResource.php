@@ -4,6 +4,7 @@ namespace App\Http\Resources\UserResources;
 
 use App\Http\Resources\LuggageResources\LuggageResource;
 use App\Http\Resources\OfferResources\OfferResource;
+use App\Http\Resources\RatingResources\RatingsResource;
 use App\Http\Resources\RatingResources\RatingsResourceCollection;
 use App\Http\Resources\TripResources\TripsResource;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -29,6 +30,11 @@ class UserResource extends JsonResource
                 'email' =>$this->email,
                 'fullName' => $this->getFullname(),
 //            ],
+          'relationships' => [
+            'rating' => new RatingsResource($this->rating),
+            'offer' => new OfferResource($this->offer),
+            'trip' => new TripsResource($this->trip),
+          ],
         ];
     }
     /**
