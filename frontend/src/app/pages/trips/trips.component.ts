@@ -1,4 +1,11 @@
-import { Component, OnDestroy, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  AfterViewInit
+} from '@angular/core';
 import {
   DynamicDatePickerModel,
   DynamicFormModel,
@@ -12,6 +19,9 @@ import { RequestData } from '../../models/request-data';
 import { ITrip } from '../../interface/itrip';
 import { Subscription } from 'rxjs';
 import { MapsAPILoader } from '@agm/core';
+import { LogicService } from 'src/app/service/logic.service';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/service/auth/auth.service';
 declare var google;
 
 @Component({
@@ -45,14 +55,14 @@ export class TripsComponent implements OnInit, OnDestroy, AfterViewInit {
       id: 'start_dt',
       label: 'Дата вылета c:',
       placeholder: 'ГГГГ-ММ-ДД',
-      toggleLabel: '#',
+      toggleLabel: '#'
     }),
     new DynamicDatePickerModel({
       id: 'end_dt',
       label: 'Дата вылета до:',
       placeholder: 'ГГГГ-ММ-ДД',
       toggleLabel: '#'
-    }),
+    })
   ];
   /**
    * used to store formGroup
@@ -61,36 +71,52 @@ export class TripsComponent implements OnInit, OnDestroy, AfterViewInit {
   private valchange: Subscription;
   ffa: any;
   tfa: any;
+  sub: any;
   constructor(
     private trip: TripService,
     private formService: DynamicFormService,
     private notify: SnotifyService,
-    private mapsAPILoader: MapsAPILoader
-  ) { }
+    private mapsAPILoader: MapsAPILoader,
+    public logic: LogicService,
+    private route: ActivatedRoute,
+    private auth: AuthService
+  ) {}
 
   ngOnInit() {
-    this.getAll({});
-    this.formGroup = this.formService.createFormGroup(this.formModel);
-    this.valchange = this.formGroup.valueChanges.subscribe(({ start_dt, end_dt, from_formatted_address, to_formatted_address }) => {
-      this.filter.end_dt = end_dt && `${end_dt.year}-${end_dt.month}-${end_dt.day} 00:00:00`;
-      this.filter.start_dt = start_dt && `${start_dt.year}-${start_dt.month}-${start_dt.day} 00:00:00`;
-      this.filter.from_formatted_address = from_formatted_address;
-      this.filter.to_formatted_address = to_formatted_address;
+    this.sub = this.route.queryParams.subscribe(params => {
+      this.filter.carrier_id = +params['carrier_id'] || null;
+      this.getAll({ carrier_id: this.filter.carrier_id });
     });
-  }
-  ngAfterViewInit(): void {
-    this.mapsAPILoader.load().then(
-      () => {
-        if (!this.ffa && !this.tfa) {
-          this.ffa = new google.maps.places.Autocomplete(document.getElementById('from_formatted_address'), {
-            types: ['(cities)']
-          });
-          this.tfa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
-            types: ['(cities)']
-          });
-        }
+    this.formGroup = this.formService.createFormGroup(this.formModel);
+    this.valchange = this.formGroup.valueChanges.subscribe(
+      ({ start_dt, end_dt, from_formatted_address, to_formatted_address }) => {
+        this.filter.end_dt =
+          end_dt && `${end_dt.year}-${end_dt.month}-${end_dt.day} 00:00:00`;
+        this.filter.start_dt =
+          start_dt &&
+          `${start_dt.year}-${start_dt.month}-${start_dt.day} 00:00:00`;
+        this.filter.from_formatted_address = from_formatted_address;
+        this.filter.to_formatted_address = to_formatted_address;
       }
     );
+  }
+  ngAfterViewInit(): void {
+    this.mapsAPILoader.load().then(() => {
+      if (!this.ffa && !this.tfa) {
+        this.ffa = new google.maps.places.Autocomplete(
+          document.getElementById('from_formatted_address'),
+          {
+            types: ['(cities)']
+          }
+        );
+        this.tfa = new google.maps.places.Autocomplete(
+          document.getElementById('to_formatted_address'),
+          {
+            types: ['(cities)']
+          }
+        );
+      }
+    });
   }
   /**
    * Finds trips component with given parameters
@@ -125,5 +151,6 @@ export class TripsComponent implements OnInit, OnDestroy, AfterViewInit {
    */
   ngOnDestroy(): void {
     this.valchange.unsubscribe();
+    this.sub.unsubscribe();
   }
 }

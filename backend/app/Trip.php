@@ -10,30 +10,27 @@ class Trip extends Model
         'carrier_id',
         'start_dt',
         'end_dt',
-        'from_lat',
-        'from_lng',
         'from_formatted_address',
-        'from_place_id',
-        'to_lat',
-        'to_lng',
         'to_formatted_address',
-        'to_place_id',
     ];
     /**
      * used to make fielad datetime
      * @var array
      */
-    protected $dates=[
+    protected $dates = [
         'start_dt',
         'end_dt',
     ];
+
     /**
      * Get user who is bag carrier
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function carrier() {
-        return $this->belongsTo('App\User','carrier_id');
+    public function carrier()
+    {
+        return $this->belongsTo('App\User', 'carrier_id');
     }
+
     /**
      * Get all the offers.
      */

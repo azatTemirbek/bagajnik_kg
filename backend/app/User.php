@@ -30,6 +30,7 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password', 'remember_token',
     ];
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -49,6 +50,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
     /**
      * Get the comments from the user.
      */
@@ -56,6 +58,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany('App\Rating', 'from_user_id', 'id');
     }
+
     /**
      * Get the comments for to user.
      */
@@ -63,6 +66,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany('App\Rating', 'to_user_id', 'id');
     }
+
     /**
      * Get all the trips.
      */
@@ -70,6 +74,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany('App\Trip', 'carrier_id', 'id');
     }
+
     /**
      * Get all the trips.
      */
@@ -77,6 +82,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany('App\Luggage', 'owner_id', 'id');
     }
+
     /**
      * Get all the trips.
      */
@@ -84,6 +90,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany('App\Offer', 'req_user_id', 'id');
     }
+
     /**
      * Crypto the password.
      */

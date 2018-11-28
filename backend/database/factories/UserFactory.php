@@ -29,14 +29,8 @@ $factory->define(App\Trip::class, function (Faker $faker) {
         'carrier_id' => $faker->numberBetween($min = 1, $max = 50),
         'start_dt' => $faker->dateTime,
         'end_dt' => $faker->dateTime,
-        'from_lat' => $faker->latitude($min = -90, $max = 90),
-        'from_lng' => $faker->longitude($min = -180, $max = 180),
         'from_formatted_address' => $faker->address(),
-        'from_place_id' => $faker->numberBetween($min = 1, $max = 100),
-        'to_lat' => $faker->latitude($min = -90, $max = 90),
-        'to_lng' => $faker->longitude($min = -180, $max = 180),
         'to_formatted_address' => $faker->address(),
-        'to_place_id' => $faker->numberBetween($min = 1, $max = 100),
     ];
 });
 
@@ -45,12 +39,12 @@ $factory->define(App\Rating::class, function (Faker $faker) {
         'from_user_id' => $faker->numberBetween($min = 1, $max = 50),
         'to_user_id' => $faker->numberBetween($min = 1, $max = 50),
         'rate_value' => $faker->numberBetween($min = 1, $max = 50),
-        'comment' =>  $faker->text($maxNbChars = 200)
+        'comment' => $faker->text($maxNbChars = 200)
     ];
 });
 
 $factory->define(App\Luggage::class, function (Faker $faker) {
-   return [
+    return [
         'owner_id' => $faker->numberBetween($min = 1, $max = 50),
         'taker_id' => $faker->numberBetween($min = 1, $max = 50),
         'takerName' => $faker->name,
@@ -58,7 +52,7 @@ $factory->define(App\Luggage::class, function (Faker $faker) {
         'takerPhone2' => $faker->phoneNumber,
         'mass' => $faker->numberBetween($min = 1, $max = 50),
         'comertial' => $faker->boolean($chanceOfGettingTrue = 50),
-        'value' => $faker->randomElement($array = array ('Ценный','Не ценный')),
+        'value' => $faker->randomElement($array = array('Ценный', 'Не ценный')),
         'price' => $faker->numberBetween($min = 0, $max = 1000),
         'start_dt' => $faker->dateTime,
         'end_dt' => $faker->dateTime,
@@ -75,6 +69,6 @@ $factory->define(App\Offer::class, function (Faker $faker) {
         'luggage_id' => $faker->numberBetween($min = 1, $max = 50),
         'trip_id' => $faker->numberBetween($min = 1, $max = 50),
         'agree' => $faker->boolean($chanceOfGettingTrue = 50),
-        'status' => $faker->randomElement($array = array ('requested','viewed','responded')),
+        'status' => $faker->randomElement($array = array('requested', 'viewed', 'responded')),
     ];
 });

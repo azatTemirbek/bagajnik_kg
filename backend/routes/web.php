@@ -14,23 +14,5 @@
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    return view('welcome');
+    return File::get(public_path() . '/index.html');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-//Route::get('/trips', function () {
-//    $trips = \App\TripsResource::all();
-//    return view('trips',[
-//        'trips' => $trips
-//    ]);
-//});
-//
-//Route::get('/trips/{id}', function ($id) {
-//    return "This is trip ".$id;
-//});
-
-
-

@@ -15,7 +15,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RequestResetComponent } from './pages/auth/password/request-reset/request-reset.component';
 import { ResponceResetComponent } from './pages/auth/password/responce-reset/responce-reset.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -23,8 +23,8 @@ import { OfferService } from './service/offer.service';
 import { TripsComponent } from './pages/trips/trips.component';
 import { DynamicFormsCoreModule } from '@ng-dynamic-forms/core';
 import { DynamicFormsNGBootstrapUIModule } from '@ng-dynamic-forms/ui-ng-bootstrap';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { TripFormComponent } from './pages/form/trip-form/trip-form.component';
 import { JumbotronComponent } from './components/Jumbotron/Jumbotron.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -35,6 +35,9 @@ import { OfferViewComponent } from './pages/offerView/offerView.component';
 import { OfferConfirmComponent } from './pages/offer-confirm/offer-confirm.component';
 import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
 import { OfferResultComponent } from './pages/OfferResult/OfferResult.component';
+import { LogicService } from './service/logic.service';
+import { CustomHttpInterceptor } from './service/custom-http-interceptor.service';
+import { ErrorInterceptorService } from './service/ErrorInterceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,13 +78,16 @@ import { OfferResultComponent } from './pages/OfferResult/OfferResult.component'
     Ng5SliderModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
     JarvisService,
     TokenService,
-    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
     SnotifyService,
     OfferService,
     TripService,
-    LuggageService
+    LuggageService,
+    LogicService
   ],
   bootstrap: [AppComponent]
 })

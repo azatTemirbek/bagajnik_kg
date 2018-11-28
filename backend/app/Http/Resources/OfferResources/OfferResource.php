@@ -12,14 +12,14 @@ class OfferResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
     {
         return [
 //            'type' => 'offers',
-            'id' => (string) $this->id,
+            'id' => (string)$this->id,
 //            'attributes' => [
             'agree' => $this->agree,
             'status' => $this->status,
@@ -27,7 +27,7 @@ class OfferResource extends JsonResource
             'res_user_id' => $this->res_user_id,
             'luggage_id' => $this->luggage_id,
             'trip_id' => $this->trip_id,
-            'updated_at'=> (string) $this->updated_at,
+            'updated_at' => (string)$this->updated_at,
 //            ],
             'relationships' => [
                 'trip' => new TripsResource($this->trip),

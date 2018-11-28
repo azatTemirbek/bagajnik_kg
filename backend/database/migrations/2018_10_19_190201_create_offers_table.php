@@ -28,7 +28,7 @@ class CreateOffersTable extends Migration
             $table->foreign('trip_id')->references('id')->on('trips');
 
             $table->boolean('agree')->default(false);
-            $table->string('status',20)->nullable();
+            $table->string('status', 20)->nullable();
 
             $table->timestamps();
         });

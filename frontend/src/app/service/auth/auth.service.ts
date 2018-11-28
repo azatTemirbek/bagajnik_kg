@@ -47,4 +47,9 @@ export class AuthService {
   private remove() {
     localStorage.removeItem('userdata');
   }
+  logout() {
+    this.removeMe();
+    this.loggedIn.next(!this.loggedIn.getValue());
+    this.Token.remove();
+  }
 }

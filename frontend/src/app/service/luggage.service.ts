@@ -12,7 +12,7 @@ export class LuggageService {
 
   constructor(
     private http: HttpClient,
-    // private auth: AuthService
+    private auth: AuthService
   ) { }
   /**
    * will return all the luggages with pagination
@@ -32,6 +32,7 @@ export class LuggageService {
    * @param data luggage data
    */
   create(data) {
+    data.owner_id = this.auth.me.getValue()['id'];
     return this.http.post(`${this.api}/luggages`, data);
   }
   /**

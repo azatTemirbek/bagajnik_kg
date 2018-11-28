@@ -24,6 +24,7 @@ class Offer extends Model
     {
         return $this->belongsTo('App\Luggage', 'luggage_id');
     }
+
     /**
      * Get the TripsResource that owns the offer.
      */
@@ -31,6 +32,7 @@ class Offer extends Model
     {
         return $this->belongsTo('App\Trip', 'trip_id');
     }
+
     /**
      * Get the User that owns the offer.
      */
@@ -38,6 +40,7 @@ class Offer extends Model
     {
         return $this->belongsTo('App\User', 'req_user_id');
     }
+
     /**
      * user to whome the offer was targeted
      */

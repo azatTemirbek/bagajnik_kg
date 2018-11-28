@@ -25,7 +25,7 @@ export class AfterLoginService implements CanActivate {
     if (this.Token.loggedIn()) {
       return true;
     }
-    this.router.navigateByUrl('/profile');
+    this.router.navigateByUrl('/login');
     return false;
   }
 }

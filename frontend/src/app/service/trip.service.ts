@@ -1,6 +1,7 @@
 import { Configure } from './configure';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class TripService {
 
   constructor(
     private http: HttpClient,
-    // private auth: AuthService
+    private auth: AuthService
   ) { }
   /**
    * will return all the trips with pagination
@@ -30,6 +31,7 @@ export class TripService {
    * @param data trip data
    */
   create(data) {
+    data.carrier_id = this.auth.me.getValue().id;
     return this.http.post(`${this.api}/trips`, data);
   }
   /**

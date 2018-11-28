@@ -23,8 +23,7 @@ class OfferRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
             case 'DELETE':
                 {
@@ -34,7 +33,7 @@ class OfferRequest extends FormRequest
                 {
                     return [
                         'agree' => 'required',
-                        'status'  => 'required',
+                        'status' => 'required',
                     ];
                 }
             case 'PUT':
@@ -42,16 +41,17 @@ class OfferRequest extends FormRequest
                 {
                     return [
                         'agree' => 'required',
-                        'status'  => 'required',
+                        'status' => 'required',
                     ];
                 }
-            default:break;
+            default:
+                break;
         }
     }
+
     public function messages()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
             case 'DELETE':
                 {
@@ -62,7 +62,7 @@ class OfferRequest extends FormRequest
                     return [
                         'agree.required' => 'Согласны ли вы взять этот заказ?',
                         'status.required' => 'Статус заказа',
-                        ];
+                    ];
 
                 }
             case 'PUT':
@@ -73,7 +73,8 @@ class OfferRequest extends FormRequest
                         'status.required' => 'Статус заказа',
                     ];
                 }
-            default:break;
+            default:
+                break;
         }
     }
 }

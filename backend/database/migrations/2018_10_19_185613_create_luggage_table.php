@@ -17,16 +17,16 @@ class CreateLuggageTable extends Migration
             $table->increments('id');
             $table->integer('owner_id')->nullable()->unsigned();
             $table->foreign('owner_id')->references('id')->on('users')
-                    ->onDelete('cascade')->onUpdate('cascade');
+                ->onDelete('cascade')->onUpdate('cascade');
             $table->integer('taker_id')->nullable()->unsigned();
             $table->foreign('taker_id')->references('id')->on('users');
-            $table->string('takerName',20)->nullable();
-            $table->string('takerPhone1',20)->nullable();
-            $table->string('takerPhone2',20)->nullable();
+            $table->string('takerName', 20)->nullable();
+            $table->string('takerPhone1', 20)->nullable();
+            $table->string('takerPhone2', 20)->nullable();
             $table->integer('mass');
             $table->boolean('comertial')->default(false);
-            $table->string('value',20)->nullable();
-            $table->decimal('price',9,2)->default(0);
+            $table->string('value', 20)->nullable();
+            $table->decimal('price', 9, 2)->default(0);
             $table->string('dsc');
             $table->string('from_formatted_address');
             $table->string('to_formatted_address');

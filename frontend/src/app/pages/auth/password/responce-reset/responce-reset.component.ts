@@ -9,7 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./responce-reset.component.css']
 })
 export class ResponceResetComponent implements OnInit {
-  public error = [];
+  public error = {
+    email: null,
+    password: null,
+    password_confirmation: null,
+  };
   public form = {
     email: null,
     password: null,

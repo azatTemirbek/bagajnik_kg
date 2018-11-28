@@ -6,6 +6,8 @@ import { Subscription, BehaviorSubject } from 'rxjs';
 import { TripService } from 'src/app/service/trip.service';
 import { LuggageService } from 'src/app/service/luggage.service';
 import { AuthService } from 'src/app/service/auth/auth.service';
+import { Location } from '@angular/common';
+import { LogicService } from 'src/app/service/logic.service';
 
 @Component({
   selector: 'app-offerview',
@@ -27,7 +29,9 @@ export class OfferViewComponent implements OnInit {
     private notify: SnotifyService,
     private route: ActivatedRoute,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private location: Location,
+    private logic: LogicService
   ) { }
 
   ngOnInit() {
@@ -40,7 +44,7 @@ export class OfferViewComponent implements OnInit {
       if (this.tripId > 0) {
         this.getTripData(this.tripId);
       }
-      if (this.luggageId < 0 || this.tripId < 0 ) {
+      if (this.luggageId < 0 || this.tripId < 0) {
         this.notify.error('url недействителен');
         this.router.navigateByUrl('/404');
       }
@@ -60,7 +64,7 @@ export class OfferViewComponent implements OnInit {
         error => this.handleError(error)
       );
   }
-  handleError({message}) {
+  handleError({ message }) {
     this.notify.error(message);
   }
   /**
@@ -69,8 +73,11 @@ export class OfferViewComponent implements OnInit {
    */
   sendTo(bool: Boolean) {
     if (bool) {
+      if (!this.auth.loggedIn.getValue()) {
+        this.router.navigate(['/login']);
+      }
       this.offerService.create({
-        req_user_id: this.auth.me.getValue().id ,
+        req_user_id: this.auth.me.getValue().id,
         res_user_id: this.luggage.getValue().owner_id,
         luggage_id: this.luggageId,
         trip_id: this.tripId,
@@ -78,9 +85,12 @@ export class OfferViewComponent implements OnInit {
         status: 'requested',
       })
         .subscribe(data => {
-          console.log(data);
-          this.notify.success('hello');
+          this.logic.clear();
+          this.router.navigate(['/home']);
+          this.notify.success('success');
         });
+    } else {
+      this.location.back();
     }
   }
 }

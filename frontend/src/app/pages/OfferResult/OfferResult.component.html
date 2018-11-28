@@ -3,8 +3,8 @@
     <div class="col">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Главная страница</a></li>
-          <li class="breadcrumb-item"><a href="#">Подтверждение отправки</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="[ '/']">Главная страница</a></li>
+          <li class="breadcrumb-item"><a>Подтверждение отправки</a></li>
           <li class="col"></li>
           <!-- <a [routerLink]="[ '/tripform', -1 ]" class="btn justify-content-end btn-sm btn-primary text-capitalize text-white pr-3">
             <i class="fas fa-plus-circle"></i>
@@ -77,8 +77,6 @@
           </table>
           <div aria-label="Basic example" class="btn-group float-right" role="group">
             <a (click)="accept(true)" class="btn btn-primary btn-lg text-white" role="button">Зактытъ</a>
-            <!-- href="{{link}}"  -->
-            <!-- <button (click)="accept(false)" class="btn btn-primary btn-lg btn-outline-primary" role="button">Отмена</button> -->
           </div>
         </div>
       </div>

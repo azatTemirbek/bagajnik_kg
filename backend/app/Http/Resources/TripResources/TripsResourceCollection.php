@@ -9,7 +9,7 @@ class TripsResourceCollection extends ResourceCollection
     /**
      * Transform the resource collection into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -21,7 +21,9 @@ class TripsResourceCollection extends ResourceCollection
             ],
         ];
     }
-    public function with($request) {
+
+    public function with($request)
+    {
         return [
             'version' => '1.0',
             'url' => url('/'),

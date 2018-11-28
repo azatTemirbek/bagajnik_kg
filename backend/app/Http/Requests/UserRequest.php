@@ -23,8 +23,7 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
             case 'DELETE':
                 {
@@ -38,18 +37,19 @@ class UserRequest extends FormRequest
             case 'PATCH':
                 {
                     return [
-                      'name' => 'required',
-                      'surname'  => 'required',
-                      'phone'  => 'required',
+                        'name' => 'required',
+                        'surname' => 'required',
+                        'phone' => 'required',
                     ];
                 }
-            default:break;
+            default:
+                break;
         }
     }
+
     public function messages()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
             case 'DELETE':
                 {
@@ -68,7 +68,8 @@ class UserRequest extends FormRequest
                         'phone.required' => 'Номер',
                     ];
                 }
-            default:break;
+            default:
+                break;
         }
     }
 }

@@ -16,6 +16,8 @@ import { LuggageService } from 'src/app/service/luggage.service';
 import { Options, LabelType } from 'ng5-slider';
 import { MapsAPILoader } from '@agm/core';
 import { AuthService } from 'src/app/service/auth/auth.service';
+import { LogicService } from 'src/app/service/logic.service';
+import { ActivatedRoute } from '@angular/router';
 declare var google;
 
 @Component({
@@ -132,16 +134,24 @@ export class LuggagesComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('myinfiniteScroll') myinfiniteScroll: ElementRef;
   ffa: any;
   tfa: any;
+  sub: Subscription;
   constructor(
     private luggage: LuggageService,
     private formService: DynamicFormService,
     private notify: SnotifyService,
     private mapsAPILoader: MapsAPILoader,
-    private auth: AuthService
+    private auth: AuthService,
+    public logic: LogicService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.getAll({});
+    this.sub = this.route
+      .queryParams
+      .subscribe(params => {
+        this.filter.owner_id = +params['owner_id'] || null;
+        this.getAll({ owner_id: this.filter.owner_id });
+      });
     this.formGroup = this.formService.createFormGroup(this.formModel);
     this.valchange = this.formGroup.valueChanges.subscribe(({
       start_dt,
@@ -220,5 +230,6 @@ export class LuggagesComponent implements OnInit, OnDestroy, AfterViewInit {
    */
   ngOnDestroy(): void {
     this.valchange.unsubscribe();
+    this.sub.unsubscribe();
   }
 }

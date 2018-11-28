@@ -15,6 +15,8 @@ import { ITrip } from 'src/app/interface/itrip';
 import { dateParse } from 'src/app/helpers/util';
 import { MY_FORM_LAYOUT } from './TRIP_LAYOUT';
 import { MapsAPILoader } from '@agm/core';
+import { LogicService } from 'src/app/service/logic.service';
+import { AuthService } from 'src/app/service/auth/auth.service';
 declare var google;
 
 @Component({
@@ -95,7 +97,9 @@ export class TripFormComponent implements OnInit, OnDestroy, AfterViewInit {
     private tripService: TripService,
     private route: ActivatedRoute,
     private router: Router,
-    private mapsAPILoader: MapsAPILoader
+    private mapsAPILoader: MapsAPILoader,
+    private logic: LogicService,
+    public auth: AuthService
     ) { }
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -168,7 +172,9 @@ export class TripFormComponent implements OnInit, OnDestroy, AfterViewInit {
     } else {
       this.notifyService.success('Успешно создан!');
     }
-    this.router.navigateByUrl('/trips');
+    console.log(data);
+    this.logic.trip.next(data.data);
+    this.logic.navigate();
   }
   /**
    * a function used to notify

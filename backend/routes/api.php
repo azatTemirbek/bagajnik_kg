@@ -10,15 +10,6 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//TODO: Controller middlewarw api: sonra
-//todo: query index (tripcontroller index)+
-//todo: formrequest validator custom message (example triprequest)
-//todo: tema tabuu (bootstrap4)
-//todo: formatted address lat long placeid table_name table(faker)
-//todo: to from string->number(trip luggage faker) model realation koshulat model(relation)(azat)
-//todo: address table with ui autocompleate(azat)
-//todo: list item ui(azat+ayzat)
-//todo: colection katalar check toute name (php artisan routes:list)
 Route::group([
     'middleware' => 'api',
 ], function () {
@@ -27,15 +18,15 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
+    Route::get('my-info', 'AuthController@info');
     Route::post('sendPasswordResetLink', 'ResetPasswordController@sendEmail');
     Route::post('resetPassword', 'ChangePasswordController@process');
-//    routes
 
+    Route::apiresource('/trips', 'TripsController');
+    Route::resource('/offers', 'OfferController');
+    Route::resource('/luggages', 'LuggageController');
+    Route::delete('luggages/{luggage}', 'LuggageController@destroy');
+    Route::resource('/users', 'UserController');
+    Route::resource('/ratings', 'RatingController');
+    Route::patch('offers-accept/{id}', 'OfferController@accept');
 });
-Route::apiresource('/trips', 'TripsController');
-Route::resource('/offers', 'OfferController');
-Route::resource('/luggages', 'LuggageController');
-Route::delete('luggages/{luggage}', 'LuggageController@destroy');
-Route::resource('/users', 'UserController');
-Route::resource('/ratings', 'RatingController');
-Route::patch('offers-accept/{id}', 'OfferController@accept');

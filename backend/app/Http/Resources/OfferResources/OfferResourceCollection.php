@@ -9,10 +9,11 @@ class OfferResourceCollection extends ResourceCollection
     /**
      * Transform the resource collection into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
-    public function toArray($request) {
+    public function toArray($request)
+    {
         return [
             'data' => $this->collection,
             'links' => [
@@ -20,7 +21,9 @@ class OfferResourceCollection extends ResourceCollection
             ],
         ];
     }
-    public function with($request) {
+
+    public function with($request)
+    {
         return [
             'version' => '1.0',
             'url' => url('/'),

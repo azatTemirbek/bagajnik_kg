@@ -3,8 +3,8 @@
     <div class="col">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Главная страница</a></li>
-          <li class="breadcrumb-item"><a href="#">Список Поездок</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="[ '/']">Главная страница</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="[ '/trips']">Список Поездок</a></li>
           <li class="col"></li>
           <a [routerLink]="[ '/tripform', -1 ]" class="btn justify-content-end btn-sm btn-primary text-capitalize text-white pr-3">
             <i class="fas fa-plus-circle"></i>
@@ -18,7 +18,7 @@
     <div class="col-lg-3">
       <div class="card">
         <div class="card-body">
-          <form [formGroup]="formGroup" (submit)="find($event)">
+          <form [formGroup]="formGroup" (submit)="find()">
             <p class="card-text">
               <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-ng-bootstrap-form>
             </p>
@@ -66,15 +66,15 @@
                         <p class="card-text h4">
                           <i class="fab fa-whatsapp text-success"></i> {{trip?.relationships.carrier?.phone}}
                         </p>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
                       </div>
                     </div>
                     <div class="float-right">
-                      <a routerLink="/luggageform/-1" [queryParams]="{ offerTrip: trip.id }" class="card-link">Предлажите
-                        доставку багажа</a>
-                      <!-- <a href="#" class="card-link">Another link</a> -->
+                      <button (click)="logic?.trip?.next(trip);logic?.navigate();" class="card-link btn btn-primary">
+                        {{(filter.carrier_id)?'Выбрать поездку':'Предлажите взять посылку'}}
+                      </button>
+                      <a *ngIf="trip.carrier_id===auth.me.getValue().id" routerLink="/tripform/{{trip.id}}" class="card-link">
+                        <i class="far fa-edit"></i>
+                      </a>
                     </div>
                   </div>
                 </div>

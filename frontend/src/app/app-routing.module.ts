@@ -19,15 +19,15 @@ import { OfferResultComponent } from './pages/OfferResult/OfferResult.component'
 const routes: Routes = [
   // { path: '', component: LoginComponent, canActivate: [BeforeLoginService] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomePageComponent,  },
-  { path: 'login', component: LoginComponent,  },
-  { path: 'register', component: RegisterComponent,  },
-  { path: 'profile', component: ProfileComponent, canActivate: [AfterLoginService] },
-  { path: 'request-password-reset', component: RequestResetComponent,   },
-  { path: 'responce-password-reset', component: ResponceResetComponent,   },
-  { path: 'trips', component: TripsComponent,   },
+  { path: 'home', component: HomePageComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'request-password-reset', component: RequestResetComponent  },
+  { path: 'responce-password-reset', component: ResponceResetComponent },
+  { path: 'trips', component: TripsComponent },
+  { path: 'luggages', component: LuggagesComponent },
   { path: 'tripform/:id', component: TripFormComponent, canActivate: [AfterLoginService]  },
-  { path: 'luggages', component: LuggagesComponent,   },
+  { path: 'profile', component: ProfileComponent, canActivate: [AfterLoginService] },
   { path: 'luggageform/:id', component: LuggageFormComponent, canActivate: [AfterLoginService]  },
   { path: 'offerview/:tripId/:luggageId', component: OfferViewComponent, canActivate: [AfterLoginService]  },
   { path: 'offerconfirm/:id', component: OfferConfirmComponent, canActivate: [AfterLoginService]  },
@@ -37,6 +37,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AfterLoginService]
 })
 export class AppRoutingModule {}

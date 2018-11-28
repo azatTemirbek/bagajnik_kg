@@ -23,8 +23,7 @@ class RatingRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
             case 'DELETE':
                 {
@@ -34,7 +33,7 @@ class RatingRequest extends FormRequest
                 {
                     return [
                         'rate_value' => 'required',
-                        'comment'  => 'nullable',
+                        'comment' => 'nullable',
                     ];
                 }
             case 'PUT':
@@ -42,16 +41,17 @@ class RatingRequest extends FormRequest
                 {
                     return [
                         'rate_value' => 'required',
-                        'comment'  => 'nullable',
+                        'comment' => 'nullable',
                     ];
                 }
-            default:break;
+            default:
+                break;
         }
     }
+
     public function messages()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
             case 'DELETE':
                 {
@@ -72,7 +72,8 @@ class RatingRequest extends FormRequest
                         'comment.required' => 'Можете оставить свои комментарии',
                     ];
                 }
-            default:break;
+            default:
+                break;
         }
     }
 }

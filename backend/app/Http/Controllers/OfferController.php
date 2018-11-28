@@ -15,23 +15,29 @@ use function MongoDB\BSON\toJSON;
 
 class OfferController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['index']]);
+    }
+
     /**
+     * @param Request $request
      * @return OfferResourceCollection
      */
     public function index(Request $request)
     {
         $query = Offer::query();
-        if($request->has ('req_user_id') && $request->req_user_id <> 'null'){
+        if ($request->has('req_user_id') && $request->req_user_id <> 'null') {
             $query->where('req_user_id', '=', $request->req_user_id);
         }
-        if($request->has ('res_user_id') && $request->res_user_id <> 'null'){
+        if ($request->has('res_user_id') && $request->res_user_id <> 'null') {
             $query->where('res_user_id', '=', $request->res_user_id);
         }
-        if($request->has ('status1') && $request->status1 <> 'null' && $request->has ('status2') && $request->status2 <> 'null'){
+        if ($request->has('status1') && $request->status1 <> 'null' && $request->has('status2') && $request->status2 <> 'null') {
             $query->orWhere('status', '=', $request->status1);
             $query->orWhere('status', '=', $request->status2);
         }
-        if($request->has ('status') && $request->status <> 'null'){
+        if ($request->has('status') && $request->status <> 'null') {
             $query->where('status', '=', $request->status);
         }
         // dd($query->toSql());
@@ -42,20 +48,19 @@ class OfferController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param Request $request
+     * @param OfferRequest $request
      * @return OfferResource
      */
     public function store(OfferRequest $request)
     {
         $offer = new Offer($request->all());
-        $offer -> req_user_id = $request->user()->id;
-//        get the trip and is uersid
+        $offer->req_user_id = $request->user('api')->id;
+        // get the trip and is uersid
         $trip = Trip::findOrFail($request->trip_id);
         //        get the luggage and is uersid
         $luggage = Luggage::findOrFail($request->luggage_id);
-        $offer -> res_user_id = ($trip->carrier_id = $request->user()->id )?$luggage->owner_id:$trip->carrier_id;
-        if($offer->save()){
+        $offer->res_user_id = ($trip->carrier_id = $request->user('api')->id) ? $luggage->owner_id : $trip->carrier_id;
+        if ($offer->save()) {
             return New OfferResource($offer);
         }
     }
@@ -71,11 +76,11 @@ class OfferController extends Controller
         return new OfferResource($offer);
     }
 
-
     /**
      * Update the specified resource in storage.
-     * @param Request $request
+     * @param OfferRequest $request
      * @param $id
+     * @return OfferResource
      */
     public function update(OfferRequest $request, $id)
     {
@@ -86,24 +91,27 @@ class OfferController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     * @param Request $request
+     * Update the specified resource in storage
+     * @param OfferRequest $request
      * @param $id
+     * @return OfferResource
      */
     public function accept(OfferRequest $request, $id)
     {
         $offerUpdate = Offer::findOrFail($id);
-        $inputs = $request->all(['agree','status']);
+        $inputs = $request->all(['agree', 'status']);
         $offerUpdate->fill($inputs)->save();
         $query = Offer::query();
-        $query->where('id','<>',$id);
-        $query->where('luggage_id','=',$offerUpdate->luggage_id);
-        $query->orWhere('trip_id','=',$offerUpdate->trip_id);
+        $query->where('id', '<>', $id);
+        $query->where('luggage_id', '=', $offerUpdate->luggage_id);
+        $query->orWhere('trip_id', '=', $offerUpdate->trip_id);
         $query->update(['status' => 'responded', 'agree' => false]);
         $this->sendMail($offerUpdate);
         return new OfferResource($offerUpdate);
     }
-    private function sendMail(Offer $offer){
+
+    private function sendMail(Offer $offer)
+    {
         Mail::to($offer->req_user->email)->send(new AcceptMail($offer));
         Mail::to($offer->res_user->email)->send(new AcceptMail($offer));
         return true;

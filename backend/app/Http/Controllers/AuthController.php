@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResources\UserFullResource;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignUpRequest;
@@ -29,7 +31,7 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
         // dd($credentials);
-        if (! $token = auth()->attempt($credentials)) {
+        if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Эл. Почта или пароль недействительны!'], 401);
         }
 
@@ -90,5 +92,16 @@ class AuthController extends Controller
             'user' => auth()->user()->name,
             'user_data' => auth()->user()
         ]);
+    }
+
+    /**
+     * will get all the info of the user
+     * @param Request $request
+     * @return UserFullResource
+     */
+    public function info(Request $request)
+    {
+        $user = User::findOrFail(auth()->user()->id);
+        return new UserFullResource($user);
     }
 }

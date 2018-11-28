@@ -1,6 +1,9 @@
 <?php
+
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
+
 class Luggage extends Model
 {
     protected $fillable = [
@@ -27,8 +30,9 @@ class Luggage extends Model
      * Get owner of the luggage
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function owner() {
-        return $this->belongsTo('App\User','owner_id');
+    public function owner()
+    {
+        return $this->belongsTo('App\User', 'owner_id');
     }
 
     /**
