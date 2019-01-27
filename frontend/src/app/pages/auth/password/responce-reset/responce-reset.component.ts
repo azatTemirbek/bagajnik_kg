@@ -59,7 +59,7 @@ export class ResponceResetComponent implements OnInit {
     });
   }
   handleError(error) {
-    this.error = error.error.errors;
+    this.error = error.errors;
   }
 
 }

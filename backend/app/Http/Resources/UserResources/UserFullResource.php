@@ -12,29 +12,24 @@ class UserFullResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
         return [
-//            'type' => 'user',
             'id' => (string) $this->id,
-//            'attributes' => [
-                'name' => $this->name,
-                'surname' => $this->surname,
-                'phone' =>$this->phone,
-                'email' =>$this->email,
-                'fullName' => $this->getFullname(),
-//            ],
-          'relationships' => [
-            'ratingsToMe' => new RatingsResourceCollection($this->ratingsToMe),
-            'myRatings' => new RatingsResourceCollection($this->myRatings),
-            'offers' => new OfferResourceCollection($this->offers),
-            'trips' => new TripsResourceCollection($this->trips),
-            'luggages' => new LuggageResourceCollection($this->luggages),
+            'name' => $this->name,
+            'surname' => $this->surname,
+            'phone' =>$this->phone,
+            'email' =>$this->email,
+            'fullName' => $this->getFullname(),
+            'relationships' => [
+                'ratingsToMe' => new RatingsResourceCollection($this->ratingsToMe),
+                'myRatings' => new RatingsResourceCollection($this->myRatings),
+                'offers' => new OfferResourceCollection($this->offers),
+                'trips' => new TripsResourceCollection($this->trips),
+                'luggages' => new LuggageResourceCollection($this->luggages),
           ],
         ];
     }

@@ -14,8 +14,18 @@ class RatingController extends Controller
     public function index(Request $request)
     {
         $query = Rating::query();
-        $request->has('name') && $query->where('to_user_id', '>=', 45);
+        // $request->has('name') && $query->where('to_user_id', '>=', 45);
+        // $request->has('limit') && $query->limit($request->limit);
         $rating = $query->paginate(15);
+        return new RatingsResourceCollection($rating);
+    }
+
+    public function getItemByLimit(Request $request)
+    {
+        $lim = $request->has('limit')?$request->limit:3;
+        $query = Rating::query();
+        $query->limit($lim);
+        $rating = $query->get();
         return new RatingsResourceCollection($rating);
     }
 

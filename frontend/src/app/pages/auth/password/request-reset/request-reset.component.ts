@@ -25,11 +25,10 @@ export class RequestResetComponent implements OnInit {
       .sendPasswordResetLink(this.form)
       .subscribe(
         data => this.hendleRespnse(data),
-        err => this.notify.error(err.error.error)
+        err => this.notify.error(err.error.message)
       );
   }
   hendleRespnse(res) {
-    console.log(res);
     this.form.email = null;
   }
 

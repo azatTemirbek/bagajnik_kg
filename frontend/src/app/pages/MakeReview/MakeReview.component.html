@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row pt-5">
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Имя отправителя:</th>
+            <th scope="col">{{offer.getValue()?.relationships?.luggage?.relationships?.owner?.fullName}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Имя пассажира:</th>
+            <td>{{offer.getValue()?.relationships?.trip?.relationships?.carrier?.fullName}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Имя получателя:</th>
+            <td>{{offer.getValue()?.relationships?.luggage?.takerName}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Тип посылки:</th>
+            <td>{{(offer.getValue()?.relationships?.luggage?.comertial)?'коммерческая':'не коммерческая'}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Вес и объем:</th>
+            <td>{{offer.getValue()?.relationships?.luggage?.mass +' kg'}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Откуда:</th>
+            <td>{{offer.getValue()?.relationships?.luggage?.from_formatted_address}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Куда:</th>
+            <td>{{offer.getValue()?.relationships?.luggage?.to_formatted_address}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Цена доставки:</th>
+            <td>{{offer.getValue()?.relationships?.luggage?.price+' сом'}}</td>
+          </tr>
+          <!-- <tr>
+            <th scope="row"> :</th>
+            <td>{{offer.getValue()?.relationships?.trip?.start_dt}}</td>
+          </tr> -->
+          <tr>
+            <th scope="row" class="text-capitalize"> время прибытия :</th>
+            <td>{{offer.getValue()?.relationships?.trip?.end_dt}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col pt-5">
+      <div class="form-group">
+        <label for="rating" class="text-capitalize pr-3">оценка:</label>
+        <ngb-rating id="rating" [rate]="form?.rate_value"></ngb-rating>
+      </div>
+      <div class="form-group">
+        <label for="comment" class="text-capitalize">комментарий:</label>
+        <textarea id="comment" class="form-control" (change)="textchange($event)">{{form?.comment}}</textarea>
+      </div>
+      <button (click)="onFormSubmit()" class="btn btn-default">Submit
+      </button>
+    </div>
+  </div>
+
+</div>

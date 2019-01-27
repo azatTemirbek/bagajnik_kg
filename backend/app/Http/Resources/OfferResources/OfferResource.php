@@ -18,9 +18,7 @@ class OfferResource extends JsonResource
     public function toArray($request)
     {
         return [
-//            'type' => 'offers',
             'id' => (string)$this->id,
-//            'attributes' => [
             'agree' => $this->agree,
             'status' => $this->status,
             'req_user_id' => $this->req_user_id,
@@ -28,7 +26,6 @@ class OfferResource extends JsonResource
             'luggage_id' => $this->luggage_id,
             'trip_id' => $this->trip_id,
             'updated_at' => (string)$this->updated_at,
-//            ],
             'relationships' => [
                 'trip' => new TripsResource($this->trip),
                 'luggage' => new LuggageResource($this->luggage),

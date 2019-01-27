@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return File::get(public_path() . '/index.html');
 });
+Route::get('login', function () {
+    return File::get(public_path() . '/index.html');
+})->name('login');
+Auth::routes();

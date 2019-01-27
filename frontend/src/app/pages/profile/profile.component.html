@@ -17,17 +17,51 @@
       <ngb-accordion [closeOthers]="true" activeIds="static-1">
         <ngb-panel id="static-1" title="Предложения">
           <ng-template ngbPanelContent>
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-            officia
-            aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
-            tempor,
-            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-            helvetica,
-            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-            Leggings
-            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-            accusamus
-            labore sustainable VHS.
+            <div #myinfiniteScroll class="resulttrip" infiniteScroll [infiniteScrollDistance]="2"
+              [infiniteScrollThrottle]="50" [scrollWindow]="false">
+              <div *ngIf="offers && offers.length === 0" class="text-center h3 text-capitalize">
+                  нет предложений
+              </div>
+              <div *ngFor='let offer of offers' class="col-md-12 pb-2">
+                <div class="card bb">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title">
+                          <i *ngIf="offer?.agree && offer?.status==='responded'" class="fas fa-thumbs-up text-success fa-2x m-2"></i>
+                          <i *ngIf="!offer?.agree && offer?.status==='responded'" class="fas fa-thumbs-down text-danger fa-2x m-2"></i>
+                          <i *ngIf="!offer?.agree && offer?.status==='viewed'" class="far fa-eye text-warning fa-2x m-2"></i>
+                          <i *ngIf="!offer?.agree && offer?.status==='requested'" class="fas fa-question-circle fa-2x m-2"></i>
+                        </h5>
+                        <div class="row">
+                          <div class="col">
+                            Запрашивающий : {{offer?.relationships?.req_user?.fullName}}
+                          </div>
+                          <div class="col">
+                            Oтветчик: {{offer?.relationships?.res_user?.fullName}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            из : {{offer?.relationships?.trip?.from_formatted_address}}
+                          </div>
+                          <div class="col">
+                            в : {{offer?.relationships?.trip?.to_formatted_address}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <a routerLink="/offer-result-from-peer/{{offer?.id}}" class="card-link float-right">
+                              <i class="far fa-edit"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </ng-template>
         </ngb-panel>
         <ngb-panel id="static-2">
@@ -35,32 +69,99 @@
             <span>Багаж пользователя</span>
           </ng-template>
           <ng-template ngbPanelContent>
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-            officia
-            aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
-            tempor,
-            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-            helvetica,
-            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-            Leggings
-            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-            accusamus
-            labore sustainable VHS.
+            <div #myinfiniteScroll class="resulttrip" infiniteScroll [infiniteScrollDistance]="2"
+              [infiniteScrollThrottle]="50" [scrollWindow]="false">
+              <div *ngIf="luggages && luggages.lenght === 0" class="text-center h3 text-capitalize">
+                  нет багажа
+              </div>
+              <div *ngFor='let luggage of luggages' class="col-md-12 pb-2">
+                <div class="card bb">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title"><i class="fas fa-suitcase text-primary fa-2x m-2"></i>
+                          {{luggage?.from_formatted_address}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
+                          {{luggage?.start_dt }}</h6>
+                      </div>
+                      <div class="col">
+                        <h5 class="card-title"><i class="fas fa-luggage-cart text-warning fa-2x m-2"></i>
+                          {{luggage?.to_formatted_address }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
+                          {{luggage?.end_dt }}</h6>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="card-text mb-2">
+                          <div class="row">
+                            <div class="col">
+                              <i class="fab fa-whatsapp text-success"></i> {{luggage?.takerPhone1}}<br>
+                              <i class="fab fa-whatsapp text-success"></i> {{luggage?.takerPhone2}}
+                            </div>
+                            <div class="col">
+                              {{luggage?.mass}}kg - {{luggage?.value}} - {{luggage?.price}}сом <br>
+                              {{luggage?.relationships?.owner?.fullName}}
+                            </div>
+                          </div>
+                        </div>
+                        <p class="card-text">
+                          {{luggage?.dsc}}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="float-right">
+                      <a routerLink="/luggageform/{{luggage.id}}" class="card-link">
+                        <i class="far fa-edit"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </ng-template>
         </ngb-panel>
-        <ngb-panel id="static-3" title="Поездки пользователя" >
+        <ngb-panel id="static-3" title="Поездки пользователя">
           <ng-template ngbPanelContent>
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-            officia
-            aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
-            tempor,
-            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-            helvetica,
-            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-            Leggings
-            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-            accusamus
-            labore sustainable VHS.
+            <div #myinfiniteScroll class="resulttrip" infiniteScroll [infiniteScrollDistance]="2"
+              [infiniteScrollThrottle]="50" [scrollWindow]="false">
+              <div *ngIf="trips && trips.lenght === 0" class="text-center h3 text-capitalize">
+                  нет поездок
+              </div>
+              <div *ngFor='let trip of trips' class="col-md-12">
+                <div class="card bb">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title"><i class="fas fa-plane-departure text-primary fa-2x m-2"></i>
+                          {{trip?.from_formatted_address}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
+                          {{trip?.start_dt }}</h6>
+                      </div>
+                      <div class="col">
+                        <h5 class="card-title"><i class="fas fa-plane-arrival text-warning fa-2x m-2"></i>
+                          {{trip?.to_formatted_address }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
+                          {{trip?.end_dt }}</h6>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <p class="card-text h4">
+                          <i class="fab fa-whatsapp text-success"></i> {{trip?.relationships.carrier?.phone}}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="float-right">
+                      <a routerLink="/tripform/{{trip.id}}" class="card-link">
+                        <i class="far fa-edit"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="flex: auto"></div>
+            </div>
           </ng-template>
         </ngb-panel>
       </ngb-accordion>

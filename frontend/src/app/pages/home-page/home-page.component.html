@@ -1,3 +1,172 @@
-<app-jumbotron >
+<app-jumbotron></app-jumbotron>
+<section class="py-5 my-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col">
+        <div class="pt-3">
+          <h2 class="display-4 text-capitalize pb-3 text-center">
+            Как это работает
+          </h2>
+          <div class="d-flex flex-wrap flex-fill align-items-start row py-3">
 
-</app-jumbotron>
+            <div class="p-2 text-center col">
+                <i class="fas fa-search fa-6x rounded-circle p-5 text-center h-100 ws-100 text-white shat" style="background:#654582" ></i>
+                <h3 class="text-center pt-3" >Шаг 1 </h3>
+                <p class="" >
+                  Найти перевозчика
+                </p>
+            </div>
+
+            <div class="p-2 text-center col">
+                <i class="fas fa-dollar-sign fa-6x rounded-circle p-5 text-center h-100 ws-100 text-white shat" style="background:#ac0100" ></i>
+                <h3 class="text-center pt-3" >Шаг 2 </h3>
+                <p class="" >
+                  Назначь цену и предложи взять посылку
+                </p>
+            </div>
+
+            <div class="p-2 text-center col">
+                <i class="fas fa-handshake fa-6x rounded-circle p-5 text-center h-100 ws-100 text-white shat" style="background:#b85915" ></i>
+                <h3 class="text-center pt-3" >Шаг 3 </h3>
+                <p class="" >
+                  Дождаться согласия перевозчика
+                </p>
+            </div>
+
+            <div class="p-2 text-center col">
+                <i class="fas fa-people-carry fa-6x rounded-circle p-5 text-center h-100 ws-100 text-white shat" style="background:#599cc6" ></i>
+                <h3 class="text-center pt-3" >Шаг 4 </h3>
+                <p class="" >
+                  Встретится с перевозчиком и передать посылку
+                </p>
+            </div>
+
+            <div class="p-2 text-center col">
+                <i class="fab fa-gratipay fa-6x rounded-circle p-5 text-center h-100 ws-100 text-white shat" style="background:#70a627" ></i>
+                <h3 class="text-center pt-3" >Шаг 5 </h3>
+                <p class="" >
+                  Оценить перевозчика  и оставить отзывы
+                </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="assets/images/01.jpg" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="p-5">
+          <h2 class="display-4">We salute you!</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse
+            assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae
+            adipisci, beatae obcaecati.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="download bg-primary text-center py-5 my-5">
+  <div class="container">
+      <h2 class="mb-3">Статистика</h2>
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+          <div class="d-flex flex-wrap flex-fill align-items-start row">
+
+              <div class="p-2 text-center col">
+                  <i class="far fa-eye fa-8x shat p-5 text-center h-100 ws-100 text-white" style="" ></i>
+                  <h4 class="text-center pt-3 h2" > Более
+                    <span class="font-weight-bold">78955</span> Посетители</h4>
+                  <!-- <p class="" >
+                    Найти перевозчика
+                  </p> -->
+              </div>
+
+              <div class="p-2 text-center col">
+                  <i class="fas fa-search fa-8x shat p-5 text-center h-100 ws-100 text-white" style="" ></i>
+                  <h4 class="text-center pt-3 h2" > Более <span class="font-weight-bold">5668</span>  Пользователи</h4>
+                  <!-- <p class="" >
+                    Найти перевозчика
+                  </p> -->
+              </div>
+
+              <div class="p-2 text-center col">
+                  <i class="fas fa-paper-plane fa-8x shat p-5 text-center h-100 ws-100 text-white" style="" ></i>
+                  <h4 class="text-center pt-3 h2" > Более <span class="font-weight-bold">150023</span>  Отправки</h4>
+                  <!-- <p class="" >
+                    Найти перевозчика
+                  </p> -->
+              </div>
+          </div>
+
+
+
+
+        <!-- <h2 class="section-heading">Discover what all the buzz is about!</h2>
+        <p>Our app is available on any mobile device! Download now to get started!</p>
+        <div class="row d-flex flex-row justify-content-center">
+          <a class="down" href="#"><img class="flex-fill " src="assets/images//google-play-badge.svg" alt=""></a>
+          <a class="down" href="#"><img class="flex-fill " src="assets/images//app-store-badge.svg" alt=""></a>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="commentsR.length" class="testimonials text-center bg-light">
+  <div class="container">
+    <h2 class="mb-5">Отзывы ползователей...</h2>
+    <div class="row">
+      <div *ngFor="let item of commentsR" class="col-lg-4">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <img class="img-fluid rounded-circle mb-3" src="{{item.relationships.from_user.photo}}" alt="">
+          <h5>{{item.relationships.from_user.fullName}}</h5>
+          <p class="font-weight-light mb-0">"{{item.comment}}"</p>
+        </div>
+      </div>
+      <!-- <div class="col-lg-4">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <img class="img-fluid rounded-circle mb-3" src="assets/images/01.jpg" alt="">
+          <h5>Fred S.</h5>
+          <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice
+            landing pages."</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <img class="img-fluid rounded-circle mb-3" src="assets/images/01.jpg" alt="">
+          <h5>Sarah W.</h5>
+          <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<section class="page-section cta">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <div class="cta-inner text-center rounded">
+          <h2 class="section-heading mb-4">
+              Наша миссия
+            <span class="section-heading-upper"></span>
+            <!-- <span class="section-heading-lower"> To You</span> -->
+          </h2>
+          <p class="mb-0">Voysend-платформа для поиска и передачи посылок через пассажира, водителя или логистическую компанию, который направляется в указанную сторону.
+              Наша миссия- обеспечение  отправителям  более удобной и безопасной системы отправок
+              Наша цель- Дать возможность для одних быстро и экономно отправить посылку, а для других заработать на поездках.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -10,7 +10,8 @@ import {
   DynamicDatePickerModel,
   DynamicFormModel,
   DynamicFormService,
-  DynamicInputModel
+  DynamicInputModel,
+  DynamicDatePickerModelConfig
 } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
 import { TripService } from '../../service/trip.service';
@@ -23,6 +24,20 @@ import { LogicService } from 'src/app/service/logic.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/service/auth/auth.service';
 declare var google;
+
+export function parseDtaeFromUrll(param) {
+  if ( !param ) {
+    return null;
+  }
+  const dateOnly = param.split(' ')[0];
+  const arrayOfDateItems = dateOnly.split('-');
+  const a = {
+    year: +arrayOfDateItems[0],
+    month: +arrayOfDateItems[1],
+    day: +arrayOfDateItems[2]
+  };
+  return  a || null;
+}
 
 @Component({
   selector: 'app-trips',
@@ -38,32 +53,7 @@ export class TripsComponent implements OnInit, OnDestroy, AfterViewInit {
   /**
    * used to define searchform
    */
-  formModel: DynamicFormModel = [
-    new DynamicInputModel({
-      id: 'from_formatted_address',
-      label: 'Место Отправки',
-      maxLength: 42,
-      placeholder: 'Анкара'
-    }),
-    new DynamicInputModel({
-      id: 'to_formatted_address',
-      label: 'Место Достаяки',
-      maxLength: 42,
-      placeholder: 'Бишкек'
-    }),
-    new DynamicDatePickerModel({
-      id: 'start_dt',
-      label: 'Дата вылета c:',
-      placeholder: 'ГГГГ-ММ-ДД',
-      toggleLabel: '#'
-    }),
-    new DynamicDatePickerModel({
-      id: 'end_dt',
-      label: 'Дата вылета до:',
-      placeholder: 'ГГГГ-ММ-ДД',
-      toggleLabel: '#'
-    })
-  ];
+  formModel: DynamicFormModel = [];
   /**
    * used to store formGroup
    */
@@ -80,13 +70,45 @@ export class TripsComponent implements OnInit, OnDestroy, AfterViewInit {
     public logic: LogicService,
     private route: ActivatedRoute,
     private auth: AuthService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.sub = this.route.queryParams.subscribe(params => {
-      this.filter.carrier_id = +params['carrier_id'] || null;
-      this.getAll({ carrier_id: this.filter.carrier_id });
-    });
+    this.sub = this.route
+      .queryParams
+      .subscribe(params => {
+        this.filter = { ...this.filter, ...params };
+        this.getAll(this.filter);
+      });
+    this.formModel = [
+      new DynamicInputModel({
+        id: 'from_formatted_address',
+        label: 'Место Отправки',
+        maxLength: 42,
+        value: this.filter.from_formatted_address,
+        placeholder: 'Анкара'
+      }),
+      new DynamicInputModel({
+        id: 'to_formatted_address',
+        label: 'Место Достаяки',
+        maxLength: 42,
+        value: this.filter.to_formatted_address,
+        placeholder: 'Бишкек'
+      }),
+      new DynamicDatePickerModel({
+        id: 'start_dt',
+        label: 'Дата вылета c:',
+        placeholder: 'ГГГГ-ММ-ДД',
+        value: parseDtaeFromUrll(this.filter.start_dt),
+        toggleLabel: '#'
+      }),
+      new DynamicDatePickerModel({
+        id: 'end_dt',
+        label: 'Дата вылета до:',
+        placeholder: 'ГГГГ-ММ-ДД',
+        value: parseDtaeFromUrll(this.filter.end_dt),
+        toggleLabel: '#'
+      })
+    ];
     this.formGroup = this.formService.createFormGroup(this.formModel);
     this.valchange = this.formGroup.valueChanges.subscribe(
       ({ start_dt, end_dt, from_formatted_address, to_formatted_address }) => {
@@ -115,6 +137,19 @@ export class TripsComponent implements OnInit, OnDestroy, AfterViewInit {
             types: ['(cities)']
           }
         );
+
+        google.maps.event.addListener(this.ffa, 'place_changed', () => {
+          this.formGroup.setValue({
+            ...this.formGroup.value,
+            from_formatted_address: this.ffa.getPlace().formatted_address
+          });
+        });
+        google.maps.event.addListener(this.tfa, 'place_changed', () => {
+          this.formGroup.setValue({
+            ...this.formGroup.value,
+            to_formatted_address: this.tfa.getPlace().formatted_address
+          });
+        });
       }
     });
   }

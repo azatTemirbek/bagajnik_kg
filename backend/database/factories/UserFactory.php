@@ -21,6 +21,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'remember_token' => str_random(10),
+        'photo' => $faker->image('public/storage',400,300, null, false)
     ];
 });
 
@@ -38,7 +39,7 @@ $factory->define(App\Rating::class, function (Faker $faker) {
     return [
         'from_user_id' => $faker->numberBetween($min = 1, $max = 50),
         'to_user_id' => $faker->numberBetween($min = 1, $max = 50),
-        'rate_value' => $faker->numberBetween($min = 1, $max = 50),
+        'rate_value' => $faker->numberBetween($min = 1, $max = 5),
         'comment' => $faker->text($maxNbChars = 200)
     ];
 });

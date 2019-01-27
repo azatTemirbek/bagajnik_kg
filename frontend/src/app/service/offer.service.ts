@@ -34,6 +34,13 @@ export class OfferService {
   create(data) {
     return this.http.post(`${this.api}/offers`, data);
   }
+
+  createComment(data) {
+    return this.http.post(`${this.api}/ratings`, data);
+  }
+  getItemByLimit(numb = 3 ) {
+    return this.http.get(`${this.api}/getItemByLimit?limit=${numb}`);
+  }
   /**
    * to update Offer
    * @param data offer data

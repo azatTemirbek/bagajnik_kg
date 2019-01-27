@@ -3,8 +3,8 @@
     <div class="col">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a  [routerLink]="[ '/' ]">Главная страница</a></li>
-          <li class="breadcrumb-item"><a  [routerLink]="[ '/luggages' ]">Список багажа</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="[ '/' ]">Главная страница</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="[ '/luggages' ]">Список багажа</a></li>
           <li class="col"></li>
           <a routerLink="/luggageform/-1" class="btn justify-content-end btn-sm btn-primary text-capitalize text-white pr-3">
             <i class="fas fa-plus-circle"></i>
@@ -54,16 +54,83 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col">
-                        <h5 class="card-title"><i class="fas fa-suitcase text-primary fa-2x m-2"></i>
-                          {{luggage?.from_formatted_address}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
-                          {{luggage?.start_dt }}</h6>
+                          <div class="row pt-2">
+                              <div class="col-4">
+                                <img  class="img-fluid rounded-circle" [src]="luggage?.relationships?.owner?.photo">
+                              </div>
+                              <div class="col-8">
+
+                                <div class="col">
+                                  <h4 class="card-title">
+                                    {{luggage?.relationships?.owner?.fullName}}</h4>
+                                  <ngb-rating [rate]="luggage?.relationships?.owner?.avarageRating"></ngb-rating>
+                                  <span style='cursor: pointer' class="text-danger pl-4" (click)="openModal(content, luggage?.relationships?.owner)" >
+                                    <i class="fas fa-thumbs-up"></i>
+                                    Rate Me!
+                                  </span>
+                                </div>
+
+                              </div>
+                            </div>
                       </div>
+                      <!-- <div class="col"></div> -->
                       <div class="col">
-                        <h5 class="card-title"><i class="fas fa-luggage-cart text-warning fa-2x m-2"></i>
-                          {{luggage?.to_formatted_address }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
-                          {{luggage?.end_dt }}</h6>
+                          <div class="float-right p-3">
+                              Отправил: {{luggage?.relationships?.owner?.numberOfSentLuggagesIHaveSent}}
+                              <br>
+                              Доставил: {{luggage?.relationships?.owner?.numberOfSentLuggagesWithMe}}
+                            </div>
+                      </div>
+
+                    </div>
+
+                    <div class="row">
+                      <div class="col p-2">
+                        <i class="fas fa-location-arrow fa-lg m-1 text-info"></i>
+                        {{luggage?.from_formatted_address | slice:0:10 }} -
+                        {{luggage?.to_formatted_address | slice:0:10}} <br>
+                        <i class="fas fa-calendar-alt fa-lg m-1 text-info"></i> {{luggage?.start_dt | date:'M/d/yyyy' }} - {{luggage?.end_dt | date:'M/d/yyyy' }}
+                        <div class="">
+                            <i class="fas fa-cube fa-lg m-1 text-info"></i> Тип посылки : {{luggage?.value}}
+                        </div>
+                        <div class="">
+                            <i class="fas fa-weight fa-lg m-1 text-info"></i> Вес : {{luggage?.mass}}kg
+                        </div>
+                      </div>
+
+                      <div class="col">
+                          <div class="float-right">
+                            <!-- <br> -->
+                            <br>
+                              <div class="h3 text-center">
+                                  {{luggage?.price}} сом
+                              </div>
+                              <button (click)="logic.luggage.next(luggage);logic.navigate();" class="card-link btn btn-info">{{(filter.owner_id)?'Выбрать
+                                посылку':'Предлажите доставить'}}</button>
+                              <a *ngIf="luggage.owner_id===auth.me.getValue().id" routerLink="/luggageform/{{luggage.id}}"
+                                class="card-link">
+                                <i class="far fa-edit"></i>
+                              </a>
+                            </div>
+                      </div>
+                    </div>
+                    <!-- <div class="row">
+                      <div class="col">
+                        profile info
+                      </div>
+                      <div class="row">
+                          <div class="col">
+                              <h5 class="card-title"><i class="fas fa-suitcase text-primary fa-2x m-2"></i>
+                                {{luggage?.from_formatted_address}}</h5>
+                              <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
+                                {{luggage?.start_dt }}</h6>
+                            </div>
+                            <div class="col">
+                              <h5 class="card-title"><i class="fas fa-luggage-cart text-warning fa-2x m-2"></i>
+                                {{luggage?.to_formatted_address }}</h5>
+                              <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt fa-lg m-1 text-info"></i>
+                                {{luggage?.end_dt }}</h6>
+                            </div>
                       </div>
                     </div>
                     <div class="row">
@@ -85,15 +152,17 @@
                         </p>
                       </div>
                     </div>
-                    <div class="float-right">
-                        <button
-                        (click)="logic.luggage.next(luggage);logic.navigate();"
-                        class="card-link btn btn-primary"
-                        >{{(filter.owner_id)?'Выбрать посылку':'Предлажите доставить'}}</button>
-                          <a *ngIf="luggage.owner_id===auth.me.getValue().id" routerLink="/luggageform/{{luggage.id}}" class="card-link">
-                            <i class="far fa-edit"></i>
-                          </a>
+                    <div class="float-left">
+                      <button class="btn btn-sm btn-outline-primary" (click)="open(content)">profile</button>
                     </div>
+                    <div class="float-right">
+                      <button (click)="logic.luggage.next(luggage);logic.navigate();" class="card-link btn btn-primary">{{(filter.owner_id)?'Выбрать
+                        посылку':'Предлажите доставить'}}</button>
+                      <a *ngIf="luggage.owner_id===auth.me.getValue().id" routerLink="/luggageform/{{luggage.id}}"
+                        class="card-link">
+                        <i class="far fa-edit"></i>
+                      </a>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -112,3 +181,21 @@
     </div>
   </div>
 </div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Rate Me!
+
+    </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    there should be profile
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">OK</button>
+  </div>
+</ng-template>

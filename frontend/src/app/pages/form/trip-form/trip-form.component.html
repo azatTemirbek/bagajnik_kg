@@ -6,6 +6,10 @@
           <li class="breadcrumb-item"><a [routerLink]="[ '/' ]">Главная страница</a></li>
           <li class="breadcrumb-item"><a [routerLink]="[ '/tripform/-1']"> Создать Поездку </a></li>
           <li class="col"></li>
+          <a [routerLink]="[ '/trips']" class="btn justify-content-end btn-sm btn-primary text-capitalize text-white pr-3 mr-3">
+            <i class="fas fa-list-ul"></i>
+            Список Поездок
+          </a>
           <a [routerLink]="[ '/trips']" [queryParams]="{carrier_id:auth.me.getValue().id}" class="btn justify-content-end btn-sm btn-primary text-capitalize text-white pr-3">
             <i class="fas fa-list-ul"></i>
             Мой Список Поездок

@@ -1,0 +1,84 @@
+.download {
+  position: relative;
+  padding: 150px 0;
+}
+.bg-primary {
+  background: #fdcc52;
+  background: -webkit-gradient(linear,left top,left bottom,from(#fdcc52),to(#fdc539));
+  background: linear-gradient(#fdcc52,#fdc539);
+}
+@media (min-width: 768px){
+  .download h2 {
+      font-size: 70px;
+  }
+}
+section.download h2 {
+    font-size: 50px;
+    margin-top: 0;
+}
+section h2 {
+    font-size: 50px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: Catamaran,Helvetica,Arial,sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+.down img {
+  height: 60px;
+  vertical-align: middle;
+  border-style: none;
+}
+.testimonials {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+.cta {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  /* background-color: rgba(230,167,86,.9); */
+  background: linear-gradient(#fdcc52,#fdc539);
+}
+
+
+.cta .cta-inner {
+  position: relative;
+  padding: 3rem;
+  margin: .5rem;
+  background-color: rgba(255,255,255,.85);
+}
+
+.page-section {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+.rounded {
+  border-radius: .25rem!important;
+}
+
+.cta .cta-inner:before {
+  border-radius: .5rem;
+  content: '';
+  position: absolute;
+  top: -.5rem;
+  bottom: -.5rem;
+  left: -.5rem;
+  right: -.5rem;
+  border: .25rem solid rgba(255,255,255,.85);
+}
+.section-heading .section-heading-upper {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+}
+.section-heading .section-heading-lower {
+  display: block;
+  font-size: 3rem;
+  font-weight: 100;
+}
+.ws-100{
+  width:200px
+}
+.shat{
+  text-shadow: 19px 20px 17px #0000004a;
+}

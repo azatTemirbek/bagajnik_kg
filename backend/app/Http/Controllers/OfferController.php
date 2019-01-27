@@ -7,6 +7,7 @@ use App\Http\Resources\OfferResources\OfferResource;
 use App\Http\Resources\OfferResources\OfferResourceCollection;
 use App\Luggage;
 use App\Mail\AcceptMail;
+use App\Mail\ReviewMail;
 use App\Offer;
 use App\Trip;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class OfferController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index']]);
+        $this->middleware('auth:api', ['except' => ['index','show']]);
     }
 
     /**
@@ -57,7 +58,7 @@ class OfferController extends Controller
         $offer->req_user_id = $request->user('api')->id;
         // get the trip and is uersid
         $trip = Trip::findOrFail($request->trip_id);
-        //        get the luggage and is uersid
+        //get the luggage and is uersid
         $luggage = Luggage::findOrFail($request->luggage_id);
         $offer->res_user_id = ($trip->carrier_id = $request->user('api')->id) ? $luggage->owner_id : $trip->carrier_id;
         if ($offer->save()) {
@@ -106,7 +107,9 @@ class OfferController extends Controller
         $query->where('luggage_id', '=', $offerUpdate->luggage_id);
         $query->orWhere('trip_id', '=', $offerUpdate->trip_id);
         $query->update(['status' => 'responded', 'agree' => false]);
+
         $this->sendMail($offerUpdate);
+        $this->sendMailAfterFinish($offerUpdate);
         return new OfferResource($offerUpdate);
     }
 
@@ -114,6 +117,15 @@ class OfferController extends Controller
     {
         Mail::to($offer->req_user->email)->send(new AcceptMail($offer));
         Mail::to($offer->res_user->email)->send(new AcceptMail($offer));
+        return true;
+    }
+
+    private function sendMailAfterFinish(Offer $offer)
+    {
+        $atrip = $offer->trip();
+        $when = $atrip->end_dt;
+        Mail::to($offer->req_user->email)->later($when, new ReviewMail($offer));
+        Mail::to($offer->res_user->email)->later($when, new ReviewMail($offer));
         return true;
     }
 

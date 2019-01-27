@@ -25,7 +25,7 @@
   <div class="collapse navbar-collapse" [ngClass]="{'show': open}" id="navbarsExample06">
     <ul class="navbar-nav ml-auto">
       <!-- notification -->
-      <li *ngIf='Auth.loggedIn.getValue()' class="nav-item dropdown" [ngClass]="{'show': dOpen}">
+      <li *ngIf='Auth.loggedIn.getValue() === true' class="nav-item dropdown" [ngClass]="{'show': dOpen}">
         <a class="nav-link dropdown-toggle text-capitalize" style="cursor:pointer" (click)="toggleD()" id="navbarDropdown"
           role="button" *ngIf="Auth.loggedIn.getValue()" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-bell "></i>
@@ -74,18 +74,31 @@
           </div>
         </div>
       </li>
+
+      <a class="nav-item nav-link" [routerLink]="[ '/luggages' ]" routerLinkActive="active">
+        <i class="fas fa-suitcase"></i>
+        Багажы
+      </a>
+      <a class="nav-item nav-link" [routerLink]="[ '/trips' ]" routerLinkActive="active">
+        <i class="fas fa-plane"></i>
+        Поездки
+      </a>
+
+
       <!-- notification -->
-      <a *ngIf='!Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/register' ]" routerLinkActive="active">
+      <a *ngIf='Auth.loggedIn.getValue()===false' class="nav-item nav-link" [routerLink]="[ '/register' ]" routerLinkActive="active">
         <i class="fab fa-wpforms"></i>
         Регистация
       </a>
-      <a *ngIf='!Auth.loggedIn.getValue()' class="nav-item nav-link" [routerLink]="[ '/login' ]" routerLinkActive="active">
+      <a *ngIf='Auth.loggedIn.getValue() === false' class="nav-item nav-link" [routerLink]="[ '/login' ]" routerLinkActive="active">
         <i class="fas fa-sign-in-alt"></i>
         Вход
       </a>
 
 
-      <div *ngIf='Auth.loggedIn.getValue()' ngbDropdown placement='bottom' class="d-inline-block">
+
+
+      <div *ngIf='Auth.loggedIn.getValue() === true' ngbDropdown placement='bottom' class="d-inline-block">
           <a class="nav-item nav-link" id="dropdownBasic1" ngbDropdownToggle>
             <i class="fa fa-user-circle "></i>
             {{Auth.me.getValue()?.name}} {{Auth.me.getValue()?.surname}}

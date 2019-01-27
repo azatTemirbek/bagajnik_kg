@@ -1,7 +1,13 @@
 import { TokenService } from 'src/app/service/auth/token.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth/auth.service';
-import { Component, OnInit, OnDestroy, HostListener, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  HostListener,
+  ElementRef
+} from '@angular/core';
 import { BehaviorSubject, interval, Subscription } from 'rxjs';
 import { OfferService } from 'src/app/service/offer.service';
 import { Configure } from 'src/app/service/configure';
@@ -20,21 +26,27 @@ export class NavbarComponent implements OnInit, OnDestroy {
   /** data of the unreaded and responded data */
   unReadedData: BehaviorSubject<any> = new BehaviorSubject([]);
   /** subscribtion of the interval request */
-  sub: Subscription;
+  sub: Subscription = null;
   constructor(
     public Auth: AuthService,
     private route: Router,
     private Token: TokenService,
     private offerService: OfferService,
     private eRef: ElementRef
-  ) { }
+  ) {}
   ngOnInit() {
     if (this.Auth.loggedIn.getValue() && !this.sub) {
+      /** to make request at first time */
       this.getOfferCount();
-      const source = interval(Configure.requestInterval);
-      this.sub = source.subscribe(a => this.getOfferCount());
+      this.setIntervalRequest();
     }
   }
+
+  setIntervalRequest(): any {
+    const source = interval(Configure.requestInterval);
+    this.sub = source.subscribe(a => this.getOfferCount());
+  }
+
   ngOnDestroy() {
     if (this.Auth.loggedIn.getValue()) {
       this.sub.unsubscribe();
@@ -64,12 +76,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
    * used to change status of the offer to viewed
    */
   makeStatusViewed(offer, eye) {
-    this.offerService.update({ ...offer, status: 'viewed' })
-      .subscribe(data => {
-        this.unReadedCount.next(+this.unReadedCount.getValue() - 1);
-        eye.innerHTML = '<i class="far fa-eye-slash"></i>';
-        eye.style.backgroundColor = 'orange';
-      });
+    this.offerService.update({ ...offer, status: 'viewed' }).subscribe(data => {
+      this.unReadedCount.next(+this.unReadedCount.getValue() - 1);
+      eye.innerHTML = '<i class="far fa-eye-slash"></i>';
+      eye.style.backgroundColor = 'orange';
+    });
   }
   /**
    * function to toggle the mobile menu
@@ -85,7 +96,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
    */
   logout() {
     this.Auth.removeMe();
-    this.Auth.loggedIn.next(!this.Auth.loggedIn.getValue());
+    this.Auth.loggedIn.next(false);
     this.route.navigateByUrl('/login');
     this.Token.remove();
   }

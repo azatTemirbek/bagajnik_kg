@@ -13,4 +13,35 @@ form.custom.ng-valid:not(form){
   overflow-y: auto;
   overflow-x: hidden;
 }
-
+.custom-tab .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #495057;
+  background-color: transparent;
+  border-color:transparent;
+}
+.custom-tab .nav-tabs .nav-link {
+  border: transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+.custom-tab .nav-tabs .nav-link.active{
+  border-bottom: 2px solid green !important;
+}
+.ng5-slider .ng5-slider-pointer {
+  background-color: #17a2b8 !important;
+}
+.btn-primary {
+  background-color: #17a2b8 !important;
+  border-color: #17a2b8 !important;
+}
+a {
+  /* color: #17a2b8 !important; */
+}
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+.page-link {
+  color: #17a2b8;
+}

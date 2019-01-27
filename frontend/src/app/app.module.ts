@@ -38,6 +38,14 @@ import { OfferResultComponent } from './pages/OfferResult/OfferResult.component'
 import { LogicService } from './service/logic.service';
 import { CustomHttpInterceptor } from './service/custom-http-interceptor.service';
 import { ErrorInterceptorService } from './service/ErrorInterceptor.service';
+import { StatComponent } from './pages/stat/stat.component';
+import { ChartsModule } from 'ng2-charts';
+import { ContactComponent } from './pages/Contact/Contact.component';
+import { JumboChildOneComponent } from './components/Jumbotron/jumboChildOne/jumboChildOne.component';
+import { JumboChildTwoComponent } from './components/Jumbotron/jumboChildTwo/jumboChildTwo.component';
+import { MakeReviewComponent } from './pages/MakeReview/MakeReview.component';
+import { AboutUsComponent } from './pages/AboutUs/AboutUs.component';
+import { AgreementComponent } from './pages/Agreement/Agreement.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +66,14 @@ import { ErrorInterceptorService } from './service/ErrorInterceptor.service';
     OfferViewComponent,
     OfferConfirmComponent,
     WhatsappComponent,
-    OfferResultComponent
+    OfferResultComponent,
+    StatComponent,
+    ContactComponent,
+    JumboChildOneComponent,
+    JumboChildTwoComponent,
+    MakeReviewComponent,
+    AboutUsComponent,
+    AgreementComponent
   ],
   imports: [
     FormsModule,
@@ -75,7 +90,8 @@ import { ErrorInterceptorService } from './service/ErrorInterceptor.service';
     DynamicFormsCoreModule,
     DynamicFormsNGBootstrapUIModule,
     InfiniteScrollModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    ChartsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true },

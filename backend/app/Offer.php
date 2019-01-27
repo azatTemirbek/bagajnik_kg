@@ -38,7 +38,7 @@ class Offer extends Model
      */
     public function req_user()
     {
-        return $this->belongsTo('App\User', 'req_user_id');
+        return $this->belongsTo('App\User', 'req_user_id','id');
     }
 
     /**
@@ -46,7 +46,7 @@ class Offer extends Model
      */
     public function res_user()
     {
-        return $this->belongsTo('App\User', 'res_user_id');
+        return $this->belongsTo('App\User', 'res_user_id','id');
     }
 }
 

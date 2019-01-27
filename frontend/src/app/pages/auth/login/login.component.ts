@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
     private Auth: AuthService,
     private router: Router,
     private notify: SnotifyService
-    ) { }
+  ) { }
   /**
    * data => this.auth.user.next(data),
    */
-  onSubmit() {
+  onSubmit(event) {
     this.auth.login(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
   }
 
   handleError(error) {
-    this.notify.error(error.error.error);
-    this.error = error.error.error;
+    this.notify.error(error.message);
+    this.error = error.errors;
   }
 
   ngOnInit() {

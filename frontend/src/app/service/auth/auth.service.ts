@@ -24,7 +24,7 @@ export class AuthService {
     if (!this.loggedIn.getValue()) {
       return;
     }
-    return this.http.get(`${this.api}/users/${this.me.getValue().id}`);
+    return this.http.get(`${this.api}/my-info`);
   }
   update(data) {
     return this.http.patch(`${this.api}/users/${data.id}`, data);
@@ -49,7 +49,7 @@ export class AuthService {
   }
   logout() {
     this.removeMe();
-    this.loggedIn.next(!this.loggedIn.getValue());
+    this.loggedIn.next(false);
     this.Token.remove();
   }
 }

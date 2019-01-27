@@ -26,9 +26,11 @@ class SignUpRequest extends FormRequest
         return [
             'name' => 'required',
             'surname' => 'required',
-            'phone' => 'required|numeric|phone_number|size:11',
+            'phone' => 'required|numeric',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required ',
+            'photo' => 'required|mimes:jpeg,bmp,png|dimensions:min_width=200,min_height=200'
         ];
     }
 }

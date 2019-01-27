@@ -21,6 +21,9 @@ class User extends Authenticatable implements JWTSubject
         'phone',
         'email',
         'password',
+        'provider',
+        'provider_id',
+        'photo'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -66,6 +69,18 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany('App\Rating', 'to_user_id', 'id');
     }
+    /**
+     * get avarage rating
+     */
+    public function avarageRating()
+    {
+        return $this->ratingsToMe()->avg('rate_value');
+    }
+
+    public function sentLuggaeges()
+    {
+        return $this->offersToMe();
+    }
 
     /**
      * Get all the trips.
@@ -84,11 +99,19 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
-     * Get all the trips.
+     * Get my offers list.
      */
-    public function offers()
+    public function myOffers()
     {
         return $this->hasMany('App\Offer', 'req_user_id', 'id');
+    }
+
+    /**
+     * Get offers to me
+     */
+    public function offersToMe()
+    {
+        return $this->hasMany('App\Offer', 'res_user_id', 'id');
     }
 
     /**

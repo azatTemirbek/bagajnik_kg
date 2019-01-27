@@ -19,7 +19,36 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'signup']]);
+        $this->middleware('auth:api', ['except' => ['login', 'signup','redirectToProvider','handleProviderCallback']]);
+    }
+
+    public function  redirectToProvider($provider){
+        return Socialite::driver($provider)->redirect();
+    }
+    public function findOrCreateUser($user, $provider)
+    {
+        $authUser = User::where('provider_id', $user->id)->first();
+        if ($authUser) {
+            return $authUser;
+        }else{
+            $authUser =  User::create([
+                'name'     => $user->name,
+                'email'    => $user->email,
+                'provider' => $provider,
+                'provider_id' => $user->id
+            ]);
+        }
+        //      name' => 'required',
+        //     'surname' => 'required',
+        //     'phone' => 'required|numeric|phone_number|size:11',
+        //     'email' => 'required|email|unique:users',
+        //     'password' => 'required|confirmed
+        // JWTAuth::fromUser($user);
+        if (!auth()->login($authUser)) {
+            return response()->json(['error' => 'Эл. Почта или пароль недействительны!'], 401);
+        }
+        $token = JWTAuth::fromUser($authUser);
+        return $this->respondWithToken($token);
     }
 
     /**
@@ -40,6 +69,12 @@ class AuthController extends Controller
 
     public function signup(SignUpRequest $request)
     {
+        if($request->hasFile('photo')){
+            $file = $request->photo;
+            $path = $request->photo->store('public');
+            error_log('Some message here.'.$path );
+            $request->photo = $path;
+        }
         User::create($request->all());
         return $this->login($request);
     }

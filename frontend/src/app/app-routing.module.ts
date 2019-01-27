@@ -15,15 +15,24 @@ import {LuggageFormComponent} from './pages/form/luggage-form/luggage-form.compo
 import { OfferViewComponent } from './pages/offerView/offerView.component';
 import { OfferConfirmComponent } from './pages/offer-confirm/offer-confirm.component';
 import { OfferResultComponent } from './pages/OfferResult/OfferResult.component';
+import { StatComponent } from './pages/stat/stat.component';
+import { ContactComponent } from './pages/Contact/Contact.component';
+import { MakeReviewComponent } from './pages/MakeReview/MakeReview.component';
+import { AboutUsComponent } from './pages/AboutUs/AboutUs.component';
+import { AgreementComponent } from './pages/Agreement/Agreement.component';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent, canActivate: [BeforeLoginService] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'agreement', component: AgreementComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'request-password-reset', component: RequestResetComponent  },
   { path: 'responce-password-reset', component: ResponceResetComponent },
+  { path: 'stat', component: StatComponent },
+  { path: 'contact', component: ContactComponent },
   { path: 'trips', component: TripsComponent },
   { path: 'luggages', component: LuggagesComponent },
   { path: 'tripform/:id', component: TripFormComponent, canActivate: [AfterLoginService]  },
@@ -32,6 +41,7 @@ const routes: Routes = [
   { path: 'offerview/:tripId/:luggageId', component: OfferViewComponent, canActivate: [AfterLoginService]  },
   { path: 'offerconfirm/:id', component: OfferConfirmComponent, canActivate: [AfterLoginService]  },
   { path: 'offer-result-from-peer/:id', component: OfferResultComponent, canActivate: [AfterLoginService]  },
+  { path: 'write-review/:id', component: MakeReviewComponent, canActivate: []  },
   { path: '**', component: PageNotFoundComponent },
 ];
 

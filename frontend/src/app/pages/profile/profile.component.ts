@@ -58,6 +58,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   id: Number;
   sub: Subscription;
   valchange: Subscription;
+  luggages: any;
+  trips: any;
+  offers: any;
   constructor(
     private authService: AuthService,
     private formService: DynamicFormService,
@@ -88,8 +91,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
       phone: this.authService.me.getValue().phone,
     });
     this.authService.getUserData()
-    // todo:user data is used to display all the related actions and trips with offers and luggages history also
-      .subscribe(data => console.log(data));
+      .subscribe(({
+        data: {
+          relationships: {
+            luggages,
+            trips,
+            offers
+          }
+        }
+      }: any) => {
+      this.luggages = luggages.data;
+      this.trips = trips.data;
+      this.offers = offers.data;
+    });
   }
   /**
    * form submit and get data from the backend

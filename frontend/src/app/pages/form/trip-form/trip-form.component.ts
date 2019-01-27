@@ -138,6 +138,19 @@ export class TripFormComponent implements OnInit, OnDestroy, AfterViewInit {
           this.tfa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
             types: ['(cities)']
           });
+
+          google.maps.event.addListener(this.ffa, 'place_changed', () => {
+            this.formGroup.setValue({
+              ...this.formGroup.value,
+              from_formatted_address: this.ffa.getPlace().formatted_address
+            });
+          });
+          google.maps.event.addListener(this.tfa, 'place_changed', () => {
+            this.formGroup.setValue({
+              ...this.formGroup.value,
+              to_formatted_address: this.tfa.getPlace().formatted_address
+            });
+          });
         }
       }
     );
@@ -180,10 +193,10 @@ export class TripFormComponent implements OnInit, OnDestroy, AfterViewInit {
    * a function used to notify
    * @param error validtion text from the back
    */
-  handleError({ error }) {
-    for (const key in error.errors) {
-      if (error.errors.hasOwnProperty(key)) {
-        this.notifyService.error(error.errors[key][0]);
+  handleError({ errors }) {
+    for (const key in errors) {
+      if (errors.hasOwnProperty(key)) {
+        this.notifyService.error(errors[key][0]);
       }
     }
   }

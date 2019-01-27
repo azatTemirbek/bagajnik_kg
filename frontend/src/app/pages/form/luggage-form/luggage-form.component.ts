@@ -20,6 +20,7 @@ import { MY_FORM_LAYOUT } from './LUGGAGE_LAYOUT';
 import { MapsAPILoader } from '@agm/core';
 import { LogicService } from 'src/app/service/logic.service';
 import { AuthService } from 'src/app/service/auth/auth.service';
+import { Location } from '@angular/common';
 declare var google;
 
 @Component({
@@ -198,7 +199,7 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
   sub: Subscription;
   valchange: Subscription;
   ffa: any;
-  tfa: boolean;
+  tfa: any;
   constructor(
     private formService: DynamicFormService,
     private notifyService: SnotifyService,
@@ -207,7 +208,8 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
     private router: Router,
     private mapsAPILoader: MapsAPILoader,
     private logic: LogicService,
-    public auth: AuthService
+    public auth: AuthService,
+    private _location: Location
   ) { }
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -286,6 +288,19 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
           this.tfa = new google.maps.places.Autocomplete(document.getElementById('to_formatted_address'), {
             types: ['(cities)']
           });
+
+          google.maps.event.addListener(this.ffa, 'place_changed', () => {
+            this.formGroup.setValue({
+              ...this.formGroup.value,
+              from_formatted_address: this.ffa.getPlace().formatted_address
+            });
+          });
+          google.maps.event.addListener(this.tfa, 'place_changed', () => {
+            this.formGroup.setValue({
+              ...this.formGroup.value,
+              to_formatted_address: this.tfa.getPlace().formatted_address
+            });
+          });
         }
       }
     );
@@ -317,20 +332,21 @@ export class LuggageFormComponent implements OnInit, OnDestroy, AfterViewInit {
   handleSuccess(data) {
     if (this.id > 0) {
       this.notifyService.success('Успешно обновлено!');
+      this._location.back();
     } else {
       this.notifyService.success('Успешно создан!');
+      this.logic.luggage.next(data.data);
+      this.logic.navigate();
     }
-    this.logic.luggage.next(data.data);
-    this.logic.navigate();
   }
   /**
    * a function used to notify
    * @param error validtion text from the back
    */
-  handleError({ error }) {
-    for (const key in error.errors) {
-      if (error.errors.hasOwnProperty(key)) {
-        this.notifyService.error(error.errors[key][0]);
+  handleError({ errors }) {
+    for (const key in errors) {
+      if (errors.hasOwnProperty(key)) {
+        this.notifyService.error(errors[key][0]);
       }
     }
   }

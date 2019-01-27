@@ -25,7 +25,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
             this.notufy.error('401 Unauthorized');
             location.reload(true);
           }
-          const error = err.error.message || err.statusText;
+          const error = err.error || err.statusText;
           return throwError(error);
         }));
   }

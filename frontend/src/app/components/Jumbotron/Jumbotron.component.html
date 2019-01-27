@@ -1,16 +1,31 @@
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-  <div class="col-md-5 p-lg-5 mx-auto my-5">
-    <h1 class="display-4 font-weight-normal">Карго без проблем</h1>
-    <p class="lead font-weight-normal">
+<div #bnb style="background-image: url('https://a0.muscache.com/4ea/air/r:w1550-h1037-sfit,e:fjpg-c80/pictures/425ce4d9-0747-484c-9531-a9de805d0aee.jpg');" class="position-relative bg-of-bnb overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+  <div class="col-md-9 p-lg-5 mx-auto my-5">
+    <h1 class="display-4 font-weight-normal text-white">Отправь со скоростью света</h1>
+    <!-- <p class="lead font-weight-normal">
       Мы предлагаем надежные и дешевые грузовые перевозки через пассажиров. Найди своего пассажира или багаж для
       перевозки.
-    </p>
-    <div class="btn-group" role="group" aria-label="Basic example">
+    </p> -->
+    <ngb-tabset class="custom-tab">
+      <ngb-tab>
+        <ng-template ngbTabTitle>
+          <b class="text-white" (click)="changeBG()" >Взять посылу</b>
+        </ng-template>
+        <ng-template ngbTabContent>
+            <app-jumbo-child-one></app-jumbo-child-one>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab>
+        <ng-template ngbTabTitle>
+          <b class="text-white" (click)="changeBG()" >Отправить посылку</b>
+        </ng-template>
+        <ng-template ngbTabContent>
+            <app-jumbo-child-two></app-jumbo-child-two>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+    <!-- <div class="btn-group" role="group" aria-label="Basic example">
       <a class="btn btn-success btn-lg" routerLink="/luggageform/-1" role="button">Отправить посылку</a>
-      <a class="btn btn-success btn-lg btn-outline-success btnoutlinesuccess" routerLink="/luggages" role="button">
-        Взять посылу
-      </a>
-    </div>
+    </div> -->
   </div>
   <div class="product-device shadow-sm d-none d-md-block"></div>
   <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
